@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://theremin-int.com/sitemap.xml

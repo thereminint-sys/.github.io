@@ -1,0 +1,597 @@
+/* ===== Design tokens ===== */
+:root {
+  --ink: #08070a;
+  --ink-2: #0f0a0b;
+  --ink-3: #171012;
+  --bone: #f3ede1;
+  --muted: #b7ab9c;
+  --blood: #c31c22;
+  --blood-2: #7a1015;
+  --blood-bright: #e0281f;
+  --blood-glow: rgba(195, 28, 34, 0.55);
+  --line: rgba(243, 237, 225, 0.16);
+  --font-display: "Cinzel", serif;
+  --font-body: "EB Garamond", serif;
+
+  /* Feature heading/body scale — single source of truth so the two no
+     longer drift out of sync across edits. */
+  --feature-heading-size: 3.1875rem;      /* 51px */
+  --feature-heading-size-lg: 3.8125rem;   /* 61px */
+  --feature-body-size: 1.5rem;            /* 24px */
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+img, video {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+/* ===== Ambient parallax background (behind every section) ===== */
+#parallax-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -20;
+  /* Fixed + inset:0 keeps this exactly viewport-sized and stationary, so it
+     always fully covers the screen while content scrolls over it — that's
+     the parallax effect, with no JS/transform needed (and no risk of the
+     box edge being pushed past the viewport, which used to crop it). */
+  background-size: cover;
+  background-position: center;
+}
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-variant-caps: small-caps;
+  letter-spacing: 0.04em;
+}
+
+/* Visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--blood);
+  outline-offset: 3px;
+}
+
+/* ===== Ornamental rule ===== */
+.rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blood), transparent);
+}
+
+/* ===== Glowing bordered button ===== */
+.btn-glow {
+  position: relative;
+  font-family: var(--font-display);
+  font-variant-caps: small-caps;
+  letter-spacing: 0.08em;
+  background: rgba(8, 6, 7, 0.75);
+  border: 1px solid var(--blood);
+  color: var(--bone);
+  padding: 0.85rem 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: box-shadow 0.35s ease, transform 0.25s ease, background 0.3s ease;
+  box-shadow: 0 0 0 rgba(195, 28, 34, 0);
+}
+.btn-glow:hover {
+  box-shadow: 0 0 22px var(--blood-glow), 0 0 4px var(--blood-glow) inset;
+  background: rgba(20, 8, 9, 0.9);
+  transform: translateY(-1px);
+}
+.btn-glow svg { transition: transform 0.25s ease; }
+.btn-glow:hover svg { transform: translateX(3px); }
+
+/* ===== Borderless glow button (Menu) ===== */
+.menu-glow {
+  font-family: var(--font-display);
+  font-variant-caps: small-caps;
+  letter-spacing: 0.08em;
+  background: none;
+  border: none;
+  color: var(--bone);
+  padding: 0.5rem 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  filter: drop-shadow(0 0 0 transparent);
+  transition: filter 0.35s ease, color 0.3s ease;
+}
+.menu-glow:hover,
+.menu-glow:focus-visible {
+  color: var(--bone);
+  filter: drop-shadow(0 0 8px var(--blood-glow)) drop-shadow(0 0 3px var(--blood-glow));
+}
+
+/* ===== Nav ===== */
+#site-nav {
+  transition: background-color 0.4s ease, backdrop-filter 0.4s ease, padding 0.4s ease, border-color .4s ease;
+  border-bottom: 1px solid transparent;
+}
+#site-nav.nav-scrolled {
+  background-color: rgba(8, 7, 10, 0.72);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-wishlist {
+  position: fixed;
+  top: 6.5rem;
+  left: 1.5rem;
+  z-index: 25;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+@media (min-width: 768px) {
+  .nav-wishlist { left: 3rem; }
+}
+.nav-wishlist.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  box-shadow: 0 0 14px var(--blood-glow);
+}
+
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ===== Mobile drawer ===== */
+#mobile-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(6, 5, 6, 0.97);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+#mobile-drawer.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+#mobile-drawer a {
+  font-family: var(--font-display);
+  font-variant-caps: small-caps;
+  font-size: 1.75rem;
+  letter-spacing: 0.06em;
+  color: var(--bone);
+}
+#mobile-drawer a:hover { color: var(--blood); }
+
+/* ===== Hero ===== */
+#hero {
+  position: relative;
+}
+#hero .hero-bg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+#hero .hero-content { padding-bottom: 2rem; }
+/* Below md, a wide/cinematic hero image scaled to full width becomes too
+   short to hold the overlaid logo + button (they overflowed into the next
+   section). Give the section a real minimum height on mobile and let the
+   image cover it — full-image-no-crop stays a desktop-only nicety. */
+@media (max-width: 767px) {
+  #hero {
+    min-height: 100svh;
+  }
+  #hero .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.hero-logo {
+  filter: drop-shadow(0 4px 30px rgba(0,0,0,0.8));
+}
+
+/* On mobile the hero now fills the viewport and Wishlist Now sits
+   bottom-center, so Watch Trailer bottom-right collided with it. Move it
+   under the nav instead, and shrink it to stay unobtrusive. */
+@media (max-width: 767px) {
+  .watch-trailer {
+    top: 5.5rem;
+    bottom: auto;
+    right: 1rem;
+  }
+  .watch-trailer-frame {
+    width: 9rem;
+    max-width: 45vw;
+  }
+}
+
+/* ===== Hero "Watch Trailer" thumbnail button ===== */
+.watch-trailer-frame {
+  position: relative;
+  display: block;
+  width: 15rem;
+  max-width: 40vw;
+  aspect-ratio: 16 / 9;
+}
+/* Border and inner share the exact same box, so the clip-path percentages
+   land at identical pixel positions for both — the line always matches
+   the trapezoid shape exactly, at any viewport width. */
+.watch-trailer-border {
+  position: absolute;
+  inset: 0;
+  background: var(--blood-bright);
+  clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
+  filter:
+    drop-shadow(0 0 8px rgba(255, 50, 30, 0.85))
+    drop-shadow(0 0 22px rgba(255, 40, 20, 0.6))
+    drop-shadow(0 0 45px rgba(200, 20, 20, 0.35));
+  transition: filter 0.35s ease;
+}
+.watch-trailer:hover .watch-trailer-border {
+  filter:
+    drop-shadow(0 0 10px rgba(255, 50, 30, 1))
+    drop-shadow(0 0 30px rgba(255, 40, 20, 0.8))
+    drop-shadow(0 0 65px rgba(200, 20, 20, 0.5));
+}
+.watch-trailer-inner {
+  position: absolute;
+  inset: 1px;
+  overflow: hidden;
+  clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 0% 100%);
+  background: radial-gradient(circle at center, rgba(195, 28, 34, 0.3) 0%, var(--ink-3) 72%);
+}
+.watch-trailer-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.watch-trailer:hover .watch-trailer-thumb {
+  transform: scale(1.08);
+}
+.watch-trailer-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  text-align: center;
+  padding: 0 0.75rem;
+  font-family: var(--font-display);
+  font-variant-caps: small-caps;
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  color: rgba(243, 237, 225, 0.85);
+  -webkit-text-stroke: 0.6px rgba(0, 0, 0, 0.9);
+  paint-order: stroke fill;
+  transition: color 0.3s ease;
+}
+.watch-trailer:hover .watch-trailer-label {
+  color: var(--bone);
+}
+.watch-trailer-icon {
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(195, 28, 34, 0.9);
+  background: rgba(8, 6, 7, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-text-stroke: 0;
+  transition: box-shadow 0.3s ease;
+}
+.watch-trailer:hover .watch-trailer-icon {
+  box-shadow: 0 0 12px var(--blood-glow);
+}
+
+/* ===== Story section ===== */
+.story-bg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.story-text {
+  background: rgba(4, 3, 4, 0.6);
+  padding: 2rem 2.25rem;
+}
+/* Same mobile fix as hero: the long story text needs guaranteed room that
+   a width-scaled image can't reliably provide on narrow screens. */
+@media (max-width: 767px) {
+  #story {
+    min-height: 100svh;
+  }
+  .story-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* ===== Reveal-on-scroll ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-stagger.in-view > * { opacity: 1; transform: translateY(0); }
+.reveal-stagger.in-view > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger.in-view > *:nth-child(2) { transition-delay: 0.15s; }
+.reveal-stagger.in-view > *:nth-child(3) { transition-delay: 0.25s; }
+
+/* ===== Angular image frames (feature sections + gallery) ===== */
+.frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+}
+.frame .frame-border {
+  position: absolute;
+  inset: 0;
+  background: #e0281f;
+  filter:
+    drop-shadow(0 0 6px rgba(220, 40, 30, 0.55))
+    drop-shadow(0 0 20px rgba(220, 30, 20, 0.4))
+    drop-shadow(0 0 50px rgba(200, 20, 20, 0.28))
+    drop-shadow(0 0 100px rgba(180, 20, 20, 0.18));
+  transition: filter 0.35s ease;
+}
+.frame:hover .frame-border {
+  filter:
+    drop-shadow(0 0 8px rgba(220, 40, 30, 0.7))
+    drop-shadow(0 0 26px rgba(220, 30, 20, 0.5))
+    drop-shadow(0 0 60px rgba(200, 20, 20, 0.35))
+    drop-shadow(0 0 120px rgba(180, 20, 20, 0.22));
+}
+.frame .frame-inner {
+  position: absolute;
+  inset: 1px;
+  overflow: hidden;
+  background: radial-gradient(circle at center, rgba(195, 28, 34, 0.3) 0%, var(--ink-3) 72%);
+}
+.frame .frame-inner img,
+.frame .frame-inner video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 8s ease;
+}
+.frame:hover .frame-inner img,
+.frame:hover .frame-inner video { transform: scale(1.08); }
+
+/* "frame-point-left" = point faces right (inward). "frame-point-right" =
+   point faces left. Border and inner now share the exact same box on
+   every side, so the clip-path percentages land at identical pixel
+   positions for both — no more misaligned border line. */
+.frame-point-left .frame-border,
+.frame-point-left .frame-inner {
+  clip-path: polygon(0% 0%, 82% 0%, 100% 50%, 82% 100%, 0% 100%);
+}
+.frame-point-right .frame-border,
+.frame-point-right .frame-inner {
+  clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 18% 100%, 0% 50%);
+}
+
+/* ===== Feature sections ===== */
+.feature-row {
+  display: flex; flex-wrap: wrap; align-items: flex-start;
+  position: relative;
+}
+.feature-row.reverse { flex-direction: row-reverse; }
+
+/* ===== Gallery ===== */
+.gallery-tab {
+  font-family: var(--font-display);
+  font-variant-caps: small-caps;
+  letter-spacing: 0.06em;
+  border: 1px solid var(--blood);
+  color: var(--bone);
+  background: rgba(8,6,7,0.6);
+  transition: background .3s ease, color .3s ease, box-shadow .3s ease;
+}
+.gallery-tab.active {
+  background: var(--bone);
+  color: var(--ink);
+  box-shadow: 0 0 18px var(--blood-glow);
+}
+.gallery-tab:not(.active):hover { box-shadow: 0 0 14px var(--blood-glow); }
+
+.gallery-track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.gallery-track::-webkit-scrollbar { display: none; }
+.gallery-item {
+  position: relative;
+  flex: 0 0 min(560px, 82vw);
+  scroll-snap-align: start;
+  aspect-ratio: 16/10;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--ink-3);
+  cursor: pointer;
+}
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .6s ease;
+}
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-item .gi-actions {
+  position: absolute; top: 0.75rem; right: 0.75rem;
+  display: flex; gap: 0.5rem;
+}
+.gi-icon-btn {
+  width: 2.25rem; height: 2.25rem;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(8,6,7,0.75);
+  border: 1px solid var(--blood);
+  color: var(--bone);
+  cursor: pointer;
+}
+.gi-icon-btn:hover { box-shadow: 0 0 14px var(--blood-glow); }
+
+/* ===== Gallery lightbox ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox[hidden] { display: none; }
+.lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 3, 4, 0.96);
+}
+.lightbox-image {
+  position: relative;
+  z-index: 1;
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border: 1px solid var(--blood);
+  box-shadow: 0 0 40px rgba(195, 28, 34, 0.35);
+  transition: transform 0.26s ease, opacity 0.26s ease;
+}
+/* Card-like slide when moving to the next/previous image. */
+.lightbox-image.lb-out-next { transform: translateX(-36px); opacity: 0; }
+.lightbox-image.lb-out-prev { transform: translateX(36px); opacity: 0; }
+.lightbox-image.lb-in-next { transition: none; transform: translateX(36px); opacity: 0; }
+.lightbox-image.lb-in-prev { transition: none; transform: translateX(-36px); opacity: 0; }
+.lightbox-toolbar {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 2;
+  display: flex;
+  gap: 0.75rem;
+}
+.lightbox-icon-btn {
+  width: 2.75rem; height: 2.75rem;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(8,6,7,0.75);
+  border: 1px solid var(--blood);
+  color: var(--bone);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+.lightbox-icon-btn:hover { box-shadow: 0 0 16px var(--blood-glow); }
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 3.25rem; height: 3.25rem;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(8,6,7,0.75);
+  border: 1px solid var(--blood);
+  color: var(--bone);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+.lightbox-nav:hover { box-shadow: 0 0 16px var(--blood-glow); }
+.lightbox-prev { left: 1.5rem; }
+.lightbox-next { right: 1.5rem; }
+@media (max-width: 640px) {
+  .lightbox-prev { left: 0.5rem; }
+  .lightbox-next { right: 0.5rem; }
+}
+
+.gallery-nav-btn {
+  width: 2.75rem; height: 2.75rem;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(8,6,7,0.75);
+  border: 1px solid var(--blood);
+  color: var(--bone);
+  flex: none;
+}
+.gallery-nav-btn:hover { box-shadow: 0 0 14px var(--blood-glow); }
+
+/* ===== Footer ===== */
+#site-footer {
+  position: relative;
+}
+#site-footer .footer-bg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Same mobile fix as hero/story: logo + Wishlist + social icons + copyright
+   all need guaranteed room a width-scaled image can't reliably give. */
+@media (max-width: 767px) {
+  #site-footer {
+    min-height: 100svh;
+  }
+  #site-footer .footer-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+#site-footer .footer-content { position: relative; z-index: 1; }
+#site-footer .footer-main { margin-top: auto; }
+
+.social-icon {
+  width: 3rem; height: 3rem;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--blood);
+  background: rgba(8,6,7,0.6);
+  color: var(--bone);
+  transition: box-shadow .3s ease, transform .2s ease;
+}
+.social-icon:hover { box-shadow: 0 0 16px var(--blood-glow); transform: translateY(-2px); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal-stagger > *, .frame-inner img, .gallery-item img {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
