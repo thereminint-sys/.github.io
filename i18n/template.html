@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="__HTML_LANG__">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Legion of Judgment: Fallen Angel</title>
+<meta name="description" content="{{meta.description}}" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="__CANONICAL_URL__" />
+<link rel="icon" type="image/png" href="__ASSET_PREFIX__assets/favicon.png" />
+__HREFLANG_LINKS__
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Legion of Judgment: Fallen Angel" />
+<meta property="og:title" content="Legion of Judgment: Fallen Angel" />
+<meta property="og:description" content="{{meta.description}}" />
+<meta property="og:url" content="__CANONICAL_URL__" />
+<meta property="og:locale" content="__OG_LOCALE__" />
+<meta property="og:image" content="https://theremin-int.com/assets/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Legion of Judgment: Fallen Angel" />
+<meta name="twitter:description" content="{{meta.description}}" />
+<meta name="twitter:image" content="https://theremin-int.com/assets/og-image.jpg" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Legion of Judgment: Fallen Angel",
+  "description": "{{meta.description}}",
+  "url": "__CANONICAL_URL__",
+  "image": "https://theremin-int.com/assets/og-image.jpg",
+  "inLanguage": "__HTML_LANG__",
+  "genre": ["Action RPG", "Metroidvania"],
+  "gamePlatform": ["PC", "PlayStation 5"],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Theremin Interactive Inc.",
+    "url": "https://theremin-int.com/",
+    "sameAs": [
+      "https://x.com/Theremin_Int",
+      "https://discord.com/invite/H4pkCK7Ttr",
+      "https://www.youtube.com/@theremininteractive"
+    ]
+  },
+  "sameAs": [
+    "https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: "#08070a",
+          ink2: "#0f0a0b",
+          ink3: "#171012",
+          bone: "#f3ede1",
+          muted: "#b7ab9c",
+          blood: "#c31c22",
+        },
+        fontFamily: {
+          display: ["Cinzel", "serif"],
+          body: ["EB Garamond", "serif"],
+        },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="__ASSET_PREFIX__css/styles.css" />
+</head>
+<body class="bg-ink text-bone font-body antialiased">
+
+<div id="parallax-bg" style="background-image:url('__ASSET_PREFIX__assets/parallax-bg.png')" aria-hidden="true"></div>
+
+<!-- ================= NAV ================= -->
+<nav id="site-nav" class="fixed inset-x-0 top-0 z-30 flex items-center justify-between px-6 md:px-12 py-5">
+  <div class="flex items-center gap-6 md:gap-10">
+    <a href="#hero" class="logo-mark" aria-label="Legion of Judgment: Fallen Angel — home">
+      <img src="__ASSET_PREFIX__assets/logo.png" alt="" class="h-[41px] w-auto" />
+    </a>
+    <a id="nav-wishlist"
+       href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/"
+       target="_blank" rel="noopener"
+       class="nav-wishlist btn-glow text-sm hidden sm:inline-flex">
+      {{nav.wishlist}}
+    </a>
+  </div>
+  <div class="flex items-center gap-4 md:gap-6">
+    <details class="lang-switch">
+      <summary class="lang-switch-summary" aria-label="{{langSwitch.aria}}">__LANG_CURRENT_LABEL__</summary>
+      <ul class="lang-switch-menu" role="listbox">
+        __LANG_SWITCH_LIST__
+      </ul>
+    </details>
+    <button id="menu-toggle" aria-expanded="false" aria-controls="mobile-drawer"
+            class="menu-glow text-sm flex items-center gap-3">
+      {{menu.toggle}}
+      <span class="flex flex-col gap-[5px]" aria-hidden="true">
+        <span class="block w-5 h-px bg-current"></span>
+        <span class="block w-5 h-px bg-current"></span>
+      </span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================= MOBILE DRAWER ================= -->
+<div id="mobile-drawer">
+  <button id="drawer-close" aria-label="Close menu" class="absolute top-6 right-6 text-4xl leading-none text-bone hover:text-blood">&times;</button>
+  <a href="#hero">{{drawer.home}}</a>
+  <a href="#story">{{drawer.world}}</a>
+  <a href="#features">{{drawer.feature}}</a>
+  <a href="#prologue">{{prologue.heading}}</a>
+  <a href="#characters">{{characters.heading}}</a>
+  <a href="#gallery">{{drawer.media}}</a>
+  <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener">{{nav.wishlist}}</a>
+  <div class="flex gap-4 mt-4">
+    <a class="social-icon" href="https://x.com/Theremin_Int" target="_blank" rel="noopener" aria-label="X (Twitter)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.6L4.5 22H1.3l8.2-9.3L1 2h7l4.9 6z"/></svg>
+    </a>
+    <a class="social-icon" href="https://discord.com/invite/H4pkCK7Ttr" target="_blank" rel="noopener" aria-label="Discord">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 5.5A17 17 0 0 0 15.7 4l-.4.8a15 15 0 0 1 3.6 1.4A16.6 16.6 0 0 0 12 5a16.6 16.6 0 0 0-7 1.2A15 15 0 0 1 8.7 4.8L8.3 4A17 17 0 0 0 4 5.5C1.9 9 1.3 12.4 1.5 15.7A17 17 0 0 0 6.7 18l.8-1.3a11 11 0 0 1-1.7-.8l.4-.3a12.4 12.4 0 0 0 10.6 0l.4.3c-.5.3-1.1.6-1.7.8l.8 1.3a17 17 0 0 0 5.2-2.3c.3-3.9-.6-7.3-2.5-10.2ZM8.9 14c-.8 0-1.4-.8-1.4-1.7 0-1 .6-1.7 1.4-1.7.8 0 1.4.8 1.4 1.7 0 .9-.6 1.7-1.4 1.7Zm6.2 0c-.8 0-1.4-.8-1.4-1.7 0-1 .6-1.7 1.4-1.7.8 0 1.4.8 1.4 1.7 0 .9-.6 1.7-1.4 1.7Z"/></svg>
+    </a>
+    <a class="social-icon" href="https://www.youtube.com/@theremininteractive" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a30 30 0 0 0-.4-5.4 2.9 2.9 0 0 0-2-2A70 70 0 0 0 12 4a70 70 0 0 0-7.6.6 2.9 2.9 0 0 0-2 2A30 30 0 0 0 2 12a30 30 0 0 0 .4 5.4 2.9 2.9 0 0 0 2 2 70 70 0 0 0 7.6.6 70 70 0 0 0 7.6-.6 2.9 2.9 0 0 0 2-2A30 30 0 0 0 22 12ZM10 15.5v-7l6 3.5Z"/></svg>
+    </a>
+  </div>
+</div>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section id="hero">
+  <img src="__ASSET_PREFIX__assets/hero-bg.webp" alt="" class="hero-bg" />
+  <div class="hero-content absolute inset-0 px-6 flex flex-col items-center justify-end text-center reveal-stagger in-view">
+    <img src="__ASSET_PREFIX__assets/hero-logo.png" alt="Legion of Judgment: Fallen Angel" class="hero-logo w-full max-w-xl" />
+
+    <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener"
+       class="btn-glow mt-10 text-base">
+      {{nav.wishlist}}
+    </a>
+  </div>
+
+  <a href="https://www.youtube.com/@theremininteractive" target="_blank" rel="noopener"
+     class="watch-trailer absolute bottom-8 right-0 z-[1]">
+    <span class="watch-trailer-frame">
+      <span class="watch-trailer-border"></span>
+      <span class="watch-trailer-inner">
+        <video src="__ASSET_PREFIX__assets/hero-trailer-thumb.webm" autoplay muted loop playsinline class="watch-trailer-thumb"></video>
+        <span class="watch-trailer-label">
+          <span class="watch-trailer-icon" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <span>{{hero.watchTrailer}}</span>
+        </span>
+      </span>
+    </span>
+  </a>
+</section>
+
+<!-- ================= STORY / TAGLINE ================= -->
+<section id="story" class="reveal relative">
+  <img src="__ASSET_PREFIX__assets/story-bg.png" alt="" class="story-bg" />
+
+  <div class="story-text absolute bottom-10 right-6 md:right-16 z-[1] max-w-2xl text-right">
+    <h2 class="display text-2xl sm:text-3xl mb-6 leading-tight">
+      {{story.heading}}
+    </h2>
+    <div class="text-muted leading-relaxed space-y-4">
+      <p>
+        {{story.p1}}
+      </p>
+      <p>
+        {{story.p2}}
+      </p>
+      <p>
+        {{story.p3}}
+      </p>
+      <p>
+        {{story.p4}}
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURES ================= -->
+<section id="features" class="reveal feature-row items-start gap-10 md:gap-16 py-24">
+  <div class="w-full md:flex-1 md:min-w-0">
+    <div class="frame frame-point-left">
+      <div class="frame-border"></div>
+      <div class="frame-inner">
+        <video src="__ASSET_PREFIX__assets/feature-metroidvania.webm" autoplay muted loop playsinline aria-label="{{feature1.aria}}"></video>
+      </div>
+    </div>
+  </div>
+  <div class="w-full md:flex-1 md:min-w-0 px-6 md:pl-0 md:pr-16">
+    <h3 class="display text-[51px] sm:text-[61px] leading-[0.85] mb-6">{{feature1.heading}}</h3>
+    <p class="text-muted leading-relaxed text-2xl">
+      {{feature1.body}}
+    </p>
+  </div>
+</section>
+
+<section class="reveal feature-row reverse items-start gap-10 md:gap-16 py-24">
+  <div class="w-full md:flex-1 md:min-w-0">
+    <div class="frame frame-point-right">
+      <div class="frame-border"></div>
+      <div class="frame-inner">
+        <video src="__ASSET_PREFIX__assets/feature-gear.webm" autoplay muted loop playsinline aria-label="{{feature2.aria}}"></video>
+      </div>
+    </div>
+  </div>
+  <div class="w-full md:flex-1 md:min-w-0 px-6 md:pr-0 md:pl-16">
+    <h3 class="display text-[51px] sm:text-[61px] leading-[0.85] mb-6">{{feature2.heading}}</h3>
+    <p class="text-muted leading-relaxed text-2xl">
+      {{feature2.body}}
+    </p>
+  </div>
+</section>
+
+<section class="reveal feature-row items-start gap-10 md:gap-16 py-24">
+  <div class="w-full md:flex-1 md:min-w-0">
+    <div class="frame frame-point-left">
+      <div class="frame-border"></div>
+      <div class="frame-inner">
+        <video src="__ASSET_PREFIX__assets/feature-mission.webm" autoplay muted loop playsinline aria-label="{{feature3.aria}}"></video>
+      </div>
+    </div>
+  </div>
+  <div class="w-full md:flex-1 md:min-w-0 px-6 md:pl-0 md:pr-16">
+    <h3 class="display text-[51px] sm:text-[61px] leading-[0.85] mb-6">{{feature3.heading}}</h3>
+    <p class="text-muted leading-relaxed text-2xl">
+      {{feature3.body}}
+    </p>
+  </div>
+</section>
+
+<section class="reveal feature-row reverse items-start gap-10 md:gap-16 py-24">
+  <div class="w-full md:flex-1 md:min-w-0">
+    <div class="frame frame-point-right">
+      <div class="frame-border"></div>
+      <div class="frame-inner">
+        <video src="__ASSET_PREFIX__assets/feature-mindpalace.webm" autoplay muted loop playsinline aria-label="{{feature4.aria}}"></video>
+      </div>
+    </div>
+  </div>
+  <div class="w-full md:flex-1 md:min-w-0 px-6 md:pr-0 md:pl-16">
+    <h3 class="display text-[51px] sm:text-[61px] leading-[0.85] mb-6">{{feature4.heading}}</h3>
+    <p class="text-muted leading-relaxed text-2xl">
+      {{feature4.body}}
+    </p>
+  </div>
+</section>
+
+<section class="reveal feature-row items-start gap-10 md:gap-16 py-24">
+  <div class="w-full md:flex-1 md:min-w-0">
+    <div class="frame frame-point-left">
+      <div class="frame-border"></div>
+      <div class="frame-inner">
+        <video src="__ASSET_PREFIX__assets/feature-hotel.webm" autoplay muted loop playsinline aria-label="{{feature5.aria}}"></video>
+      </div>
+    </div>
+  </div>
+  <div class="w-full md:flex-1 md:min-w-0 px-6 md:pl-0 md:pr-16">
+    <h3 class="display text-[51px] sm:text-[61px] leading-[0.85] mb-6">{{feature5.heading}}</h3>
+    <p class="text-muted leading-relaxed text-2xl">
+      {{feature5.body}}
+    </p>
+  </div>
+</section>
+
+<!-- ================= PROLOGUE ================= -->
+<section id="prologue" class="reveal py-24 px-6 md:px-16">
+  <h2 class="display text-3xl sm:text-4xl text-center mb-14">{{prologue.heading}}</h2>
+
+  <div id="prologue-track" class="gallery-track prologue-track">
+    <a class="prologue-card" href="https://store.steampowered.com/news/app/2264780/view/703275952293019861?l=__STEAM_LANG__" target="_blank" rel="noopener" aria-label="{{prologue.item1.title}} — {{prologue.openAria}}">
+      <img src="__ASSET_PREFIX__assets/prologue-1.png" alt="" />
+      <div class="prologue-info">
+        <span class="prologue-title">{{prologue.item1.title}}</span>
+      </div>
+    </a>
+
+    <a class="prologue-card" href="https://store.steampowered.com/news/app/2264780/view/547902498070857819?l=__STEAM_LANG__" target="_blank" rel="noopener" aria-label="{{prologue.item2.title}} — {{prologue.openAria}}">
+      <img src="__ASSET_PREFIX__assets/prologue-2.png" alt="" />
+      <div class="prologue-info">
+        <span class="prologue-title">{{prologue.item2.title}}</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ================= CHARACTERS ================= -->
+<section id="characters" class="reveal py-24 px-6 md:px-16">
+  <h2 class="display text-3xl sm:text-4xl text-center mb-14">{{characters.heading}}</h2>
+
+  <div class="flex items-center gap-4">
+    <button id="character-prev" class="gallery-nav-btn" aria-label="{{characters.prevAria}}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+
+    <div id="character-track" class="gallery-track character-track flex-1">
+      <div class="character-card">
+        <img src="__ASSET_PREFIX__assets/character-brandon.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">{{characters.char1.name}}</span>
+          <span class="character-badge">{{characters.comingSoon}}</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="__ASSET_PREFIX__assets/character-renfield.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">{{characters.char2.name}}</span>
+          <span class="character-badge">{{characters.comingSoon}}</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="__ASSET_PREFIX__assets/character-r.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">{{characters.char3.name}}</span>
+          <span class="character-badge">{{characters.comingSoon}}</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="__ASSET_PREFIX__assets/character-madame-caren.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">{{characters.char4.name}}</span>
+          <span class="character-badge">{{characters.comingSoon}}</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="__ASSET_PREFIX__assets/character-bruce.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">{{characters.char5.name}}</span>
+          <span class="character-badge">{{characters.comingSoon}}</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="__ASSET_PREFIX__assets/character-adrian.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">{{characters.char6.name}}</span>
+          <span class="character-badge">{{characters.comingSoon}}</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="__ASSET_PREFIX__assets/character-ichi.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">{{characters.char7.name}}</span>
+          <span class="character-badge">{{characters.comingSoon}}</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="__ASSET_PREFIX__assets/character-blacksmith.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">{{characters.char8.name}}</span>
+          <span class="character-badge">{{characters.comingSoon}}</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="__ASSET_PREFIX__assets/character-unknown-swordsman.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">{{characters.char9.name}}</span>
+          <span class="character-badge">{{characters.comingSoon}}</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="__ASSET_PREFIX__assets/character-unknown-doctor.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">{{characters.char10.name}}</span>
+          <span class="character-badge">{{characters.comingSoon}}</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="__ASSET_PREFIX__assets/character-enes.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">{{characters.char11.name}}</span>
+          <span class="character-badge">{{characters.comingSoon}}</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="__ASSET_PREFIX__assets/character-mysterious-being.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">{{characters.char12.name}}</span>
+          <span class="character-badge">{{characters.comingSoon}}</span>
+        </div>
+      </div>
+    </div>
+
+    <button id="character-next" class="gallery-nav-btn" aria-label="{{characters.nextAria}}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- ================= MEDIA GALLERY ================= -->
+<section id="gallery" class="reveal py-24 px-6 md:px-16">
+  <div class="flex justify-center mb-14">
+    <div class="inline-flex flex-wrap justify-center gap-0 border border-blood">
+      <button class="gallery-tab active px-6 py-3 text-sm" data-filter="screenshots">{{gallery.screenshotsTab}}</button>
+      <button class="gallery-tab px-6 py-3 text-sm" data-filter="key-art">{{gallery.keyArtTab}}</button>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <button id="gallery-prev" class="gallery-nav-btn" aria-label="{{gallery.prevAria}}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+
+    <div id="gallery-track" class="gallery-track flex-1">
+      <div class="gallery-item" data-category="key-art" data-full="__ASSET_PREFIX__assets/key-art-1.png" data-alt="Key art 1" tabindex="0" role="button" aria-label="View Key art 1 full screen">
+        <img src="__ASSET_PREFIX__assets/key-art-1.png" alt="Key art 1" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Key art 1" data-src="__ASSET_PREFIX__assets/key-art-1.png" data-filename="key-art-1.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="key-art" data-full="__ASSET_PREFIX__assets/key-art-2.png" data-alt="Key art 2" tabindex="0" role="button" aria-label="View Key art 2 full screen">
+        <img src="__ASSET_PREFIX__assets/key-art-2.png" alt="Key art 2" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Key art 2" data-src="__ASSET_PREFIX__assets/key-art-2.png" data-filename="key-art-2.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="key-art" data-full="__ASSET_PREFIX__assets/key-art-3.png" data-alt="Key art 3" tabindex="0" role="button" aria-label="View Key art 3 full screen">
+        <img src="__ASSET_PREFIX__assets/key-art-3.png" alt="Key art 3" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Key art 3" data-src="__ASSET_PREFIX__assets/key-art-3.png" data-filename="key-art-3.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="key-art" data-full="__ASSET_PREFIX__assets/key-art-4.png" data-alt="Key art 4" tabindex="0" role="button" aria-label="View Key art 4 full screen">
+        <img src="__ASSET_PREFIX__assets/key-art-4.png" alt="Key art 4" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Key art 4" data-src="__ASSET_PREFIX__assets/key-art-4.png" data-filename="key-art-4.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-1.png" data-alt="Screenshot 1" tabindex="0" role="button" aria-label="View Screenshot 1 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-1.png" alt="Screenshot 1" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 1" data-src="__ASSET_PREFIX__assets/screenshot-1.png" data-filename="screenshot-1.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-2.png" data-alt="Screenshot 2" tabindex="0" role="button" aria-label="View Screenshot 2 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-2.png" alt="Screenshot 2" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 2" data-src="__ASSET_PREFIX__assets/screenshot-2.png" data-filename="screenshot-2.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-3.png" data-alt="Screenshot 3" tabindex="0" role="button" aria-label="View Screenshot 3 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-3.png" alt="Screenshot 3" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 3" data-src="__ASSET_PREFIX__assets/screenshot-3.png" data-filename="screenshot-3.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-4.png" data-alt="Screenshot 4" tabindex="0" role="button" aria-label="View Screenshot 4 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-4.png" alt="Screenshot 4" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 4" data-src="__ASSET_PREFIX__assets/screenshot-4.png" data-filename="screenshot-4.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-5.png" data-alt="Screenshot 5" tabindex="0" role="button" aria-label="View Screenshot 5 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-5.png" alt="Screenshot 5" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 5" data-src="__ASSET_PREFIX__assets/screenshot-5.png" data-filename="screenshot-5.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-6.png" data-alt="Screenshot 6" tabindex="0" role="button" aria-label="View Screenshot 6 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-6.png" alt="Screenshot 6" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 6" data-src="__ASSET_PREFIX__assets/screenshot-6.png" data-filename="screenshot-6.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-7.png" data-alt="Screenshot 7" tabindex="0" role="button" aria-label="View Screenshot 7 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-7.png" alt="Screenshot 7" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 7" data-src="__ASSET_PREFIX__assets/screenshot-7.png" data-filename="screenshot-7.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-8.png" data-alt="Screenshot 8" tabindex="0" role="button" aria-label="View Screenshot 8 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-8.png" alt="Screenshot 8" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 8" data-src="__ASSET_PREFIX__assets/screenshot-8.png" data-filename="screenshot-8.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-9.png" data-alt="Screenshot 9" tabindex="0" role="button" aria-label="View Screenshot 9 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-9.png" alt="Screenshot 9" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 9" data-src="__ASSET_PREFIX__assets/screenshot-9.png" data-filename="screenshot-9.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-10.png" data-alt="Screenshot 10" tabindex="0" role="button" aria-label="View Screenshot 10 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-10.png" alt="Screenshot 10" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 10" data-src="__ASSET_PREFIX__assets/screenshot-10.png" data-filename="screenshot-10.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+    </div>
+
+    <button id="gallery-next" class="gallery-nav-btn" aria-label="{{gallery.nextAria}}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer id="site-footer" class="relative">
+  <img src="__ASSET_PREFIX__assets/footer-bg.png" alt="" class="footer-bg" />
+
+  <div class="footer-overlay absolute inset-0 flex flex-col pt-24 pb-10 px-6">
+    <div class="footer-content footer-main max-w-4xl mx-auto text-center">
+      <img src="__ASSET_PREFIX__assets/footer-logo.png" alt="Legion of Judgment: Fallen Angel" class="w-full max-w-[538px] mx-auto mb-10" />
+
+      <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener" class="btn-glow mb-10">
+        {{nav.wishlist}}
+      </a>
+
+      <div class="flex justify-center flex-wrap gap-3 mb-12">
+        <a class="social-icon" href="https://x.com/Theremin_Int" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.6L4.5 22H1.3l8.2-9.3L1 2h7l4.9 6z"/></svg>
+        </a>
+        <a class="social-icon" href="https://discord.com/invite/H4pkCK7Ttr" target="_blank" rel="noopener" aria-label="Discord">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 5.5A17 17 0 0 0 15.7 4l-.4.8a15 15 0 0 1 3.6 1.4A16.6 16.6 0 0 0 12 5a16.6 16.6 0 0 0-7 1.2A15 15 0 0 1 8.7 4.8L8.3 4A17 17 0 0 0 4 5.5C1.9 9 1.3 12.4 1.5 15.7A17 17 0 0 0 6.7 18l.8-1.3a11 11 0 0 1-1.7-.8l.4-.3a12.4 12.4 0 0 0 10.6 0l.4.3c-.5.3-1.1.6-1.7.8l.8 1.3a17 17 0 0 0 5.2-2.3c.3-3.9-.6-7.3-2.5-10.2ZM8.9 14c-.8 0-1.4-.8-1.4-1.7 0-1 .6-1.7 1.4-1.7.8 0 1.4.8 1.4 1.7 0 .9-.6 1.7-1.4 1.7Zm6.2 0c-.8 0-1.4-.8-1.4-1.7 0-1 .6-1.7 1.4-1.7.8 0 1.4.8 1.4 1.7 0 .9-.6 1.7-1.4 1.7Z"/></svg>
+        </a>
+        <a class="social-icon" href="https://www.youtube.com/@theremininteractive" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a30 30 0 0 0-.4-5.4 2.9 2.9 0 0 0-2-2A70 70 0 0 0 12 4a70 70 0 0 0-7.6.6 2.9 2.9 0 0 0-2 2A30 30 0 0 0 2 12a30 30 0 0 0 .4 5.4 2.9 2.9 0 0 0 2 2 70 70 0 0 0 7.6.6 70 70 0 0 0 7.6-.6 2.9 2.9 0 0 0 2-2A30 30 0 0 0 22 12ZM10 15.5v-7l6 3.5Z"/></svg>
+        </a>
+        <a class="social-icon" href="mailto:theremin.int@gmail.com" aria-label="{{footer.contactAria}}">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+        </a>
+      </div>
+
+      <a href="https://drive.google.com/drive/folders/1KbIPs2d8rxv35-eUcDb2atslxXrXP66N?usp=drive_link" target="_blank" rel="noopener" class="footer-presskit-link inline-flex items-center">
+        {{footer.presskit}}
+      </a>
+    </div>
+
+    <div class="footer-content border-t border-white/10 mt-6 pt-6 max-w-6xl mx-auto flex justify-center text-xs text-muted text-center">
+      <p class="max-w-xl">
+        {{footer.copyright}}
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= GALLERY LIGHTBOX ================= -->
+<div id="lightbox" class="lightbox" hidden>
+  <div class="lightbox-backdrop"></div>
+  <div class="lightbox-toolbar">
+    <button id="lightbox-download" class="lightbox-icon-btn" aria-label="{{lightbox.downloadAria}}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
+    </button>
+    <button id="lightbox-close" class="lightbox-icon-btn" aria-label="{{lightbox.closeAria}}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <button id="lightbox-prev" class="lightbox-nav lightbox-prev" aria-label="{{lightbox.prevAria}}">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+  </button>
+  <img id="lightbox-image" class="lightbox-image" src="" alt="" />
+  <button id="lightbox-next" class="lightbox-nav lightbox-next" aria-label="{{lightbox.nextAria}}">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+</div>
+
+<script src="__ASSET_PREFIX__js/main.js" defer></script>
+</body>
+</html>

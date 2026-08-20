@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Legion of Judgment: Fallen Angel</title>
+<meta name="description" content="Один мир. Два царства. Никакой пощады. Мрачное фэнтезийное экшен-RPG от Theremin Interactive. Добавьте в список желаемого прямо сейчас." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://theremin-int.com/ru/" />
+<link rel="icon" type="image/png" href="../assets/favicon.png" />
+<link rel="alternate" hreflang="en" href="https://theremin-int.com/" />
+<link rel="alternate" hreflang="ko" href="https://theremin-int.com/ko/" />
+<link rel="alternate" hreflang="ja" href="https://theremin-int.com/ja/" />
+<link rel="alternate" hreflang="zh-CN" href="https://theremin-int.com/zh-cn/" />
+<link rel="alternate" hreflang="zh-TW" href="https://theremin-int.com/zh-tw/" />
+<link rel="alternate" hreflang="fr" href="https://theremin-int.com/fr/" />
+<link rel="alternate" hreflang="de" href="https://theremin-int.com/de/" />
+<link rel="alternate" hreflang="es" href="https://theremin-int.com/es/" />
+<link rel="alternate" hreflang="es-419" href="https://theremin-int.com/es-419/" />
+<link rel="alternate" hreflang="pt-BR" href="https://theremin-int.com/pt-br/" />
+<link rel="alternate" hreflang="ru" href="https://theremin-int.com/ru/" />
+<link rel="alternate" hreflang="x-default" href="https://theremin-int.com/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Legion of Judgment: Fallen Angel" />
+<meta property="og:title" content="Legion of Judgment: Fallen Angel" />
+<meta property="og:description" content="Один мир. Два царства. Никакой пощады. Мрачное фэнтезийное экшен-RPG от Theremin Interactive. Добавьте в список желаемого прямо сейчас." />
+<meta property="og:url" content="https://theremin-int.com/ru/" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:image" content="https://theremin-int.com/assets/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Legion of Judgment: Fallen Angel" />
+<meta name="twitter:description" content="Один мир. Два царства. Никакой пощады. Мрачное фэнтезийное экшен-RPG от Theremin Interactive. Добавьте в список желаемого прямо сейчас." />
+<meta name="twitter:image" content="https://theremin-int.com/assets/og-image.jpg" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Legion of Judgment: Fallen Angel",
+  "description": "Один мир. Два царства. Никакой пощады. Мрачное фэнтезийное экшен-RPG от Theremin Interactive. Добавьте в список желаемого прямо сейчас.",
+  "url": "https://theremin-int.com/ru/",
+  "image": "https://theremin-int.com/assets/og-image.jpg",
+  "inLanguage": "ru",
+  "genre": ["Action RPG", "Metroidvania"],
+  "gamePlatform": ["PC", "PlayStation 5"],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Theremin Interactive Inc.",
+    "url": "https://theremin-int.com/",
+    "sameAs": [
+      "https://x.com/Theremin_Int",
+      "https://discord.com/invite/H4pkCK7Ttr",
+      "https://www.youtube.com/@theremininteractive"
+    ]
+  },
+  "sameAs": [
+    "https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: "#08070a",
+          ink2: "#0f0a0b",
+          ink3: "#171012",
+          bone: "#f3ede1",
+          muted: "#b7ab9c",
+          blood: "#c31c22",
+        },
+        fontFamily: {
+          display: ["Cinzel", "serif"],
+          body: ["EB Garamond", "serif"],
+        },
+      },
+    },
+  };
+</script>
+<link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body class="bg-ink text-bone font-body antialiased">
+
+<div id="parallax-bg" style="background-image:url('../assets/parallax-bg.png')" aria-hidden="true"></div>
+
+<!-- ================= NAV ================= -->
+<nav id="site-nav" class="fixed inset-x-0 top-0 z-30 flex items-center justify-between px-6 md:px-12 py-5">
+  <div class="flex items-center gap-6 md:gap-10">
+    <a href="#hero" class="logo-mark" aria-label="Legion of Judgment: Fallen Angel — home">
+      <img src="../assets/logo.png" alt="" class="h-[41px] w-auto" />
+    </a>
+    <a id="nav-wishlist"
+       href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/"
+       target="_blank" rel="noopener"
+       class="nav-wishlist btn-glow text-sm hidden sm:inline-flex">
+      В список желаемого
+    </a>
+  </div>
+  <div class="flex items-center gap-4 md:gap-6">
+    <details class="lang-switch">
+      <summary class="lang-switch-summary" aria-label="Выбрать язык">RU</summary>
+      <ul class="lang-switch-menu" role="listbox">
+        <li><a href="../index.html" hreflang="en" lang="en">English</a></li>
+        <li><a href="../ko/index.html" hreflang="ko" lang="ko">한국어</a></li>
+        <li><a href="../ja/index.html" hreflang="ja" lang="ja">日本語</a></li>
+        <li><a href="../zh-cn/index.html" hreflang="zh-CN" lang="zh-CN">简体中文</a></li>
+        <li><a href="../zh-tw/index.html" hreflang="zh-TW" lang="zh-TW">繁體中文</a></li>
+        <li><a href="../fr/index.html" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="../de/index.html" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="../es/index.html" hreflang="es" lang="es">Español</a></li>
+        <li><a href="../es-419/index.html" hreflang="es-419" lang="es-419">Español (Latinoamérica)</a></li>
+        <li><a href="../pt-br/index.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li>
+        <li class="lang-switch-current" aria-current="true">Русский</li>
+      </ul>
+    </details>
+    <button id="menu-toggle" aria-expanded="false" aria-controls="mobile-drawer"
+            class="menu-glow text-sm flex items-center gap-3">
+      Меню
+      <span class="flex flex-col gap-[5px]" aria-hidden="true">
+        <span class="block w-5 h-px bg-current"></span>
+        <span class="block w-5 h-px bg-current"></span>
+      </span>
+    </button>
+  </div>
+</nav>
+
+<!-- ================= MOBILE DRAWER ================= -->
+<div id="mobile-drawer">
+  <button id="drawer-close" aria-label="Close menu" class="absolute top-6 right-6 text-4xl leading-none text-bone hover:text-blood">&times;</button>
+  <a href="#hero">Главная</a>
+  <a href="#story">Мир игры</a>
+  <a href="#features">Особенности</a>
+  <a href="#prologue">Пролог</a>
+  <a href="#characters">Персонажи</a>
+  <a href="#gallery">Медиа</a>
+  <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener">В список желаемого</a>
+  <div class="flex gap-4 mt-4">
+    <a class="social-icon" href="https://x.com/Theremin_Int" target="_blank" rel="noopener" aria-label="X (Twitter)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.6L4.5 22H1.3l8.2-9.3L1 2h7l4.9 6z"/></svg>
+    </a>
+    <a class="social-icon" href="https://discord.com/invite/H4pkCK7Ttr" target="_blank" rel="noopener" aria-label="Discord">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 5.5A17 17 0 0 0 15.7 4l-.4.8a15 15 0 0 1 3.6 1.4A16.6 16.6 0 0 0 12 5a16.6 16.6 0 0 0-7 1.2A15 15 0 0 1 8.7 4.8L8.3 4A17 17 0 0 0 4 5.5C1.9 9 1.3 12.4 1.5 15.7A17 17 0 0 0 6.7 18l.8-1.3a11 11 0 0 1-1.7-.8l.4-.3a12.4 12.4 0 0 0 10.6 0l.4.3c-.5.3-1.1.6-1.7.8l.8 1.3a17 17 0 0 0 5.2-2.3c.3-3.9-.6-7.3-2.5-10.2ZM8.9 14c-.8 0-1.4-.8-1.4-1.7 0-1 .6-1.7 1.4-1.7.8 0 1.4.8 1.4 1.7 0 .9-.6 1.7-1.4 1.7Zm6.2 0c-.8 0-1.4-.8-1.4-1.7 0-1 .6-1.7 1.4-1.7.8 0 1.4.8 1.4 1.7 0 .9-.6 1.7-1.4 1.7Z"/></svg>
+    </a>
+    <a class="social-icon" href="https://www.youtube.com/@theremininteractive" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a30 30 0 0 0-.4-5.4 2.9 2.9 0 0 0-2-2A70 70 0 0 0 12 4a70 70 0 0 0-7.6.6 2.9 2.9 0 0 0-2 2A30 30 0 0 0 2 12a30 30 0 0 0 .4 5.4 2.9 2.9 0 0 0 2 2 70 70 0 0 0 7.6.6 70 70 0 0 0 7.6-.6 2.9 2.9 0 0 0 2-2A30 30 0 0 0 22 12ZM10 15.5v-7l6 3.5Z"/></svg>
+    </a>
+  </div>
+</div>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section id="hero">
+  <img src="../assets/hero-bg.webp" alt="" class="hero-bg" />
+  <div class="hero-content absolute inset-0 px-6 flex flex-col items-center justify-end text-center reveal-stagger in-view">
+    <img src="../assets/hero-logo.png" alt="Legion of Judgment: Fallen Angel" class="hero-logo w-full max-w-xl" />
+
+    <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener"
+       class="btn-glow mt-10 text-base">
+      В список желаемого
+    </a>
+  </div>
+
+  <a href="https://www.youtube.com/@theremininteractive" target="_blank" rel="noopener"
+     class="watch-trailer absolute bottom-8 right-0 z-[1]">
+    <span class="watch-trailer-frame">
+      <span class="watch-trailer-border"></span>
+      <span class="watch-trailer-inner">
+        <video src="../assets/hero-trailer-thumb.webm" autoplay muted loop playsinline class="watch-trailer-thumb"></video>
+        <span class="watch-trailer-label">
+          <span class="watch-trailer-icon" aria-hidden="true">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+          <span>Смотреть трейлер</span>
+        </span>
+      </span>
+    </span>
+  </a>
+</section>
+
+<!-- ================= STORY / TAGLINE ================= -->
+<section id="story" class="reveal relative">
+  <img src="../assets/story-bg.png" alt="" class="story-bg" />
+
+  <div class="story-text absolute bottom-10 right-6 md:right-16 z-[1] max-w-2xl text-right">
+    <h2 class="display text-2xl sm:text-3xl mb-6 leading-tight">
+      Мальчик, потерявший отца, вернулся охотником — чтобы вонзить железный кол в сердца волков.
+    </h2>
+    <div class="text-muted leading-relaxed space-y-4">
+      <p>
+        Беззаконный мир под властью Синдиката оборотней. Человеческое достоинство растоптано под лапами зверей, а «Легион» — последняя надежда мира на спасение — канул в историю 20 лет назад после чудовищной гибели своего лидера.
+      </p>
+      <p>
+        Эпоха безупречного контроля и абсолютного отчаяния. Но пока владыки ночи упиваются своим мрачным триумфом, из тени появляется неизвестный палач, безжалостно охотящийся на оборотней.
+      </p>
+      <p>
+        Его зовут Брэндон, сын погибшего лидера сопротивления. Вытерпев два десятилетия ада, чтобы превратить себя в смертоносного охотника на монстров, он возвращается, чтобы обрушить кровавое возмездие на царство зверей.
+      </p>
+      <p>
+        Ночь, когда хищник и жертва меняются местами — кто выживет?!
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURES ================= -->
+<section id="features" class="reveal feature-row items-start gap-10 md:gap-16 py-24">
+  <div class="w-full md:flex-1 md:min-w-0">
+    <div class="frame frame-point-left">
+      <div class="frame-border"></div>
+      <div class="frame-inner">
+        <video src="../assets/feature-metroidvania.webm" autoplay muted loop playsinline aria-label="Боевая система beat-'em-up в сочетании с исследованием в стиле метроидвании"></video>
+      </div>
+    </div>
+  </div>
+  <div class="w-full md:flex-1 md:min-w-0 px-6 md:pl-0 md:pr-16">
+    <h3 class="display text-[51px] sm:text-[61px] leading-[0.85] mb-6">Жестокий beat-'em-up боевик встречается с исследованием в духе метроидвании</h3>
+    <p class="text-muted leading-relaxed text-2xl">
+      Соединяй плавные комбо, отмены и точно рассчитанные парирования, чтобы рубить стрелков вдвое крупнее себя — фехтование, острое настолько, что превращает перестрелку в дуэль.
+    </p>
+  </div>
+</section>
+
+<section class="reveal feature-row reverse items-start gap-10 md:gap-16 py-24">
+  <div class="w-full md:flex-1 md:min-w-0">
+    <div class="frame frame-point-right">
+      <div class="frame-border"></div>
+      <div class="frame-inner">
+        <video src="../assets/feature-gear.webm" autoplay muted loop playsinline aria-label="Развитие персонажа и снаряжение с разнообразными фармящимися эффектами"></video>
+      </div>
+    </div>
+  </div>
+  <div class="w-full md:flex-1 md:min-w-0 px-6 md:pr-0 md:pl-16">
+    <h3 class="display text-[51px] sm:text-[61px] leading-[0.85] mb-6">Становись сильнее, вооружайся, охоться яростнее</h3>
+    <p class="text-muted leading-relaxed text-2xl">
+      Прокачивай способности, добывай снаряжение с уникальными эффектами и превращай даже самую смертоносную территорию в свои охотничьи угодья.
+    </p>
+  </div>
+</section>
+
+<section class="reveal feature-row items-start gap-10 md:gap-16 py-24">
+  <div class="w-full md:flex-1 md:min-w-0">
+    <div class="frame frame-point-left">
+      <div class="frame-border"></div>
+      <div class="frame-inner">
+        <video src="../assets/feature-mission.webm" autoplay muted loop playsinline aria-label="Яркая, реалистичная боевая миссия"></video>
+      </div>
+    </div>
+  </div>
+  <div class="w-full md:flex-1 md:min-w-0 px-6 md:pl-0 md:pr-16">
+    <h3 class="display text-[51px] sm:text-[61px] leading-[0.85] mb-6">Берись за жестокие задания в мире, вырванном из реальности</h3>
+    <p class="text-muted leading-relaxed text-2xl">
+      Каждое задание оставляет выбор: разить как безмолвный убийца или крушить врагов как шумный драчун. Как бы ты его ни прошёл, город этого не забудет.
+    </p>
+  </div>
+</section>
+
+<section class="reveal feature-row reverse items-start gap-10 md:gap-16 py-24">
+  <div class="w-full md:flex-1 md:min-w-0">
+    <div class="frame frame-point-right">
+      <div class="frame-border"></div>
+      <div class="frame-inner">
+        <video src="../assets/feature-mindpalace.webm" autoplay muted loop playsinline aria-label="Нелинейная локация «Дворец памяти»"></video>
+      </div>
+    </div>
+  </div>
+  <div class="w-full md:flex-1 md:min-w-0 px-6 md:pr-0 md:pl-16">
+    <h3 class="display text-[51px] sm:text-[61px] leading-[0.85] mb-6">Заблудись в Дворце памяти — и верни то, что было отнято</h3>
+    <p class="text-muted leading-relaxed text-2xl">
+      Лабиринт, который искажается и меняет форму при каждом посещении. Обыщи каждый коридор Дворца памяти в поисках украденных у тебя способностей и воспоминаний — здесь ничто не остаётся там, где ты это оставил.
+    </p>
+  </div>
+</section>
+
+<section class="reveal feature-row items-start gap-10 md:gap-16 py-24">
+  <div class="w-full md:flex-1 md:min-w-0">
+    <div class="frame frame-point-left">
+      <div class="frame-border"></div>
+      <div class="frame-inner">
+        <video src="../assets/feature-hotel.webm" autoplay muted loop playsinline aria-label="Обветшалый отель, служащий убежищем для Легиона"></video>
+      </div>
+    </div>
+  </div>
+  <div class="w-full md:flex-1 md:min-w-0 px-6 md:pl-0 md:pr-16">
+    <h3 class="display text-[51px] sm:text-[61px] leading-[0.85] mb-6">Восстанавливай Легион — комнату за комнатой</h3>
+    <p class="text-muted leading-relaxed text-2xl">
+      Днём управляй отелем как его владелец. Ночью превращай его в последний оплот Легиона — вербуй новых охотников, развивай их способности и готовься к войне с Синдикатом оборотней.
+    </p>
+  </div>
+</section>
+
+<!-- ================= PROLOGUE ================= -->
+<section id="prologue" class="reveal py-24 px-6 md:px-16">
+  <h2 class="display text-3xl sm:text-4xl text-center mb-14">Пролог</h2>
+
+  <div id="prologue-track" class="gallery-track prologue-track">
+    <a class="prologue-card" href="https://store.steampowered.com/news/app/2264780/view/703275952293019861?l=russian" target="_blank" rel="noopener" aria-label="Дождь, неон и город зверей — Смотреть в Steam (откроется в новом окне)">
+      <img src="../assets/prologue-1.png" alt="" />
+      <div class="prologue-info">
+        <span class="prologue-title">Дождь, неон и город зверей</span>
+      </div>
+    </a>
+
+    <a class="prologue-card" href="https://store.steampowered.com/news/app/2264780/view/547902498070857819?l=russian" target="_blank" rel="noopener" aria-label="Арсенал, выкованный сломленным разумом: «Брэндон» и Дворец памяти — Смотреть в Steam (откроется в новом окне)">
+      <img src="../assets/prologue-2.png" alt="" />
+      <div class="prologue-info">
+        <span class="prologue-title">Арсенал, выкованный сломленным разумом: «Брэндон» и Дворец памяти</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ================= CHARACTERS ================= -->
+<section id="characters" class="reveal py-24 px-6 md:px-16">
+  <h2 class="display text-3xl sm:text-4xl text-center mb-14">Персонажи</h2>
+
+  <div class="flex items-center gap-4">
+    <button id="character-prev" class="gallery-nav-btn" aria-label="Предыдущий персонаж">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+
+    <div id="character-track" class="gallery-track character-track flex-1">
+      <div class="character-card">
+        <img src="../assets/character-brandon.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">Брэндон</span>
+          <span class="character-badge">Скоро подробности</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="../assets/character-renfield.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">Renfield</span>
+          <span class="character-badge">Скоро подробности</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="../assets/character-r.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">R</span>
+          <span class="character-badge">Скоро подробности</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="../assets/character-madame-caren.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">Madame Caren</span>
+          <span class="character-badge">Скоро подробности</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="../assets/character-bruce.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">Bruce</span>
+          <span class="character-badge">Скоро подробности</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="../assets/character-adrian.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">Adrian</span>
+          <span class="character-badge">Скоро подробности</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="../assets/character-ichi.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">Ichi</span>
+          <span class="character-badge">Скоро подробности</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="../assets/character-blacksmith.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">Кузнец</span>
+          <span class="character-badge">Скоро подробности</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="../assets/character-unknown-swordsman.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">Неизвестный мечник</span>
+          <span class="character-badge">Скоро подробности</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="../assets/character-unknown-doctor.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">Неизвестный доктор</span>
+          <span class="character-badge">Скоро подробности</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="../assets/character-enes.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">Enes</span>
+          <span class="character-badge">Скоро подробности</span>
+        </div>
+      </div>
+
+      <div class="character-card">
+        <img src="../assets/character-mysterious-being.png" alt="" />
+        <div class="character-info">
+          <span class="character-name">Загадочное существо</span>
+          <span class="character-badge">Скоро подробности</span>
+        </div>
+      </div>
+    </div>
+
+    <button id="character-next" class="gallery-nav-btn" aria-label="Следующий персонаж">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- ================= MEDIA GALLERY ================= -->
+<section id="gallery" class="reveal py-24 px-6 md:px-16">
+  <div class="flex justify-center mb-14">
+    <div class="inline-flex flex-wrap justify-center gap-0 border border-blood">
+      <button class="gallery-tab active px-6 py-3 text-sm" data-filter="screenshots">Скриншоты</button>
+      <button class="gallery-tab px-6 py-3 text-sm" data-filter="key-art">Ключевые арты</button>
+    </div>
+  </div>
+
+  <div class="flex items-center gap-4">
+    <button id="gallery-prev" class="gallery-nav-btn" aria-label="Назад">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+
+    <div id="gallery-track" class="gallery-track flex-1">
+      <div class="gallery-item" data-category="key-art" data-full="../assets/key-art-1.png" data-alt="Key art 1" tabindex="0" role="button" aria-label="View Key art 1 full screen">
+        <img src="../assets/key-art-1.png" alt="Key art 1" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Key art 1" data-src="../assets/key-art-1.png" data-filename="key-art-1.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="key-art" data-full="../assets/key-art-2.png" data-alt="Key art 2" tabindex="0" role="button" aria-label="View Key art 2 full screen">
+        <img src="../assets/key-art-2.png" alt="Key art 2" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Key art 2" data-src="../assets/key-art-2.png" data-filename="key-art-2.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="key-art" data-full="../assets/key-art-3.png" data-alt="Key art 3" tabindex="0" role="button" aria-label="View Key art 3 full screen">
+        <img src="../assets/key-art-3.png" alt="Key art 3" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Key art 3" data-src="../assets/key-art-3.png" data-filename="key-art-3.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="key-art" data-full="../assets/key-art-4.png" data-alt="Key art 4" tabindex="0" role="button" aria-label="View Key art 4 full screen">
+        <img src="../assets/key-art-4.png" alt="Key art 4" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Key art 4" data-src="../assets/key-art-4.png" data-filename="key-art-4.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-1.png" data-alt="Screenshot 1" tabindex="0" role="button" aria-label="View Screenshot 1 full screen">
+        <img src="../assets/screenshot-1.png" alt="Screenshot 1" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 1" data-src="../assets/screenshot-1.png" data-filename="screenshot-1.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-2.png" data-alt="Screenshot 2" tabindex="0" role="button" aria-label="View Screenshot 2 full screen">
+        <img src="../assets/screenshot-2.png" alt="Screenshot 2" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 2" data-src="../assets/screenshot-2.png" data-filename="screenshot-2.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-3.png" data-alt="Screenshot 3" tabindex="0" role="button" aria-label="View Screenshot 3 full screen">
+        <img src="../assets/screenshot-3.png" alt="Screenshot 3" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 3" data-src="../assets/screenshot-3.png" data-filename="screenshot-3.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-4.png" data-alt="Screenshot 4" tabindex="0" role="button" aria-label="View Screenshot 4 full screen">
+        <img src="../assets/screenshot-4.png" alt="Screenshot 4" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 4" data-src="../assets/screenshot-4.png" data-filename="screenshot-4.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-5.png" data-alt="Screenshot 5" tabindex="0" role="button" aria-label="View Screenshot 5 full screen">
+        <img src="../assets/screenshot-5.png" alt="Screenshot 5" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 5" data-src="../assets/screenshot-5.png" data-filename="screenshot-5.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-6.png" data-alt="Screenshot 6" tabindex="0" role="button" aria-label="View Screenshot 6 full screen">
+        <img src="../assets/screenshot-6.png" alt="Screenshot 6" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 6" data-src="../assets/screenshot-6.png" data-filename="screenshot-6.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-7.png" data-alt="Screenshot 7" tabindex="0" role="button" aria-label="View Screenshot 7 full screen">
+        <img src="../assets/screenshot-7.png" alt="Screenshot 7" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 7" data-src="../assets/screenshot-7.png" data-filename="screenshot-7.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-8.png" data-alt="Screenshot 8" tabindex="0" role="button" aria-label="View Screenshot 8 full screen">
+        <img src="../assets/screenshot-8.png" alt="Screenshot 8" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 8" data-src="../assets/screenshot-8.png" data-filename="screenshot-8.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-9.png" data-alt="Screenshot 9" tabindex="0" role="button" aria-label="View Screenshot 9 full screen">
+        <img src="../assets/screenshot-9.png" alt="Screenshot 9" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 9" data-src="../assets/screenshot-9.png" data-filename="screenshot-9.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-10.png" data-alt="Screenshot 10" tabindex="0" role="button" aria-label="View Screenshot 10 full screen">
+        <img src="../assets/screenshot-10.png" alt="Screenshot 10" />
+        <div class="gi-actions">
+          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 10" data-src="../assets/screenshot-10.png" data-filename="screenshot-10.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
+          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+
+    </div>
+
+    <button id="gallery-next" class="gallery-nav-btn" aria-label="Далее">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer id="site-footer" class="relative">
+  <img src="../assets/footer-bg.png" alt="" class="footer-bg" />
+
+  <div class="footer-overlay absolute inset-0 flex flex-col pt-24 pb-10 px-6">
+    <div class="footer-content footer-main max-w-4xl mx-auto text-center">
+      <img src="../assets/footer-logo.png" alt="Legion of Judgment: Fallen Angel" class="w-full max-w-[538px] mx-auto mb-10" />
+
+      <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener" class="btn-glow mb-10">
+        В список желаемого
+      </a>
+
+      <div class="flex justify-center flex-wrap gap-3 mb-12">
+        <a class="social-icon" href="https://x.com/Theremin_Int" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.6L4.5 22H1.3l8.2-9.3L1 2h7l4.9 6z"/></svg>
+        </a>
+        <a class="social-icon" href="https://discord.com/invite/H4pkCK7Ttr" target="_blank" rel="noopener" aria-label="Discord">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 5.5A17 17 0 0 0 15.7 4l-.4.8a15 15 0 0 1 3.6 1.4A16.6 16.6 0 0 0 12 5a16.6 16.6 0 0 0-7 1.2A15 15 0 0 1 8.7 4.8L8.3 4A17 17 0 0 0 4 5.5C1.9 9 1.3 12.4 1.5 15.7A17 17 0 0 0 6.7 18l.8-1.3a11 11 0 0 1-1.7-.8l.4-.3a12.4 12.4 0 0 0 10.6 0l.4.3c-.5.3-1.1.6-1.7.8l.8 1.3a17 17 0 0 0 5.2-2.3c.3-3.9-.6-7.3-2.5-10.2ZM8.9 14c-.8 0-1.4-.8-1.4-1.7 0-1 .6-1.7 1.4-1.7.8 0 1.4.8 1.4 1.7 0 .9-.6 1.7-1.4 1.7Zm6.2 0c-.8 0-1.4-.8-1.4-1.7 0-1 .6-1.7 1.4-1.7.8 0 1.4.8 1.4 1.7 0 .9-.6 1.7-1.4 1.7Z"/></svg>
+        </a>
+        <a class="social-icon" href="https://www.youtube.com/@theremininteractive" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a30 30 0 0 0-.4-5.4 2.9 2.9 0 0 0-2-2A70 70 0 0 0 12 4a70 70 0 0 0-7.6.6 2.9 2.9 0 0 0-2 2A30 30 0 0 0 2 12a30 30 0 0 0 .4 5.4 2.9 2.9 0 0 0 2 2 70 70 0 0 0 7.6.6 70 70 0 0 0 7.6-.6 2.9 2.9 0 0 0 2-2A30 30 0 0 0 22 12ZM10 15.5v-7l6 3.5Z"/></svg>
+        </a>
+        <a class="social-icon" href="mailto:theremin.int@gmail.com" aria-label="Связаться с нами">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+        </a>
+      </div>
+
+      <a href="https://drive.google.com/drive/folders/1KbIPs2d8rxv35-eUcDb2atslxXrXP66N?usp=drive_link" target="_blank" rel="noopener" class="footer-presskit-link inline-flex items-center">
+        Пресс-кит
+      </a>
+    </div>
+
+    <div class="footer-content border-t border-white/10 mt-6 pt-6 max-w-6xl mx-auto flex justify-center text-xs text-muted text-center">
+      <p class="max-w-xl">
+        Copyright 2026. Theremin Interactive Inc. Все права защищены.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= GALLERY LIGHTBOX ================= -->
+<div id="lightbox" class="lightbox" hidden>
+  <div class="lightbox-backdrop"></div>
+  <div class="lightbox-toolbar">
+    <button id="lightbox-download" class="lightbox-icon-btn" aria-label="Скачать изображение">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
+    </button>
+    <button id="lightbox-close" class="lightbox-icon-btn" aria-label="Закрыть">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <button id="lightbox-prev" class="lightbox-nav lightbox-prev" aria-label="Предыдущее изображение">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+  </button>
+  <img id="lightbox-image" class="lightbox-image" src="" alt="" />
+  <button id="lightbox-next" class="lightbox-nav lightbox-next" aria-label="Следующее изображение">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+</div>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

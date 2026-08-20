@@ -89,6 +89,19 @@
   drawer.querySelectorAll("a").forEach((a) => a.addEventListener("click", shut));
 })();
 
+// ===== Language switcher (nav <details> + mobile drawer list) =====
+(function langSwitch() {
+  const details = document.querySelector(".lang-switch");
+  if (details) {
+    document.addEventListener("click", (e) => {
+      if (details.open && !details.contains(e.target)) details.open = false;
+    });
+    details.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => { details.open = false; });
+    });
+  }
+})();
+
 // ===== Scroll-triggered reveal animations =====
 (function reveal() {
   const targets = document.querySelectorAll(".reveal, .reveal-stagger");
@@ -141,6 +154,32 @@
   const scrollAmount = () => track.clientWidth * 0.9;
   prevBtn?.addEventListener("click", () => track.scrollBy({ left: -scrollAmount(), behavior: "smooth" }));
   nextBtn?.addEventListener("click", () => track.scrollBy({ left: scrollAmount(), behavior: "smooth" }));
+})();
+
+// ===== Character roster horizontal nav =====
+(function characterCarousel() {
+  const track = document.getElementById("character-track");
+  const prevBtn = document.getElementById("character-prev");
+  const nextBtn = document.getElementById("character-next");
+  if (!track) return;
+
+  const scrollAmount = () => track.clientWidth * 0.9;
+  prevBtn?.addEventListener("click", () => track.scrollBy({ left: -scrollAmount(), behavior: "smooth" }));
+  nextBtn?.addEventListener("click", () => track.scrollBy({ left: scrollAmount(), behavior: "smooth" }));
+})();
+
+// ===== Prologue: Steam popup on click =====
+(function prologueCarousel() {
+  const track = document.getElementById("prologue-track");
+  if (!track) return;
+
+  // Steam news posts open as a real popup window rather than a new tab.
+  track.querySelectorAll(".prologue-card").forEach((card) => {
+    card.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.open(card.href, "steamNews", "width=1000,height=800,noopener,noreferrer");
+    });
+  });
 })();
 
 // ===== Gallery lightbox (full-screen view + prev/next/close/download) =====
