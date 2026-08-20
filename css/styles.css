@@ -20,6 +20,36 @@
   --feature-body-size: 1.5rem;            /* 24px */
 }
 
+/* Cinzel/EB Garamond only cover Latin script, so Korean/Japanese/Chinese/
+   Russian text was silently falling back to whatever serif each visitor's
+   OS happens to ship — invisible in code, but a different typeface per
+   platform in practice. These add the matching Noto Serif variant as an
+   explicit fallback per language, so Latin characters (brand name,
+   numbers) still render in Cinzel/EB Garamond, and only the characters
+   those fonts don't cover pick up the Noto Serif glyphs, consistently
+   across every visitor. Equal specificity to :root, so this must stay
+   below it in source order to win the cascade. */
+:lang(ko) {
+  --font-display: "Cinzel", "Noto Serif KR", serif;
+  --font-body: "EB Garamond", "Noto Serif KR", serif;
+}
+:lang(ja) {
+  --font-display: "Cinzel", "Noto Serif JP", serif;
+  --font-body: "EB Garamond", "Noto Serif JP", serif;
+}
+:lang(zh-CN) {
+  --font-display: "Cinzel", "Noto Serif SC", serif;
+  --font-body: "EB Garamond", "Noto Serif SC", serif;
+}
+:lang(zh-TW) {
+  --font-display: "Cinzel", "Noto Serif TC", serif;
+  --font-body: "EB Garamond", "Noto Serif TC", serif;
+}
+:lang(ru) {
+  --font-display: "Cinzel", "Noto Serif", serif;
+  --font-body: "EB Garamond", "Noto Serif", serif;
+}
+
 * { box-sizing: border-box; }
 
 html {
