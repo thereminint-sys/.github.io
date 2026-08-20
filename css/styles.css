@@ -483,9 +483,9 @@ select:focus-visible {
    collide — Hangul worst of all, since its stacked jamo reach closer to the
    box edges than Han glyphs do. Japanese wraps at the same computed
    line-height and reads fine, so it's deliberately left untouched. */
-:lang(ko) #features h3,
-:lang(zh-CN) #features h3,
-:lang(zh-TW) #features h3 {
+:lang(ko) .feature-row h3,
+:lang(zh-CN) .feature-row h3,
+:lang(zh-TW) .feature-row h3 {
   line-height: 1.2;
 }
 
