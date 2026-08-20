@@ -22,7 +22,7 @@ const LANGUAGES = [
   { key: "fr", prefix: "fr", htmlLang: "fr", ogLocale: "fr_FR", native: "Français", short: "FR", steamLang: "french" },
   { key: "de", prefix: "de", htmlLang: "de", ogLocale: "de_DE", native: "Deutsch", short: "DE", steamLang: "german" },
   { key: "es", prefix: "es", htmlLang: "es", ogLocale: "es_ES", native: "Español", short: "ES", steamLang: "spanish" },
-  { key: "es-419", prefix: "es-419", htmlLang: "es-419", ogLocale: "es_LA", native: "Español (Latinoamérica)", short: "ES-419", steamLang: "latam" },
+  { key: "es-419", prefix: "es-419", htmlLang: "es-419", ogLocale: "es_LA", native: "Español (Latinoamérica)", short: "LATAM", steamLang: "latam" },
   { key: "pt-br", prefix: "pt-br", htmlLang: "pt-BR", ogLocale: "pt_BR", native: "Português (Brasil)", short: "PT-BR", steamLang: "brazilian" },
   { key: "ru", prefix: "ru", htmlLang: "ru", ogLocale: "ru_RU", native: "Русский", short: "RU", steamLang: "russian" },
 ];
