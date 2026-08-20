@@ -477,6 +477,18 @@ select:focus-visible {
 }
 .feature-row.reverse { flex-direction: row-reverse; }
 
+/* The feature heading's leading-[0.85] is tuned for Latin caps, which have
+   built-in vertical breathing room. Hangul and Han characters fill their
+   full em-box top-to-bottom, so the same ratio makes wrapped lines visually
+   collide — Hangul worst of all, since its stacked jamo reach closer to the
+   box edges than Han glyphs do. Japanese wraps at the same computed
+   line-height and reads fine, so it's deliberately left untouched. */
+:lang(ko) #features h3,
+:lang(zh-CN) #features h3,
+:lang(zh-TW) #features h3 {
+  line-height: 1.2;
+}
+
 /* ===== Gallery ===== */
 .gallery-tab {
   font-family: var(--font-display);
@@ -660,9 +672,15 @@ select:focus-visible {
 .footer-presskit-link:hover { box-shadow: 0 0 16px var(--blood-glow); transform: translateY(-2px); }
 
 /* ===== Prologue carousel ===== */
+.prologue-track {
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow: visible;
+  scroll-snap-type: none;
+}
 .prologue-card {
   position: relative;
-  flex: 0 0 min(360px, 82vw);
+  flex: 0 0 min(440px, 90vw);
   scroll-snap-align: start;
   aspect-ratio: 16/9;
   border: 1px solid var(--line);
