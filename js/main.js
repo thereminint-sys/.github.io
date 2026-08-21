@@ -291,11 +291,19 @@
   const loadMoreBtn = document.getElementById("press-load-more");
   if (!cards.length || !loadMoreBtn) return;
 
+  // Below 768px, #press-grid becomes a horizontal scroll-snap track (see
+  // CSS) instead of a wrapping grid — same pattern as Gallery/Prologue,
+  // neither of which gates itself behind a "Load More" click either, so
+  // press coverage shouldn't be the one section on mobile making you tap
+  // a button before you can swipe through the rest.
+  const isMobile = () => window.matchMedia("(max-width: 767px)").matches;
+
   let shown = 0;
   const revealNext = () => {
-    cards.slice(shown, shown + PAGE_SIZE).forEach((card) => card.removeAttribute("hidden"));
-    shown = Math.min(shown + PAGE_SIZE, cards.length);
-    loadMoreBtn.hidden = shown >= cards.length;
+    const pageSize = isMobile() ? cards.length : PAGE_SIZE;
+    cards.slice(shown, shown + pageSize).forEach((card) => card.removeAttribute("hidden"));
+    shown = Math.min(shown + pageSize, cards.length);
+    loadMoreBtn.hidden = isMobile() || shown >= cards.length;
   };
 
   cards.forEach((card) => card.setAttribute("hidden", ""));

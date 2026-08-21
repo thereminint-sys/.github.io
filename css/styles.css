@@ -921,6 +921,26 @@ select:focus-visible {
   transform: translate(2px, -2px);
 }
 .press-card[hidden] { display: none; }
+/* On mobile, a wrapping grid means scrolling past every card just to
+   reach the next section — the same "many similar items" problem Gallery
+   and Prologue solve with a horizontal scroll-snap track. Switching to
+   that pattern only below the mobile breakpoint keeps the desktop grid
+   (see comment above) for once the list is too long to swipe through. */
+@media (max-width: 767px) {
+  .press-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+  }
+  .press-grid::-webkit-scrollbar { display: none; }
+  .press-card {
+    flex: 0 0 min(320px, 82vw);
+    scroll-snap-align: start;
+  }
+}
 /* #press-load-more also carries Tailwind's `inline-flex` utility class for
    its normal state. Author-origin rules always beat the UA stylesheet's
    `[hidden]{display:none}` regardless of specificity, so that Tailwind
