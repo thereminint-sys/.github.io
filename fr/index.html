@@ -91,6 +91,18 @@
   };
 </script>
 <link rel="stylesheet" href="../css/styles.css" />
+
+<!-- Google Analytics 4 — replace G-XXXXXXXXXX with the real Measurement ID
+     from your GA4 property (Admin > Data Streams > your web stream). Until
+     then this loads a script that 404s harmlessly; no events are lost once
+     the real ID is in, since gtag() calls just queue into dataLayer. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 </head>
 <body class="bg-ink text-bone font-body antialiased">
 
@@ -100,11 +112,11 @@
 <nav id="site-nav" class="fixed inset-x-0 top-0 z-30 flex items-center justify-between px-6 md:px-12 py-5">
   <div class="flex items-center gap-6 md:gap-10">
     <a href="#hero" class="logo-mark" aria-label="Legion of Judgment: Fallen Angel — home">
-      <img src="../assets/logo.png" alt="" class="h-[41px] w-auto" />
+      <img src="../assets/logo.webp" alt="" class="h-[41px] w-auto" />
     </a>
     <a id="nav-wishlist"
        href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/"
-       target="_blank" rel="noopener"
+       target="_blank" rel="noopener" data-wl-loc="nav"
        class="nav-wishlist btn-glow text-sm hidden sm:inline-flex">
       Liste de souhaits
     </a>
@@ -146,7 +158,8 @@
   <a href="#prologue">Prologue</a>
   <a href="#characters">Personnages</a>
   <a href="#gallery">Médias</a>
-  <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener">Liste de souhaits</a>
+  <a href="#press">Dans la presse</a>
+  <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener" data-wl-loc="drawer">Liste de souhaits</a>
   <div class="flex gap-4 mt-4">
     <a class="social-icon" href="https://x.com/Theremin_Int" target="_blank" rel="noopener" aria-label="X (Twitter)">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.6L4.5 22H1.3l8.2-9.3L1 2h7l4.9 6z"/></svg>
@@ -166,10 +179,10 @@
 <section id="hero">
   <img src="../assets/hero-bg.webp" alt="" class="hero-bg" />
   <div class="hero-content absolute inset-0 px-6 flex flex-col items-center justify-end text-center reveal-stagger in-view">
-    <img src="../assets/hero-logo.png" alt="Legion of Judgment: Fallen Angel" class="hero-logo w-full max-w-xl" />
+    <img src="../assets/hero-logo.webp" alt="Legion of Judgment: Fallen Angel" class="hero-logo w-full max-w-xl" />
 
     <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener"
-       class="btn-glow mt-10 text-base">
+       data-wl-loc="hero" class="btn-glow mt-10 text-base">
       Liste de souhaits
     </a>
   </div>
@@ -308,14 +321,14 @@
 
   <div id="prologue-track" class="gallery-track prologue-track">
     <a class="prologue-card" href="https://store.steampowered.com/news/app/2264780/view/703275952293019861?l=french" target="_blank" rel="noopener" aria-label="Pluie, néon et la cité des bêtes — Voir sur Steam (s'ouvre dans une nouvelle fenêtre)">
-      <img src="../assets/prologue-1.png" alt="" />
+      <img src="../assets/prologue-1.webp" alt="" />
       <div class="prologue-info">
         <span class="prologue-title">Pluie, néon et la cité des bêtes</span>
       </div>
     </a>
 
     <a class="prologue-card" href="https://store.steampowered.com/news/app/2264780/view/547902498070857819?l=french" target="_blank" rel="noopener" aria-label="Un arsenal forgé dans un esprit brisé : « Brandon » et le Palais des Mémoires — Voir sur Steam (s'ouvre dans une nouvelle fenêtre)">
-      <img src="../assets/prologue-2.png" alt="" />
+      <img src="../assets/prologue-2.webp" alt="" />
       <div class="prologue-info">
         <span class="prologue-title">Un arsenal forgé dans un esprit brisé : « Brandon » et le Palais des Mémoires</span>
       </div>
@@ -334,7 +347,7 @@
 
     <div id="character-track" class="gallery-track character-track flex-1">
       <div class="character-card">
-        <img src="../assets/character-brandon.png" alt="" />
+        <img src="../assets/character-brandon.webp" alt="" />
         <div class="character-info">
           <span class="character-name">Brandon</span>
           <span class="character-badge">Bientôt disponible</span>
@@ -342,7 +355,7 @@
       </div>
 
       <div class="character-card">
-        <img src="../assets/character-renfield.png" alt="" />
+        <img src="../assets/character-renfield.webp" alt="" />
         <div class="character-info">
           <span class="character-name">Renfield</span>
           <span class="character-badge">Bientôt disponible</span>
@@ -350,7 +363,7 @@
       </div>
 
       <div class="character-card">
-        <img src="../assets/character-r.png" alt="" />
+        <img src="../assets/character-r.webp" alt="" />
         <div class="character-info">
           <span class="character-name">R</span>
           <span class="character-badge">Bientôt disponible</span>
@@ -358,7 +371,7 @@
       </div>
 
       <div class="character-card">
-        <img src="../assets/character-madame-caren.png" alt="" />
+        <img src="../assets/character-madame-caren.webp" alt="" />
         <div class="character-info">
           <span class="character-name">Madame Caren</span>
           <span class="character-badge">Bientôt disponible</span>
@@ -366,7 +379,7 @@
       </div>
 
       <div class="character-card">
-        <img src="../assets/character-bruce.png" alt="" />
+        <img src="../assets/character-bruce.webp" alt="" />
         <div class="character-info">
           <span class="character-name">Bruce</span>
           <span class="character-badge">Bientôt disponible</span>
@@ -374,7 +387,7 @@
       </div>
 
       <div class="character-card">
-        <img src="../assets/character-adrian.png" alt="" />
+        <img src="../assets/character-adrian.webp" alt="" />
         <div class="character-info">
           <span class="character-name">Adrian</span>
           <span class="character-badge">Bientôt disponible</span>
@@ -382,7 +395,7 @@
       </div>
 
       <div class="character-card">
-        <img src="../assets/character-ichi.png" alt="" />
+        <img src="../assets/character-ichi.webp" alt="" />
         <div class="character-info">
           <span class="character-name">Ichi</span>
           <span class="character-badge">Bientôt disponible</span>
@@ -390,7 +403,7 @@
       </div>
 
       <div class="character-card">
-        <img src="../assets/character-blacksmith.png" alt="" />
+        <img src="../assets/character-blacksmith.webp" alt="" />
         <div class="character-info">
           <span class="character-name">Forgeron</span>
           <span class="character-badge">Bientôt disponible</span>
@@ -398,7 +411,7 @@
       </div>
 
       <div class="character-card">
-        <img src="../assets/character-unknown-swordsman.png" alt="" />
+        <img src="../assets/character-unknown-swordsman.webp" alt="" />
         <div class="character-info">
           <span class="character-name">Épéiste inconnu</span>
           <span class="character-badge">Bientôt disponible</span>
@@ -406,7 +419,7 @@
       </div>
 
       <div class="character-card">
-        <img src="../assets/character-unknown-doctor.png" alt="" />
+        <img src="../assets/character-unknown-doctor.webp" alt="" />
         <div class="character-info">
           <span class="character-name">Docteur inconnu</span>
           <span class="character-badge">Bientôt disponible</span>
@@ -414,7 +427,7 @@
       </div>
 
       <div class="character-card">
-        <img src="../assets/character-enes.png" alt="" />
+        <img src="../assets/character-enes.webp" alt="" />
         <div class="character-info">
           <span class="character-name">Enes</span>
           <span class="character-badge">Bientôt disponible</span>
@@ -422,7 +435,7 @@
       </div>
 
       <div class="character-card">
-        <img src="../assets/character-mysterious-being.png" alt="" />
+        <img src="../assets/character-mysterious-being.webp" alt="" />
         <div class="character-info">
           <span class="character-name">Être mystérieux</span>
           <span class="character-badge">Bientôt disponible</span>
@@ -571,6 +584,68 @@
   </div>
 </section>
 
+<!-- ================= PRESS COVERAGE ================= -->
+<section id="press" class="reveal py-24 px-6 md:px-16">
+  <h2 class="display text-3xl sm:text-4xl text-center mb-14">Dans la presse</h2>
+
+  <div id="press-grid" class="press-grid">
+      <a class="press-card" href="https://es.kotaku.com/legion-of-judgment-fallen-angel-estrena-una-demo-gratuita-que-anticipa-su-brutal-combate-y-un-oscuro-mundo-noir-2000046372" target="_blank" rel="noopener" aria-label="Legion of Judgment: Fallen Angel lance une démo gratuite qui dévoile son combat brutal et son sombre univers noir — kotaku.es">
+        <span class="press-outlet">kotaku.es</span>
+        <span class="press-title">Legion of Judgment: Fallen Angel lance une démo gratuite qui dévoile son combat brutal et son sombre univers noir</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://dengekionline.com/article/202607/80839" target="_blank" rel="noopener" aria-label="Legion of Judgment, le nouveau jeu d'action qui explore un monde réel sombre, dévoile sa démo — vivez environ 20 minutes d'un cycle de combat intense — dengekionline.com">
+        <span class="press-outlet">dengekionline.com</span>
+        <span class="press-title">Legion of Judgment, le nouveau jeu d'action qui explore un monde réel sombre, dévoile sa démo — vivez environ 20 minutes d'un cycle de combat intense</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://www.invenglobal.com/articles/23411/global-alpha-demo-released-for-25d-action-metroidvania-legion-of-judgment" target="_blank" rel="noopener" aria-label="Démo alpha mondiale disponible pour Legion of Judgment, le Metroidvania d'action en 2.5D — invenglobal.com">
+        <span class="press-outlet">invenglobal.com</span>
+        <span class="press-title">Démo alpha mondiale disponible pour Legion of Judgment, le Metroidvania d'action en 2.5D</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://www.pcgames.de/Spiele-Thema-239104/News/Neues-Metroidvania-Legion-of-Judgment-Fallen-Angel-kostenlos-spielen-1549842/?utm_source=x.com&amp;utm_campaign=sharebutton&amp;utm_medium=social" target="_blank" rel="noopener" aria-label="Legion of Judgment : la gestion d'hôtel rencontre l'action Metroidvania sombre — pcgames.de">
+        <span class="press-outlet">pcgames.de</span>
+        <span class="press-title">Legion of Judgment : la gestion d'hôtel rencontre l'action Metroidvania sombre</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://cogconnected.com/2026/07/legion-of-judgment-fallen-angel-launches-free-global-alpha-demo-on-steam/" target="_blank" rel="noopener" aria-label="Legion of Judgment: Fallen Angel lance une démo alpha mondiale gratuite sur Steam — cogconnected.com">
+        <span class="press-outlet">cogconnected.com</span>
+        <span class="press-title">Legion of Judgment: Fallen Angel lance une démo alpha mondiale gratuite sur Steam</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://gamebiz.jp/news/429123" target="_blank" rel="noopener" aria-label="Theremin Interactive publie la démo alpha du RPG Metroidvania d'action noir en 2.5D Legion of Judgment: Fallen Angel — gamebiz.jp">
+        <span class="press-outlet">gamebiz.jp</span>
+        <span class="press-title">Theremin Interactive publie la démo alpha du RPG Metroidvania d'action noir en 2.5D Legion of Judgment: Fallen Angel</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://www.gamingdeputy.com/fr/legion-of-judgment-fallen-angel-lance-une-demo-alpha-mondiale-gratuite-sur-steam/" target="_blank" rel="noopener" aria-label="Legion of Judgment: Fallen Angel lance une démo alpha mondiale gratuite sur Steam — gamingdeputy.com">
+        <span class="press-outlet">gamingdeputy.com</span>
+        <span class="press-title">Legion of Judgment: Fallen Angel lance une démo alpha mondiale gratuite sur Steam</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://techmash.co.uk/2026/07/02/katana-steel-meets-urban-noir-legion-of-judgment-fallen-angel-drops-global-alpha-demo-on-steam/" target="_blank" rel="noopener" aria-label="Le sabre et l'acier rencontrent le noir urbain : Legion of Judgment: Fallen Angel dévoile sa démo alpha mondiale sur Steam — techmash.co.uk">
+        <span class="press-outlet">techmash.co.uk</span>
+        <span class="press-title">Le sabre et l'acier rencontrent le noir urbain : Legion of Judgment: Fallen Angel dévoile sa démo alpha mondiale sur Steam</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://www.gamezilla.it/legion-of-judgment-fallen-angel-porta-su-steam-la-demo-alpha-globale/" target="_blank" rel="noopener" aria-label="Legion of Judgment: Fallen Angel apporte sa démo alpha mondiale sur Steam — gamezilla.it">
+        <span class="press-outlet">gamezilla.it</span>
+        <span class="press-title">Legion of Judgment: Fallen Angel apporte sa démo alpha mondiale sur Steam</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://www.nextplayer.it/il-metroidvania-dazione-noir-in-2-5d-legion-of-judgment-fallen-angel-lancia-la-sua-demo-alpha-globale-su-steam/" target="_blank" rel="noopener" aria-label="Le metroidvania d'action noir en 2.5D Legion of Judgment: Fallen Angel lance sa démo alpha mondiale sur Steam ! — nextplayer.it">
+        <span class="press-outlet">nextplayer.it</span>
+        <span class="press-title">Le metroidvania d'action noir en 2.5D Legion of Judgment: Fallen Angel lance sa démo alpha mondiale sur Steam !</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+  </div>
+
+  <div class="flex justify-center mt-10">
+    <button id="press-load-more" class="footer-presskit-link inline-flex items-center" hidden>Voir plus</button>
+  </div>
+</section>
+
 </main>
 
 <!-- ================= FOOTER ================= -->
@@ -579,9 +654,9 @@
 
   <div class="footer-overlay absolute inset-0 flex flex-col pt-24 pb-10 px-6">
     <div class="footer-content footer-main max-w-4xl mx-auto text-center">
-      <img src="../assets/footer-logo.png" alt="Legion of Judgment: Fallen Angel" class="w-full max-w-[538px] mx-auto mb-10" />
+      <img src="../assets/footer-logo.webp" alt="Legion of Judgment: Fallen Angel" class="w-full max-w-[538px] mx-auto mb-10" />
 
-      <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener" class="btn-glow mb-10">
+      <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener" data-wl-loc="footer" class="btn-glow mb-10">
         Liste de souhaits
       </a>
 

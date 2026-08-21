@@ -25,6 +25,26 @@
 // box on scroll used to push it off its own exactly-viewport-sized bounds,
 // which is what caused the edge cropping.
 
+// ===== Wishlist click tracking (GA4) =====
+// Fires a `wishlist_click` event with a `location` label (nav / hero /
+// footer / drawer) so GA4 Explore can build a page_view -> wishlist_click
+// funnel by traffic source. This only measures the click-through on our
+// own domain — the actual "added to wishlist" action happens on Steam, and
+// those numbers live in Steamworks > Traffic Stats (which already tracks
+// this site as a referrer automatically, no code needed there).
+(function wishlistTracking() {
+  document.querySelectorAll("[data-wl-loc]").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "wishlist_click", {
+          location: link.dataset.wlLoc,
+          page_language: document.documentElement.lang || "en",
+        });
+      }
+    });
+  });
+})();
+
 // ===== Nav scroll state + wishlist button reveal =====
 (function nav() {
   const nav = document.getElementById("site-nav");
@@ -180,6 +200,26 @@
       window.open(card.href, "steamNews", "width=1000,height=800,noopener,noreferrer");
     });
   });
+})();
+
+// ===== Press coverage: reveal in batches so a large, growing list stays
+// light to paint and scannable instead of dumping everything at once =====
+(function pressGrid() {
+  const PAGE_SIZE = 12;
+  const cards = [...document.querySelectorAll("#press-grid .press-card")];
+  const loadMoreBtn = document.getElementById("press-load-more");
+  if (!cards.length || !loadMoreBtn) return;
+
+  let shown = 0;
+  const revealNext = () => {
+    cards.slice(shown, shown + PAGE_SIZE).forEach((card) => card.removeAttribute("hidden"));
+    shown = Math.min(shown + PAGE_SIZE, cards.length);
+    loadMoreBtn.hidden = shown >= cards.length;
+  };
+
+  cards.forEach((card) => card.setAttribute("hidden", ""));
+  revealNext();
+  loadMoreBtn.addEventListener("click", revealNext);
 })();
 
 // ===== Gallery lightbox (full-screen view + prev/next/close/download) =====

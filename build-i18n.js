@@ -103,6 +103,42 @@ function loadTranslations() {
   return table;
 }
 
+// Press coverage cards: loaded from i18n/press.csv (id,outlet,url,en,ko,...)
+// rather than translations.csv, since this list is expected to grow to a
+// large, ever-changing number of rows — keeping it in its own CSV with
+// outlet/url columns means adding a new mention is "append a row," not
+// "hand-edit the template and 11 language files." A blank title cell falls
+// back to the English title so a new row doesn't need every language
+// translated before it can go live.
+function loadPress() {
+  const csvPath = path.join(ROOT, "i18n", "press.csv");
+  if (!fs.existsSync(csvPath)) return [];
+  const rows = parseCsv(fs.readFileSync(csvPath, "utf8"));
+  const header = rows[0];
+  const langCols = header.slice(3); // columns after id,outlet,url
+  return rows.slice(1)
+    .filter((row) => row[0])
+    .map((row) => {
+      const titles = {};
+      langCols.forEach((langKey, idx) => {
+        titles[langKey] = row[idx + 3] || "";
+      });
+      return { id: row[0], outlet: row[1], url: row[2], titles };
+    });
+}
+
+function buildPressCards(pressItems, lang) {
+  if (!pressItems.length) return "";
+  return pressItems.map((item) => {
+    const title = item.titles[lang.key] || item.titles.en || "";
+    return `      <a class="press-card" href="${escapeHtml(item.url)}" target="_blank" rel="noopener" aria-label="${escapeHtml(title)} — ${escapeHtml(item.outlet)}">
+        <span class="press-outlet">${escapeHtml(item.outlet)}</span>
+        <span class="press-title">${escapeHtml(title)}</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>`;
+  }).join("\n");
+}
+
 function escapeHtml(str) {
   return String(str)
     .replace(/&/g, "&amp;")
@@ -141,7 +177,7 @@ function buildLangSwitchList(currentLang) {
   }).join("\n        ");
 }
 
-function renderPage(template, translations, lang) {
+function renderPage(template, translations, lang, pressItems) {
   let html = template;
 
   html = html.replaceAll("__HTML_LANG__", lang.htmlLang);
@@ -152,6 +188,7 @@ function renderPage(template, translations, lang) {
   html = html.replaceAll("__LANG_CURRENT_LABEL__", lang.short);
   html = html.replaceAll("__LANG_SWITCH_LIST__", buildLangSwitchList(lang));
   html = html.replaceAll("__STEAM_LANG__", lang.steamLang);
+  html = html.replaceAll("__PRESS_CARDS__", buildPressCards(pressItems, lang));
 
   html = html.replace(/\{\{([a-zA-Z0-9_.]+)\}\}/g, (match, key) => {
     const row = translations[key];
@@ -178,9 +215,10 @@ function buildSitemap() {
 function main() {
   const template = fs.readFileSync(path.join(ROOT, "i18n", "template.html"), "utf8");
   const translations = loadTranslations();
+  const pressItems = loadPress();
 
   for (const lang of LANGUAGES) {
-    const html = renderPage(template, translations, lang);
+    const html = renderPage(template, translations, lang, pressItems);
     const outDir = lang.prefix ? path.join(ROOT, lang.prefix) : ROOT;
     fs.mkdirSync(outDir, { recursive: true });
     const outPath = path.join(outDir, "index.html");

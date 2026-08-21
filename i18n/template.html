@@ -80,6 +80,18 @@ __HREFLANG_LINKS__
   };
 </script>
 <link rel="stylesheet" href="__ASSET_PREFIX__css/styles.css" />
+
+<!-- Google Analytics 4 — replace G-XXXXXXXXXX with the real Measurement ID
+     from your GA4 property (Admin > Data Streams > your web stream). Until
+     then this loads a script that 404s harmlessly; no events are lost once
+     the real ID is in, since gtag() calls just queue into dataLayer. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 </head>
 <body class="bg-ink text-bone font-body antialiased">
 
@@ -89,11 +101,11 @@ __HREFLANG_LINKS__
 <nav id="site-nav" class="fixed inset-x-0 top-0 z-30 flex items-center justify-between px-6 md:px-12 py-5">
   <div class="flex items-center gap-6 md:gap-10">
     <a href="#hero" class="logo-mark" aria-label="Legion of Judgment: Fallen Angel — home">
-      <img src="__ASSET_PREFIX__assets/logo.png" alt="" class="h-[41px] w-auto" />
+      <img src="__ASSET_PREFIX__assets/logo.webp" alt="" class="h-[41px] w-auto" />
     </a>
     <a id="nav-wishlist"
        href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/"
-       target="_blank" rel="noopener"
+       target="_blank" rel="noopener" data-wl-loc="nav"
        class="nav-wishlist btn-glow text-sm hidden sm:inline-flex">
       {{nav.wishlist}}
     </a>
@@ -125,7 +137,8 @@ __HREFLANG_LINKS__
   <a href="#prologue">{{prologue.heading}}</a>
   <a href="#characters">{{characters.heading}}</a>
   <a href="#gallery">{{drawer.media}}</a>
-  <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener">{{nav.wishlist}}</a>
+  <a href="#press">{{press.heading}}</a>
+  <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener" data-wl-loc="drawer">{{nav.wishlist}}</a>
   <div class="flex gap-4 mt-4">
     <a class="social-icon" href="https://x.com/Theremin_Int" target="_blank" rel="noopener" aria-label="X (Twitter)">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.6L4.5 22H1.3l8.2-9.3L1 2h7l4.9 6z"/></svg>
@@ -145,10 +158,10 @@ __HREFLANG_LINKS__
 <section id="hero">
   <img src="__ASSET_PREFIX__assets/hero-bg.webp" alt="" class="hero-bg" />
   <div class="hero-content absolute inset-0 px-6 flex flex-col items-center justify-end text-center reveal-stagger in-view">
-    <img src="__ASSET_PREFIX__assets/hero-logo.png" alt="Legion of Judgment: Fallen Angel" class="hero-logo w-full max-w-xl" />
+    <img src="__ASSET_PREFIX__assets/hero-logo.webp" alt="Legion of Judgment: Fallen Angel" class="hero-logo w-full max-w-xl" />
 
     <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener"
-       class="btn-glow mt-10 text-base">
+       data-wl-loc="hero" class="btn-glow mt-10 text-base">
       {{nav.wishlist}}
     </a>
   </div>
@@ -287,14 +300,14 @@ __HREFLANG_LINKS__
 
   <div id="prologue-track" class="gallery-track prologue-track">
     <a class="prologue-card" href="https://store.steampowered.com/news/app/2264780/view/703275952293019861?l=__STEAM_LANG__" target="_blank" rel="noopener" aria-label="{{prologue.item1.title}} — {{prologue.openAria}}">
-      <img src="__ASSET_PREFIX__assets/prologue-1.png" alt="" />
+      <img src="__ASSET_PREFIX__assets/prologue-1.webp" alt="" />
       <div class="prologue-info">
         <span class="prologue-title">{{prologue.item1.title}}</span>
       </div>
     </a>
 
     <a class="prologue-card" href="https://store.steampowered.com/news/app/2264780/view/547902498070857819?l=__STEAM_LANG__" target="_blank" rel="noopener" aria-label="{{prologue.item2.title}} — {{prologue.openAria}}">
-      <img src="__ASSET_PREFIX__assets/prologue-2.png" alt="" />
+      <img src="__ASSET_PREFIX__assets/prologue-2.webp" alt="" />
       <div class="prologue-info">
         <span class="prologue-title">{{prologue.item2.title}}</span>
       </div>
@@ -313,7 +326,7 @@ __HREFLANG_LINKS__
 
     <div id="character-track" class="gallery-track character-track flex-1">
       <div class="character-card">
-        <img src="__ASSET_PREFIX__assets/character-brandon.png" alt="" />
+        <img src="__ASSET_PREFIX__assets/character-brandon.webp" alt="" />
         <div class="character-info">
           <span class="character-name">{{characters.char1.name}}</span>
           <span class="character-badge">{{characters.comingSoon}}</span>
@@ -321,7 +334,7 @@ __HREFLANG_LINKS__
       </div>
 
       <div class="character-card">
-        <img src="__ASSET_PREFIX__assets/character-renfield.png" alt="" />
+        <img src="__ASSET_PREFIX__assets/character-renfield.webp" alt="" />
         <div class="character-info">
           <span class="character-name">{{characters.char2.name}}</span>
           <span class="character-badge">{{characters.comingSoon}}</span>
@@ -329,7 +342,7 @@ __HREFLANG_LINKS__
       </div>
 
       <div class="character-card">
-        <img src="__ASSET_PREFIX__assets/character-r.png" alt="" />
+        <img src="__ASSET_PREFIX__assets/character-r.webp" alt="" />
         <div class="character-info">
           <span class="character-name">{{characters.char3.name}}</span>
           <span class="character-badge">{{characters.comingSoon}}</span>
@@ -337,7 +350,7 @@ __HREFLANG_LINKS__
       </div>
 
       <div class="character-card">
-        <img src="__ASSET_PREFIX__assets/character-madame-caren.png" alt="" />
+        <img src="__ASSET_PREFIX__assets/character-madame-caren.webp" alt="" />
         <div class="character-info">
           <span class="character-name">{{characters.char4.name}}</span>
           <span class="character-badge">{{characters.comingSoon}}</span>
@@ -345,7 +358,7 @@ __HREFLANG_LINKS__
       </div>
 
       <div class="character-card">
-        <img src="__ASSET_PREFIX__assets/character-bruce.png" alt="" />
+        <img src="__ASSET_PREFIX__assets/character-bruce.webp" alt="" />
         <div class="character-info">
           <span class="character-name">{{characters.char5.name}}</span>
           <span class="character-badge">{{characters.comingSoon}}</span>
@@ -353,7 +366,7 @@ __HREFLANG_LINKS__
       </div>
 
       <div class="character-card">
-        <img src="__ASSET_PREFIX__assets/character-adrian.png" alt="" />
+        <img src="__ASSET_PREFIX__assets/character-adrian.webp" alt="" />
         <div class="character-info">
           <span class="character-name">{{characters.char6.name}}</span>
           <span class="character-badge">{{characters.comingSoon}}</span>
@@ -361,7 +374,7 @@ __HREFLANG_LINKS__
       </div>
 
       <div class="character-card">
-        <img src="__ASSET_PREFIX__assets/character-ichi.png" alt="" />
+        <img src="__ASSET_PREFIX__assets/character-ichi.webp" alt="" />
         <div class="character-info">
           <span class="character-name">{{characters.char7.name}}</span>
           <span class="character-badge">{{characters.comingSoon}}</span>
@@ -369,7 +382,7 @@ __HREFLANG_LINKS__
       </div>
 
       <div class="character-card">
-        <img src="__ASSET_PREFIX__assets/character-blacksmith.png" alt="" />
+        <img src="__ASSET_PREFIX__assets/character-blacksmith.webp" alt="" />
         <div class="character-info">
           <span class="character-name">{{characters.char8.name}}</span>
           <span class="character-badge">{{characters.comingSoon}}</span>
@@ -377,7 +390,7 @@ __HREFLANG_LINKS__
       </div>
 
       <div class="character-card">
-        <img src="__ASSET_PREFIX__assets/character-unknown-swordsman.png" alt="" />
+        <img src="__ASSET_PREFIX__assets/character-unknown-swordsman.webp" alt="" />
         <div class="character-info">
           <span class="character-name">{{characters.char9.name}}</span>
           <span class="character-badge">{{characters.comingSoon}}</span>
@@ -385,7 +398,7 @@ __HREFLANG_LINKS__
       </div>
 
       <div class="character-card">
-        <img src="__ASSET_PREFIX__assets/character-unknown-doctor.png" alt="" />
+        <img src="__ASSET_PREFIX__assets/character-unknown-doctor.webp" alt="" />
         <div class="character-info">
           <span class="character-name">{{characters.char10.name}}</span>
           <span class="character-badge">{{characters.comingSoon}}</span>
@@ -393,7 +406,7 @@ __HREFLANG_LINKS__
       </div>
 
       <div class="character-card">
-        <img src="__ASSET_PREFIX__assets/character-enes.png" alt="" />
+        <img src="__ASSET_PREFIX__assets/character-enes.webp" alt="" />
         <div class="character-info">
           <span class="character-name">{{characters.char11.name}}</span>
           <span class="character-badge">{{characters.comingSoon}}</span>
@@ -401,7 +414,7 @@ __HREFLANG_LINKS__
       </div>
 
       <div class="character-card">
-        <img src="__ASSET_PREFIX__assets/character-mysterious-being.png" alt="" />
+        <img src="__ASSET_PREFIX__assets/character-mysterious-being.webp" alt="" />
         <div class="character-info">
           <span class="character-name">{{characters.char12.name}}</span>
           <span class="character-badge">{{characters.comingSoon}}</span>
@@ -550,6 +563,19 @@ __HREFLANG_LINKS__
   </div>
 </section>
 
+<!-- ================= PRESS COVERAGE ================= -->
+<section id="press" class="reveal py-24 px-6 md:px-16">
+  <h2 class="display text-3xl sm:text-4xl text-center mb-14">{{press.heading}}</h2>
+
+  <div id="press-grid" class="press-grid">
+__PRESS_CARDS__
+  </div>
+
+  <div class="flex justify-center mt-10">
+    <button id="press-load-more" class="footer-presskit-link inline-flex items-center" hidden>{{press.loadMore}}</button>
+  </div>
+</section>
+
 </main>
 
 <!-- ================= FOOTER ================= -->
@@ -558,9 +584,9 @@ __HREFLANG_LINKS__
 
   <div class="footer-overlay absolute inset-0 flex flex-col pt-24 pb-10 px-6">
     <div class="footer-content footer-main max-w-4xl mx-auto text-center">
-      <img src="__ASSET_PREFIX__assets/footer-logo.png" alt="Legion of Judgment: Fallen Angel" class="w-full max-w-[538px] mx-auto mb-10" />
+      <img src="__ASSET_PREFIX__assets/footer-logo.webp" alt="Legion of Judgment: Fallen Angel" class="w-full max-w-[538px] mx-auto mb-10" />
 
-      <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener" class="btn-glow mb-10">
+      <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener" data-wl-loc="footer" class="btn-glow mb-10">
         {{nav.wishlist}}
       </a>
 

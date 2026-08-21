@@ -307,9 +307,18 @@ select:focus-visible {
 
 /* On mobile the hero now fills the viewport and Wishlist Now sits
    bottom-center, so Watch Trailer bottom-right collided with it. Move it
-   under the nav instead, and shrink it to stay unobtrusive. */
+   under the nav instead, and shrink it to stay unobtrusive.
+   Selector is `#hero .watch-trailer` (not `.watch-trailer`) because the
+   Tailwind CDN script injects its utility stylesheet at runtime, landing
+   after this file in the cascade — at equal specificity its `.bottom-8`/
+   `.right-0` classes (set inline on the element) would win and silently
+   restore bottom:2rem/right:0 here. With top AND bottom both non-auto and
+   no explicit height, the anchor stretched to fill the gap between them
+   (~580px tall on a 375px-wide phone) and hijacked taps meant for the
+   Story section underneath. The extra `#hero` bumps specificity so this
+   rule wins regardless of stylesheet order. */
 @media (max-width: 767px) {
-  .watch-trailer {
+  #hero .watch-trailer {
     top: 5.5rem;
     bottom: auto;
     right: 1rem;
@@ -452,24 +461,31 @@ select:focus-visible {
 .frame {
   position: relative;
   aspect-ratio: 16 / 10;
+  /* The glow has to live here, not on .frame-border below: a `filter` and
+     a `clip-path` on the SAME element get clipped to that element's own
+     shape, so drop-shadow's blur was being cut off right at the angled
+     edge and never bloomed outward (why past attempts at this glow never
+     showed up). .frame has no clip-path of its own, so putting the filter
+     on the parent lets the shadow trace the clipped children's silhouette
+     and still bleed past it, matching the click-to-enlarge glow weight. */
+  filter:
+    drop-shadow(0 0 1px rgba(224, 40, 31, 0.95))
+    drop-shadow(0 0 14px rgba(224, 40, 31, 0.5))
+    drop-shadow(0 0 36px rgba(200, 20, 20, 0.34))
+    drop-shadow(0 0 80px rgba(180, 20, 20, 0.22));
+  transition: filter 0.35s ease;
+}
+.frame:hover {
+  filter:
+    drop-shadow(0 0 1px rgba(224, 40, 31, 1))
+    drop-shadow(0 0 16px rgba(224, 40, 31, 0.6))
+    drop-shadow(0 0 44px rgba(200, 20, 20, 0.42))
+    drop-shadow(0 0 96px rgba(180, 20, 20, 0.28));
 }
 .frame .frame-border {
   position: absolute;
   inset: 0;
   background: #e0281f;
-  filter:
-    drop-shadow(0 0 6px rgba(220, 40, 30, 0.55))
-    drop-shadow(0 0 20px rgba(220, 30, 20, 0.4))
-    drop-shadow(0 0 50px rgba(200, 20, 20, 0.28))
-    drop-shadow(0 0 100px rgba(180, 20, 20, 0.18));
-  transition: filter 0.35s ease;
-}
-.frame:hover .frame-border {
-  filter:
-    drop-shadow(0 0 8px rgba(220, 40, 30, 0.7))
-    drop-shadow(0 0 26px rgba(220, 30, 20, 0.5))
-    drop-shadow(0 0 60px rgba(200, 20, 20, 0.35))
-    drop-shadow(0 0 120px rgba(180, 20, 20, 0.22));
 }
 .frame .frame-inner {
   position: absolute;
@@ -782,6 +798,82 @@ select:focus-visible {
   border: 1px solid var(--blood-2);
   padding: 0.15rem 0.5rem;
 }
+
+/* ===== Press coverage grid ===== */
+/* A wrapping grid rather than a horizontal carousel — this list is meant to
+   grow to a large, ever-changing number of entries, and a carousel hides
+   most of them behind scrolling. Cards start hidden past PRESS_PAGE_SIZE
+   (see main.js) and reveal in batches via "Load More", so the section stays
+   scannable and light to paint at any count. */
+.press-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.press-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1.4rem 1.4rem 1.1rem;
+  min-height: 9.5rem;
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--blood-2);
+  background: rgba(23, 16, 18, 0.4);
+  transition: border-color .3s ease, box-shadow .3s ease, background .3s ease;
+}
+.press-card:hover,
+.press-card:focus-visible {
+  border-color: var(--blood);
+  border-top-color: var(--blood-bright);
+  box-shadow: 0 0 16px var(--blood-glow);
+  background: rgba(23, 16, 18, 0.7);
+}
+/* Outlet is the trust signal here — readers scan it before the headline,
+   so it needs to read as a masthead (bigger, bolder, brighter) rather
+   than fine print above the title. */
+.press-outlet {
+  font-family: var(--font-display);
+  font-variant-caps: small-caps;
+  letter-spacing: 0.06em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--blood-bright);
+  text-shadow: 0 0 14px rgba(224, 40, 31, 0.4);
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(243, 237, 225, 0.14);
+}
+.press-title {
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.press-link-icon {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.9rem;
+  color: var(--muted);
+  opacity: 0.6;
+  transition: opacity .3s ease, transform .3s ease, color .3s ease;
+}
+.press-card:hover .press-link-icon,
+.press-card:focus-visible .press-link-icon {
+  opacity: 1;
+  color: var(--blood-bright);
+  transform: translate(2px, -2px);
+}
+.press-card[hidden] { display: none; }
+/* #press-load-more also carries Tailwind's `inline-flex` utility class for
+   its normal state. Author-origin rules always beat the UA stylesheet's
+   `[hidden]{display:none}` regardless of specificity, so that Tailwind
+   class alone would keep the button visible even while `hidden` is set
+   (same root cause as the watch-trailer mobile bug above) — this rule
+   out-specifies it (#id + [attr] beats a bare class) so hidden really hides. */
+#press-load-more[hidden] { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
