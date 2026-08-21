@@ -843,6 +843,17 @@ select:focus-visible {
   padding: 0.15rem 0.5rem;
 }
 
+/* #parallax-bg sits fixed behind the whole page (z-index:-20) and is meant
+   to peek through as soft atmosphere wherever a section has no art of its
+   own — but this section's heading + top padding leaves an unusually
+   large empty gap (worst on mobile, before the card row starts), wide
+   enough to show a *recognizable* fragment of that image — a building
+   facade/crest — rather than ambient texture. Reads as a stray sprite,
+   not mood lighting, so this section opts out and paints solid instead. */
+#press {
+  background: var(--ink);
+}
+
 /* ===== Press coverage grid ===== */
 /* A wrapping grid rather than a horizontal carousel — this list is meant to
    grow to a large, ever-changing number of entries, and a carousel hides
