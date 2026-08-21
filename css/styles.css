@@ -72,6 +72,20 @@ img, video {
   user-drag: none;
 }
 
+/* #parallax-bg below sits fixed behind the page, and — because it's a
+   child of body painting on top of body's own background — any section
+   without full-bleed art of its own (press/prologue/characters/gallery,
+   or just a section's heading/padding whitespace) let a recognizable
+   fragment of it (a building facade, a crest) show through instead of
+   reading as ambient texture. Painting main's own background here sits
+   between #parallax-bg and every section inside it, so gaps show plain
+   ink instead — covers every current and future section in one place
+   rather than patching each one that happens to get reported. */
+main {
+  position: relative;
+  background: var(--ink);
+}
+
 /* ===== Ambient parallax background (behind every section) ===== */
 #parallax-bg {
   position: fixed;
@@ -806,16 +820,26 @@ select:focus-visible {
   scroll-snap-align: start;
   aspect-ratio: 3/4;
   border: 1px solid var(--line);
-  background: var(--ink-3);
+  /* Same vignette the 12 placeholder images used to bake in as pixels —
+     now it's the card's own background, so there's no per-character
+     image file (they were identical apart from a name baked into the
+     graphic, which is what duplicated .character-name below). */
+  background: radial-gradient(circle at center, rgba(195, 28, 34, 0.3) 0%, var(--ink-3) 72%);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: border-color .3s ease, box-shadow .3s ease;
 }
 .character-card:hover { border-color: var(--blood); box-shadow: 0 0 16px var(--blood-glow); }
-.character-card img {
-  width: 100%; height: 100%; object-fit: cover;
+.character-placeholder-icon {
+  width: 42%;
+  height: auto;
+  color: var(--muted);
+  opacity: 0.6;
   transition: transform .6s ease;
 }
-.character-card:hover img { transform: scale(1.06); }
+.character-card:hover .character-placeholder-icon { transform: scale(1.06); }
 .character-info {
   position: absolute;
   inset-inline: 0;
@@ -841,17 +865,6 @@ select:focus-visible {
   color: var(--muted);
   border: 1px solid var(--blood-2);
   padding: 0.15rem 0.5rem;
-}
-
-/* #parallax-bg sits fixed behind the whole page (z-index:-20) and is meant
-   to peek through as soft atmosphere wherever a section has no art of its
-   own — but this section's heading + top padding leaves an unusually
-   large empty gap (worst on mobile, before the card row starts), wide
-   enough to show a *recognizable* fragment of that image — a building
-   facade/crest — rather than ambient texture. Reads as a stray sprite,
-   not mood lighting, so this section opts out and paints solid instead. */
-#press {
-  background: var(--ink);
 }
 
 /* ===== Press coverage grid ===== */
