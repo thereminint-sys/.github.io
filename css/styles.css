@@ -130,6 +130,20 @@ select:focus-visible {
 .btn-glow svg { transition: transform 0.25s ease; }
 .btn-glow:hover svg { transform: translateX(3px); }
 
+/* Solid-fill variant — paired with the outline .btn-glow wherever there
+   are two CTAs (e.g. hero: demo + wishlist), so the higher-intent action
+   (the thing we actually want clicked right now) reads as the heavier of
+   the two instead of both competing at equal visual weight. */
+.btn-glow.btn-solid {
+  background: var(--blood);
+  border-color: var(--blood);
+}
+.btn-glow.btn-solid:hover {
+  background: var(--blood-bright);
+  border-color: var(--blood-bright);
+  box-shadow: 0 0 22px var(--blood-glow), 0 0 30px var(--blood-glow);
+}
+
 /* ===== Borderless glow button (Menu) ===== */
 .menu-glow {
   font-family: var(--font-display);
@@ -461,6 +475,17 @@ select:focus-visible {
 .frame {
   position: relative;
   aspect-ratio: 16 / 10;
+  /* Uncapped, this scaled with its flex column's full width — fine at
+     ~1440px (~688px wide there, uncapped), but past ~1800px it grew far
+     taller than the heading+body text next to it ever does (that text is
+     fixed-size and just wraps to fewer lines on a wider column, so it
+     doesn't grow with the viewport the way the video does). 680px sits
+     just under the natural ~1440px size — no real change at a normal
+     desktop width — while still capping the runaway growth on wider
+     monitors. (560px, tried first, also clipped the common 1440px case by
+     ~19%, which read as "suddenly small" — that's why this is 680, not
+     560.) Still shrinks freely below the cap on tablet/mobile. */
+  max-width: 680px;
   /* The glow has to live here, not on .frame-border below: a `filter` and
      a `clip-path` on the SAME element get clipped to that element's own
      shape, so drop-shadow's blur was being cut off right at the angled
@@ -514,6 +539,13 @@ select:focus-visible {
 .frame-point-right .frame-border,
 .frame-point-right .frame-inner {
   clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 18% 100%, 0% 50%);
+}
+/* Below the max-width cap above, a block element left-aligns by default —
+   fine for frame-point-left (already on the page's left edge), but on
+   reversed rows frame-point-right sits in the right-hand column and would
+   otherwise float toward the middle instead of hugging the outer edge. */
+.frame-point-right {
+  margin-left: auto;
 }
 
 /* ===== Feature sections ===== */
@@ -575,19 +607,6 @@ select:focus-visible {
   transition: transform .6s ease;
 }
 .gallery-item:hover img { transform: scale(1.06); }
-.gallery-item .gi-actions {
-  position: absolute; top: 0.75rem; right: 0.75rem;
-  display: flex; gap: 0.5rem;
-}
-.gi-icon-btn {
-  width: 2.25rem; height: 2.25rem;
-  display: flex; align-items: center; justify-content: center;
-  background: rgba(8,6,7,0.75);
-  border: 1px solid var(--blood);
-  color: var(--bone);
-  cursor: pointer;
-}
-.gi-icon-btn:hover { box-shadow: 0 0 14px var(--blood-glow); }
 
 /* ===== Gallery lightbox ===== */
 .lightbox {
@@ -603,6 +622,16 @@ select:focus-visible {
   position: absolute;
   inset: 0;
   background: rgba(4, 3, 4, 0.96);
+}
+/* Shrink-wraps to the image's own rendered box (not the viewport) — an
+   inline-block sized only by its content — so .lightbox-toolbar below can
+   anchor to the image's actual corner instead of floating over open
+   backdrop whenever the image is narrower/shorter than the viewport
+   (portrait shots, or a wide viewport with a 16:9 image). */
+.lightbox-stage {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
 }
 .lightbox-image {
   position: relative;
@@ -621,8 +650,8 @@ select:focus-visible {
 .lightbox-image.lb-in-prev { transition: none; transform: translateX(-36px); opacity: 0; }
 .lightbox-toolbar {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 1rem;
+  right: 1rem;
   z-index: 2;
   display: flex;
   gap: 0.75rem;
@@ -726,7 +755,17 @@ select:focus-visible {
 }
 .prologue-card {
   position: relative;
-  flex: 0 0 min(440px, 90vw);
+  /* Fixed at 440px regardless of container width, which — with only 2
+     cards centered in a full-width section — left a wide unused margin
+     on both sides instead of the pair reading as a real row. Flexible
+     sizing (grow to fill, same 680px ceiling the feature videos use)
+     lets exactly 2 cards claim the row properly; min-width keeps them
+     from squeezing too far on tablet before wrapping to one per line on
+     mobile. Revisit this — probably back to a fixed/carousel size — once
+     a 3rd prologue entry exists and centering 2-up no longer applies. */
+  flex: 1 1 380px;
+  max-width: 680px;
+  min-width: 280px;
   scroll-snap-align: start;
   aspect-ratio: 16/9;
   border: 1px solid var(--line);
@@ -745,14 +784,19 @@ select:focus-visible {
   position: absolute;
   inset-inline: 0;
   bottom: 0;
-  padding: 0.9rem 1rem 1rem;
-  background: linear-gradient(to top, rgba(8,6,7,0.9), transparent);
+  padding: 1.1rem 1.3rem 1.3rem;
+  background: linear-gradient(to top, rgba(8,6,7,0.92), transparent);
 }
 .prologue-title {
   font-family: var(--font-display);
   font-variant-caps: small-caps;
   letter-spacing: 0.05em;
-  font-size: 1.05rem;
+  /* Cards grew from 440px to up to 680px (see .prologue-card above) — this
+     scales up with them, but not 1:1 with the ~55% width increase. The
+     longer titles (item2's "An Arsenal Built with a Shattered Mind: ...")
+     already wrap to 2 lines at the old size; matching the width growth
+     exactly would push that to 3 lines and crowd the image above it. */
+  font-size: 1.35rem;
 }
 
 /* ===== Character roster carousel ===== */
@@ -829,19 +873,29 @@ select:focus-visible {
   box-shadow: 0 0 16px var(--blood-glow);
   background: rgba(23, 16, 18, 0.7);
 }
-/* Outlet is the trust signal here — readers scan it before the headline,
-   so it needs to read as a masthead (bigger, bolder, brighter) rather
-   than fine print above the title. */
+/* Outlet is the trust signal here — readers scan it before the headline.
+   A same-color-as-title label never wins that scan no matter how large
+   it gets, so instead of sizing it up further this is a solid-fill badge
+   (bone-on-blood, the strongest contrast pair in the palette) centered
+   above the left-aligned title — reads as a stamp of legitimacy first,
+   with the headline as the supporting text underneath. */
 .press-outlet {
+  align-self: center;
   font-family: var(--font-display);
   font-variant-caps: small-caps;
   letter-spacing: 0.06em;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
-  color: var(--blood-bright);
-  text-shadow: 0 0 14px rgba(224, 40, 31, 0.4);
-  padding-bottom: 0.65rem;
-  border-bottom: 1px solid rgba(243, 237, 225, 0.14);
+  color: var(--bone);
+  background: var(--blood-2);
+  padding: 0.4rem 1rem;
+  box-shadow: 0 0 0 rgba(195, 28, 34, 0);
+  transition: background .3s ease, box-shadow .3s ease;
+}
+.press-card:hover .press-outlet,
+.press-card:focus-visible .press-outlet {
+  background: var(--blood);
+  box-shadow: 0 0 16px var(--blood-glow);
 }
 .press-title {
   font-size: 0.98rem;

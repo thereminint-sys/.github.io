@@ -92,21 +92,20 @@
 </script>
 <link rel="stylesheet" href="../css/styles.css" />
 
-<!-- Google Analytics 4 — replace G-XXXXXXXXXX with the real Measurement ID
-     from your GA4 property (Admin > Data Streams > your web stream). Until
-     then this loads a script that 404s harmlessly; no events are lost once
-     the real ID is in, since gtag() calls just queue into dataLayer. -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- Google Analytics 4 — Measurement ID G-HHFSL380GN. Tracks page_view plus
+     the wishlist_click / demo_click / press_click custom events fired from
+     js/main.js. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HHFSL380GN"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('config', 'G-HHFSL380GN');
 </script>
 </head>
 <body class="bg-ink text-bone font-body antialiased">
 
-<div id="parallax-bg" style="background-image:url('../assets/parallax-bg.png')" aria-hidden="true"></div>
+<div id="parallax-bg" style="background-image:url('../assets/parallax-bg.webp')" aria-hidden="true"></div>
 
 <!-- ================= NAV ================= -->
 <nav id="site-nav" class="fixed inset-x-0 top-0 z-30 flex items-center justify-between px-6 md:px-12 py-5">
@@ -154,11 +153,12 @@
   <button id="drawer-close" aria-label="Close menu" class="absolute top-6 right-6 text-4xl leading-none text-bone hover:text-blood">&times;</button>
   <a href="#hero">홈</a>
   <a href="#story">세계관</a>
+  <a href="#press">언론 보도</a>
   <a href="#features">특징</a>
   <a href="#prologue">프롤로그</a>
   <a href="#characters">등장인물</a>
   <a href="#gallery">미디어</a>
-  <a href="#press">언론 보도</a>
+  <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener" data-demo-loc="drawer">무료 데모 플레이</a>
   <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener" data-wl-loc="drawer">위시리스트 등록</a>
   <div class="flex gap-4 mt-4">
     <a class="social-icon" href="https://x.com/Theremin_Int" target="_blank" rel="noopener" aria-label="X (Twitter)">
@@ -181,10 +181,16 @@
   <div class="hero-content absolute inset-0 px-6 flex flex-col items-center justify-end text-center reveal-stagger in-view">
     <img src="../assets/hero-logo.webp" alt="Legion of Judgment: Fallen Angel" class="hero-logo w-full max-w-xl" />
 
-    <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener"
-       data-wl-loc="hero" class="btn-glow mt-10 text-base">
-      위시리스트 등록
-    </a>
+    <div class="flex flex-wrap items-center justify-center gap-4 mt-10">
+      <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener"
+         data-demo-loc="hero" class="btn-glow btn-solid text-base">
+        무료 데모 플레이
+      </a>
+      <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener"
+         data-wl-loc="hero" class="btn-glow text-base">
+        위시리스트 등록
+      </a>
+    </div>
   </div>
 
   <a href="https://www.youtube.com/@theremininteractive" target="_blank" rel="noopener"
@@ -192,7 +198,7 @@
     <span class="watch-trailer-frame">
       <span class="watch-trailer-border"></span>
       <span class="watch-trailer-inner">
-        <video src="../assets/hero-trailer-thumb.webm" autoplay muted loop playsinline class="watch-trailer-thumb"></video>
+        <video src="../assets/hero-trailer-thumb.webm" poster="../assets/hero-trailer-thumb-poster.webp" autoplay muted loop playsinline class="watch-trailer-thumb"></video>
         <span class="watch-trailer-label">
           <span class="watch-trailer-icon" aria-hidden="true">
             <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
@@ -206,7 +212,7 @@
 
 <!-- ================= STORY / TAGLINE ================= -->
 <section id="story" class="reveal relative">
-  <img src="../assets/story-bg.png" alt="" class="story-bg" />
+  <img src="../assets/story-bg.webp" alt="" class="story-bg" />
 
   <div class="story-text absolute bottom-10 right-6 md:right-16 z-[1] max-w-2xl text-right">
     <h2 class="display text-2xl sm:text-3xl mb-6 leading-tight">
@@ -214,7 +220,7 @@
     </h2>
     <div class="text-muted leading-relaxed space-y-4">
       <p>
-        늑대인간 신디케이트가 지배하는 무법의 세계. 인간의 존엄은 짐승의 발밑에 짓밟혔고, 세상의 마지막 희망이었던 ‘레기온’은 20년 전 지도자의 끔찍한 죽음과 함께 역사 속으로 사라졌다.
+        늑대인간 신디케이트가 지배하는 무법의 세계. 인간의 존엄은 짐승의 발밑에 짓밟혔고, 세상의 마지막 희망이었던 ‘군단’은 20년 전 지도자의 끔찍한 죽음과 함께 역사 속으로 사라졌다.
       </p>
       <p>
         완벽한 통제와 절대적인 절망의 시대. 그러나 밤의 지배자들이 어둠의 승리에 도취해 있는 사이, 정체불명의 처형자가 그림자 속에서 나타나 늑대인간들을 잔혹하게 사냥하기 시작한다.
@@ -229,13 +235,80 @@
   </div>
 </section>
 
+<!-- ================= PRESS COVERAGE =================
+     Placed right after the pitch/story beat, before the feature deep-dive:
+     this is where a visitor is deciding whether to trust the game, and
+     outlet mentions are the evidence for that — buried at the bottom of
+     the page (its old spot, right above the footer) it only reached
+     people who were already convinced. -->
+<section id="press" class="reveal py-24 px-6 md:px-16">
+  <h2 class="display text-3xl sm:text-4xl text-center mb-14">언론 보도</h2>
+
+  <div id="press-grid" class="press-grid">
+      <a class="press-card" href="https://es.kotaku.com/legion-of-judgment-fallen-angel-estrena-una-demo-gratuita-que-anticipa-su-brutal-combate-y-un-oscuro-mundo-noir-2000046372" target="_blank" rel="noopener" aria-label="《Legion of Judgment: Fallen Angel》, 잔혹한 전투와 어두운 느와르 세계를 미리 보여주는 무료 데모 공개 — kotaku.es">
+        <span class="press-outlet">kotaku.es</span>
+        <span class="press-title">《Legion of Judgment: Fallen Angel》, 잔혹한 전투와 어두운 느와르 세계를 미리 보여주는 무료 데모 공개</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://dengekionline.com/article/202607/80839" target="_blank" rel="noopener" aria-label="어두운 현실 세계를 탐험하는 신작 액션 『Legion of Judgment』 데모 버전 공개. 약 20분간의 긴박한 전투 사이클을 체험 — dengekionline.com">
+        <span class="press-outlet">dengekionline.com</span>
+        <span class="press-title">어두운 현실 세계를 탐험하는 신작 액션 『Legion of Judgment』 데모 버전 공개. 약 20분간의 긴박한 전투 사이클을 체험</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://www.invenglobal.com/articles/23411/global-alpha-demo-released-for-25d-action-metroidvania-legion-of-judgment" target="_blank" rel="noopener" aria-label="2.5D 액션 메트로배니아 『Legion of Judgment』, 글로벌 알파 데모 공개 — invenglobal.com">
+        <span class="press-outlet">invenglobal.com</span>
+        <span class="press-title">2.5D 액션 메트로배니아 『Legion of Judgment』, 글로벌 알파 데모 공개</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://www.pcgames.de/Spiele-Thema-239104/News/Neues-Metroidvania-Legion-of-Judgment-Fallen-Angel-kostenlos-spielen-1549842/?utm_source=x.com&amp;utm_campaign=sharebutton&amp;utm_medium=social" target="_blank" rel="noopener" aria-label="Legion of Judgment: 호텔 경영이 어두운 메트로배니아 액션과 만나다 — pcgames.de">
+        <span class="press-outlet">pcgames.de</span>
+        <span class="press-title">Legion of Judgment: 호텔 경영이 어두운 메트로배니아 액션과 만나다</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://cogconnected.com/2026/07/legion-of-judgment-fallen-angel-launches-free-global-alpha-demo-on-steam/" target="_blank" rel="noopener" aria-label="Legion of Judgment: Fallen Angel, Steam에서 무료 글로벌 알파 데모 출시 — cogconnected.com">
+        <span class="press-outlet">cogconnected.com</span>
+        <span class="press-title">Legion of Judgment: Fallen Angel, Steam에서 무료 글로벌 알파 데모 출시</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://gamebiz.jp/news/429123" target="_blank" rel="noopener" aria-label="Theremin Interactive, 2.5D 느와르 액션 메트로배니아 RPG 『Legion of Judgment: Fallen Angel』 알파 데모 출시 — gamebiz.jp">
+        <span class="press-outlet">gamebiz.jp</span>
+        <span class="press-title">Theremin Interactive, 2.5D 느와르 액션 메트로배니아 RPG 『Legion of Judgment: Fallen Angel』 알파 데모 출시</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://www.gamingdeputy.com/fr/legion-of-judgment-fallen-angel-lance-une-demo-alpha-mondiale-gratuite-sur-steam/" target="_blank" rel="noopener" aria-label="Legion of Judgment: Fallen Angel, Steam에서 무료 글로벌 알파 데모 출시 — gamingdeputy.com">
+        <span class="press-outlet">gamingdeputy.com</span>
+        <span class="press-title">Legion of Judgment: Fallen Angel, Steam에서 무료 글로벌 알파 데모 출시</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://techmash.co.uk/2026/07/02/katana-steel-meets-urban-noir-legion-of-judgment-fallen-angel-drops-global-alpha-demo-on-steam/" target="_blank" rel="noopener" aria-label="카타나와 강철이 도시 느와르와 만나다: Legion of Judgment: Fallen Angel, Steam에서 글로벌 알파 데모 공개 — techmash.co.uk">
+        <span class="press-outlet">techmash.co.uk</span>
+        <span class="press-title">카타나와 강철이 도시 느와르와 만나다: Legion of Judgment: Fallen Angel, Steam에서 글로벌 알파 데모 공개</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://www.gamezilla.it/legion-of-judgment-fallen-angel-porta-su-steam-la-demo-alpha-globale/" target="_blank" rel="noopener" aria-label="Legion of Judgment: Fallen Angel, Steam에 글로벌 알파 데모 공개 — gamezilla.it">
+        <span class="press-outlet">gamezilla.it</span>
+        <span class="press-title">Legion of Judgment: Fallen Angel, Steam에 글로벌 알파 데모 공개</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="press-card" href="https://www.nextplayer.it/il-metroidvania-dazione-noir-in-2-5d-legion-of-judgment-fallen-angel-lancia-la-sua-demo-alpha-globale-su-steam/" target="_blank" rel="noopener" aria-label="2.5D 느와르 액션 메트로배니아 『Legion of Judgment: Fallen Angel』, Steam에서 글로벌 알파 데모 출시! — nextplayer.it">
+        <span class="press-outlet">nextplayer.it</span>
+        <span class="press-title">2.5D 느와르 액션 메트로배니아 『Legion of Judgment: Fallen Angel』, Steam에서 글로벌 알파 데모 출시!</span>
+        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+      </a>
+  </div>
+
+  <div class="flex justify-center mt-10">
+    <button id="press-load-more" class="footer-presskit-link inline-flex items-center" hidden>더 보기</button>
+  </div>
+</section>
+
 <!-- ================= FEATURES ================= -->
 <section id="features" class="reveal feature-row items-start gap-10 md:gap-16 py-24">
   <div class="w-full md:flex-1 md:min-w-0">
     <div class="frame frame-point-left">
       <div class="frame-border"></div>
       <div class="frame-inner">
-        <video src="../assets/feature-metroidvania.webm" autoplay muted loop playsinline aria-label="벨트스크롤 액션 전투와 메트로배니아 탐험이 어우러지는 모습"></video>
+        <video data-src="../assets/feature-metroidvania.webm" poster="../assets/feature-metroidvania-poster.webp" preload="none" muted loop playsinline data-lazy-video aria-label="벨트스크롤 액션 전투와 메트로배니아 탐험이 어우러지는 모습"></video>
       </div>
     </div>
   </div>
@@ -252,7 +325,7 @@
     <div class="frame frame-point-right">
       <div class="frame-border"></div>
       <div class="frame-inner">
-        <video src="../assets/feature-gear.webm" autoplay muted loop playsinline aria-label="캐릭터 성장과 다양한 파밍 효과를 지닌 장비 시스템"></video>
+        <video data-src="../assets/feature-gear.webm" poster="../assets/feature-gear-poster.webp" preload="none" muted loop playsinline data-lazy-video aria-label="캐릭터 성장과 다양한 파밍 효과를 지닌 장비 시스템"></video>
       </div>
     </div>
   </div>
@@ -269,7 +342,7 @@
     <div class="frame frame-point-left">
       <div class="frame-border"></div>
       <div class="frame-inner">
-        <video src="../assets/feature-mission.webm" autoplay muted loop playsinline aria-label="생생하고 사실적인 전투 임무 스테이지"></video>
+        <video data-src="../assets/feature-mission.webm" poster="../assets/feature-mission-poster.webp" preload="none" muted loop playsinline data-lazy-video aria-label="생생하고 사실적인 전투 임무 스테이지"></video>
       </div>
     </div>
   </div>
@@ -286,7 +359,7 @@
     <div class="frame frame-point-right">
       <div class="frame-border"></div>
       <div class="frame-inner">
-        <video src="../assets/feature-mindpalace.webm" autoplay muted loop playsinline aria-label="비선형 구조의 기억의 궁전 스테이지"></video>
+        <video data-src="../assets/feature-mindpalace.webm" poster="../assets/feature-mindpalace-poster.webp" preload="none" muted loop playsinline data-lazy-video aria-label="비선형 구조의 기억의 궁전 스테이지"></video>
       </div>
     </div>
   </div>
@@ -303,14 +376,14 @@
     <div class="frame frame-point-left">
       <div class="frame-border"></div>
       <div class="frame-inner">
-        <video src="../assets/feature-hotel.webm" autoplay muted loop playsinline aria-label="레기온의 은신처로 사용되는 낡은 호텔"></video>
+        <video data-src="../assets/feature-hotel.webm" poster="../assets/feature-hotel-poster.webp" preload="none" muted loop playsinline data-lazy-video aria-label="군단의 은신처로 사용되는 낡은 호텔"></video>
       </div>
     </div>
   </div>
   <div class="w-full md:flex-1 md:min-w-0 px-6 md:pl-0 md:pr-16">
-    <h3 class="display text-[51px] sm:text-[61px] leading-[0.85] mb-6">부서진 방 하나하나를 되살려 레기온을 재건하라</h3>
+    <h3 class="display text-[51px] sm:text-[61px] leading-[0.85] mb-6">부서진 방 하나하나를 되살려 군단을 재건하라</h3>
     <p class="text-muted leading-relaxed text-2xl">
-      낮에는 호텔의 주인으로서 이곳을 운영하고, 밤에는 이곳을 레기온의 마지막 거점으로 바꿔라 — 새로운 헌터를 모집하고, 그들의 능력을 키우며, 늑대인간 신디케이트와의 전쟁을 준비하라.
+      낮에는 호텔의 주인으로서 이곳을 운영하고, 밤에는 이곳을 군단의 마지막 거점으로 바꿔라 — 새로운 헌터를 모집하고, 그들의 능력을 키우며, 늑대인간 신디케이트와의 전쟁을 준비하라.
     </p>
   </div>
 </section>
@@ -464,116 +537,60 @@
     </button>
 
     <div id="gallery-track" class="gallery-track flex-1">
-      <div class="gallery-item" data-category="key-art" data-full="../assets/key-art-1.png" data-alt="Key art 1" tabindex="0" role="button" aria-label="View Key art 1 full screen">
-        <img src="../assets/key-art-1.png" alt="Key art 1" />
-        <div class="gi-actions">
-          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Key art 1" data-src="../assets/key-art-1.png" data-filename="key-art-1.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
-          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
+      <div class="gallery-item" data-category="key-art" data-full="../assets/key-art-1.webp" data-alt="Key art 1" tabindex="0" role="button" aria-label="View Key art 1 full screen">
+        <img src="../assets/key-art-1.webp" alt="Key art 1" />
       </div>
 
-      <div class="gallery-item" data-category="key-art" data-full="../assets/key-art-2.png" data-alt="Key art 2" tabindex="0" role="button" aria-label="View Key art 2 full screen">
-        <img src="../assets/key-art-2.png" alt="Key art 2" />
-        <div class="gi-actions">
-          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Key art 2" data-src="../assets/key-art-2.png" data-filename="key-art-2.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
-          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
+      <div class="gallery-item" data-category="key-art" data-full="../assets/key-art-2.webp" data-alt="Key art 2" tabindex="0" role="button" aria-label="View Key art 2 full screen">
+        <img src="../assets/key-art-2.webp" alt="Key art 2" />
       </div>
 
-      <div class="gallery-item" data-category="key-art" data-full="../assets/key-art-3.png" data-alt="Key art 3" tabindex="0" role="button" aria-label="View Key art 3 full screen">
-        <img src="../assets/key-art-3.png" alt="Key art 3" />
-        <div class="gi-actions">
-          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Key art 3" data-src="../assets/key-art-3.png" data-filename="key-art-3.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
-          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
+      <div class="gallery-item" data-category="key-art" data-full="../assets/key-art-3.webp" data-alt="Key art 3" tabindex="0" role="button" aria-label="View Key art 3 full screen">
+        <img src="../assets/key-art-3.webp" alt="Key art 3" />
       </div>
 
-      <div class="gallery-item" data-category="key-art" data-full="../assets/key-art-4.png" data-alt="Key art 4" tabindex="0" role="button" aria-label="View Key art 4 full screen">
-        <img src="../assets/key-art-4.png" alt="Key art 4" />
-        <div class="gi-actions">
-          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Key art 4" data-src="../assets/key-art-4.png" data-filename="key-art-4.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
-          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
+      <div class="gallery-item" data-category="key-art" data-full="../assets/key-art-4.webp" data-alt="Key art 4" tabindex="0" role="button" aria-label="View Key art 4 full screen">
+        <img src="../assets/key-art-4.webp" alt="Key art 4" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-1.png" data-alt="Screenshot 1" tabindex="0" role="button" aria-label="View Screenshot 1 full screen">
-        <img src="../assets/screenshot-1.png" alt="Screenshot 1" />
-        <div class="gi-actions">
-          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 1" data-src="../assets/screenshot-1.png" data-filename="screenshot-1.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
-          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-1.webp" data-alt="Screenshot 1" tabindex="0" role="button" aria-label="View Screenshot 1 full screen">
+        <img src="../assets/screenshot-1.webp" alt="Screenshot 1" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-2.png" data-alt="Screenshot 2" tabindex="0" role="button" aria-label="View Screenshot 2 full screen">
-        <img src="../assets/screenshot-2.png" alt="Screenshot 2" />
-        <div class="gi-actions">
-          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 2" data-src="../assets/screenshot-2.png" data-filename="screenshot-2.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
-          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-2.webp" data-alt="Screenshot 2" tabindex="0" role="button" aria-label="View Screenshot 2 full screen">
+        <img src="../assets/screenshot-2.webp" alt="Screenshot 2" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-3.png" data-alt="Screenshot 3" tabindex="0" role="button" aria-label="View Screenshot 3 full screen">
-        <img src="../assets/screenshot-3.png" alt="Screenshot 3" />
-        <div class="gi-actions">
-          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 3" data-src="../assets/screenshot-3.png" data-filename="screenshot-3.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
-          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-3.webp" data-alt="Screenshot 3" tabindex="0" role="button" aria-label="View Screenshot 3 full screen">
+        <img src="../assets/screenshot-3.webp" alt="Screenshot 3" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-4.png" data-alt="Screenshot 4" tabindex="0" role="button" aria-label="View Screenshot 4 full screen">
-        <img src="../assets/screenshot-4.png" alt="Screenshot 4" />
-        <div class="gi-actions">
-          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 4" data-src="../assets/screenshot-4.png" data-filename="screenshot-4.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
-          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-4.webp" data-alt="Screenshot 4" tabindex="0" role="button" aria-label="View Screenshot 4 full screen">
+        <img src="../assets/screenshot-4.webp" alt="Screenshot 4" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-5.png" data-alt="Screenshot 5" tabindex="0" role="button" aria-label="View Screenshot 5 full screen">
-        <img src="../assets/screenshot-5.png" alt="Screenshot 5" />
-        <div class="gi-actions">
-          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 5" data-src="../assets/screenshot-5.png" data-filename="screenshot-5.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
-          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-5.webp" data-alt="Screenshot 5" tabindex="0" role="button" aria-label="View Screenshot 5 full screen">
+        <img src="../assets/screenshot-5.webp" alt="Screenshot 5" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-6.png" data-alt="Screenshot 6" tabindex="0" role="button" aria-label="View Screenshot 6 full screen">
-        <img src="../assets/screenshot-6.png" alt="Screenshot 6" />
-        <div class="gi-actions">
-          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 6" data-src="../assets/screenshot-6.png" data-filename="screenshot-6.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
-          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-6.webp" data-alt="Screenshot 6" tabindex="0" role="button" aria-label="View Screenshot 6 full screen">
+        <img src="../assets/screenshot-6.webp" alt="Screenshot 6" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-7.png" data-alt="Screenshot 7" tabindex="0" role="button" aria-label="View Screenshot 7 full screen">
-        <img src="../assets/screenshot-7.png" alt="Screenshot 7" />
-        <div class="gi-actions">
-          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 7" data-src="../assets/screenshot-7.png" data-filename="screenshot-7.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
-          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-7.webp" data-alt="Screenshot 7" tabindex="0" role="button" aria-label="View Screenshot 7 full screen">
+        <img src="../assets/screenshot-7.webp" alt="Screenshot 7" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-8.png" data-alt="Screenshot 8" tabindex="0" role="button" aria-label="View Screenshot 8 full screen">
-        <img src="../assets/screenshot-8.png" alt="Screenshot 8" />
-        <div class="gi-actions">
-          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 8" data-src="../assets/screenshot-8.png" data-filename="screenshot-8.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
-          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-8.webp" data-alt="Screenshot 8" tabindex="0" role="button" aria-label="View Screenshot 8 full screen">
+        <img src="../assets/screenshot-8.webp" alt="Screenshot 8" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-9.png" data-alt="Screenshot 9" tabindex="0" role="button" aria-label="View Screenshot 9 full screen">
-        <img src="../assets/screenshot-9.png" alt="Screenshot 9" />
-        <div class="gi-actions">
-          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 9" data-src="../assets/screenshot-9.png" data-filename="screenshot-9.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
-          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-9.webp" data-alt="Screenshot 9" tabindex="0" role="button" aria-label="View Screenshot 9 full screen">
+        <img src="../assets/screenshot-9.webp" alt="Screenshot 9" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-10.png" data-alt="Screenshot 10" tabindex="0" role="button" aria-label="View Screenshot 10 full screen">
-        <img src="../assets/screenshot-10.png" alt="Screenshot 10" />
-        <div class="gi-actions">
-          <span class="gi-icon-btn gi-download" role="button" tabindex="0" aria-label="Download Screenshot 10" data-src="../assets/screenshot-10.png" data-filename="screenshot-10.png"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
-          <span class="gi-icon-btn gi-expand" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-10.webp" data-alt="Screenshot 10" tabindex="0" role="button" aria-label="View Screenshot 10 full screen">
+        <img src="../assets/screenshot-10.webp" alt="Screenshot 10" />
       </div>
 
     </div>
@@ -584,81 +601,24 @@
   </div>
 </section>
 
-<!-- ================= PRESS COVERAGE ================= -->
-<section id="press" class="reveal py-24 px-6 md:px-16">
-  <h2 class="display text-3xl sm:text-4xl text-center mb-14">언론 보도</h2>
-
-  <div id="press-grid" class="press-grid">
-      <a class="press-card" href="https://es.kotaku.com/legion-of-judgment-fallen-angel-estrena-una-demo-gratuita-que-anticipa-su-brutal-combate-y-un-oscuro-mundo-noir-2000046372" target="_blank" rel="noopener" aria-label="《Legion of Judgment: Fallen Angel》, 잔혹한 전투와 어두운 느와르 세계를 미리 보여주는 무료 데모 공개 — kotaku.es">
-        <span class="press-outlet">kotaku.es</span>
-        <span class="press-title">《Legion of Judgment: Fallen Angel》, 잔혹한 전투와 어두운 느와르 세계를 미리 보여주는 무료 데모 공개</span>
-        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <a class="press-card" href="https://dengekionline.com/article/202607/80839" target="_blank" rel="noopener" aria-label="어두운 현실 세계를 탐험하는 신작 액션 『Legion of Judgment』 데모 버전 공개. 약 20분간의 긴박한 전투 사이클을 체험 — dengekionline.com">
-        <span class="press-outlet">dengekionline.com</span>
-        <span class="press-title">어두운 현실 세계를 탐험하는 신작 액션 『Legion of Judgment』 데모 버전 공개. 약 20분간의 긴박한 전투 사이클을 체험</span>
-        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <a class="press-card" href="https://www.invenglobal.com/articles/23411/global-alpha-demo-released-for-25d-action-metroidvania-legion-of-judgment" target="_blank" rel="noopener" aria-label="2.5D 액션 메트로배니아 『Legion of Judgment』, 글로벌 알파 데모 공개 — invenglobal.com">
-        <span class="press-outlet">invenglobal.com</span>
-        <span class="press-title">2.5D 액션 메트로배니아 『Legion of Judgment』, 글로벌 알파 데모 공개</span>
-        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <a class="press-card" href="https://www.pcgames.de/Spiele-Thema-239104/News/Neues-Metroidvania-Legion-of-Judgment-Fallen-Angel-kostenlos-spielen-1549842/?utm_source=x.com&amp;utm_campaign=sharebutton&amp;utm_medium=social" target="_blank" rel="noopener" aria-label="Legion of Judgment: 호텔 경영이 어두운 메트로배니아 액션과 만나다 — pcgames.de">
-        <span class="press-outlet">pcgames.de</span>
-        <span class="press-title">Legion of Judgment: 호텔 경영이 어두운 메트로배니아 액션과 만나다</span>
-        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <a class="press-card" href="https://cogconnected.com/2026/07/legion-of-judgment-fallen-angel-launches-free-global-alpha-demo-on-steam/" target="_blank" rel="noopener" aria-label="Legion of Judgment: Fallen Angel, Steam에서 무료 글로벌 알파 데모 출시 — cogconnected.com">
-        <span class="press-outlet">cogconnected.com</span>
-        <span class="press-title">Legion of Judgment: Fallen Angel, Steam에서 무료 글로벌 알파 데모 출시</span>
-        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <a class="press-card" href="https://gamebiz.jp/news/429123" target="_blank" rel="noopener" aria-label="Theremin Interactive, 2.5D 느와르 액션 메트로배니아 RPG 『Legion of Judgment: Fallen Angel』 알파 데모 출시 — gamebiz.jp">
-        <span class="press-outlet">gamebiz.jp</span>
-        <span class="press-title">Theremin Interactive, 2.5D 느와르 액션 메트로배니아 RPG 『Legion of Judgment: Fallen Angel』 알파 데모 출시</span>
-        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <a class="press-card" href="https://www.gamingdeputy.com/fr/legion-of-judgment-fallen-angel-lance-une-demo-alpha-mondiale-gratuite-sur-steam/" target="_blank" rel="noopener" aria-label="Legion of Judgment: Fallen Angel, Steam에서 무료 글로벌 알파 데모 출시 — gamingdeputy.com">
-        <span class="press-outlet">gamingdeputy.com</span>
-        <span class="press-title">Legion of Judgment: Fallen Angel, Steam에서 무료 글로벌 알파 데모 출시</span>
-        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <a class="press-card" href="https://techmash.co.uk/2026/07/02/katana-steel-meets-urban-noir-legion-of-judgment-fallen-angel-drops-global-alpha-demo-on-steam/" target="_blank" rel="noopener" aria-label="카타나와 강철이 도시 느와르와 만나다: Legion of Judgment: Fallen Angel, Steam에서 글로벌 알파 데모 공개 — techmash.co.uk">
-        <span class="press-outlet">techmash.co.uk</span>
-        <span class="press-title">카타나와 강철이 도시 느와르와 만나다: Legion of Judgment: Fallen Angel, Steam에서 글로벌 알파 데모 공개</span>
-        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <a class="press-card" href="https://www.gamezilla.it/legion-of-judgment-fallen-angel-porta-su-steam-la-demo-alpha-globale/" target="_blank" rel="noopener" aria-label="Legion of Judgment: Fallen Angel, Steam에 글로벌 알파 데모 공개 — gamezilla.it">
-        <span class="press-outlet">gamezilla.it</span>
-        <span class="press-title">Legion of Judgment: Fallen Angel, Steam에 글로벌 알파 데모 공개</span>
-        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-      <a class="press-card" href="https://www.nextplayer.it/il-metroidvania-dazione-noir-in-2-5d-legion-of-judgment-fallen-angel-lancia-la-sua-demo-alpha-globale-su-steam/" target="_blank" rel="noopener" aria-label="2.5D 느와르 액션 메트로배니아 『Legion of Judgment: Fallen Angel』, Steam에서 글로벌 알파 데모 출시! — nextplayer.it">
-        <span class="press-outlet">nextplayer.it</span>
-        <span class="press-title">2.5D 느와르 액션 메트로배니아 『Legion of Judgment: Fallen Angel』, Steam에서 글로벌 알파 데모 출시!</span>
-        <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </a>
-  </div>
-
-  <div class="flex justify-center mt-10">
-    <button id="press-load-more" class="footer-presskit-link inline-flex items-center" hidden>더 보기</button>
-  </div>
-</section>
-
 </main>
 
 <!-- ================= FOOTER ================= -->
 <footer id="site-footer" class="relative">
-  <img src="../assets/footer-bg.png" alt="" class="footer-bg" />
+  <img src="../assets/footer-bg.webp" alt="" class="footer-bg" />
 
   <div class="footer-overlay absolute inset-0 flex flex-col pt-24 pb-10 px-6">
     <div class="footer-content footer-main max-w-4xl mx-auto text-center">
       <img src="../assets/footer-logo.webp" alt="Legion of Judgment: Fallen Angel" class="w-full max-w-[538px] mx-auto mb-10" />
 
-      <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener" data-wl-loc="footer" class="btn-glow mb-10">
-        위시리스트 등록
-      </a>
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-10">
+        <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener" data-demo-loc="footer" class="btn-glow btn-solid">
+          무료 데모 플레이
+        </a>
+        <a href="https://store.steampowered.com/app/2264780/Legion_of_Judgment_Fallen_Angel/" target="_blank" rel="noopener" data-wl-loc="footer" class="btn-glow">
+          위시리스트 등록
+        </a>
+      </div>
 
       <div class="flex justify-center flex-wrap gap-3 mb-12">
         <a class="social-icon" href="https://x.com/Theremin_Int" target="_blank" rel="noopener" aria-label="X (Twitter)">
@@ -691,18 +651,20 @@
 <!-- ================= GALLERY LIGHTBOX ================= -->
 <div id="lightbox" class="lightbox" hidden>
   <div class="lightbox-backdrop"></div>
-  <div class="lightbox-toolbar">
-    <button id="lightbox-download" class="lightbox-icon-btn" aria-label="이미지 다운로드">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
-    </button>
-    <button id="lightbox-close" class="lightbox-icon-btn" aria-label="닫기">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-  </div>
   <button id="lightbox-prev" class="lightbox-nav lightbox-prev" aria-label="이전 이미지">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
   </button>
-  <img id="lightbox-image" class="lightbox-image" src="" alt="" />
+  <div class="lightbox-stage">
+    <img id="lightbox-image" class="lightbox-image" src="" alt="" />
+    <div class="lightbox-toolbar">
+      <button id="lightbox-download" class="lightbox-icon-btn" aria-label="이미지 다운로드">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
+      </button>
+      <button id="lightbox-close" class="lightbox-icon-btn" aria-label="닫기">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
   <button id="lightbox-next" class="lightbox-nav lightbox-next" aria-label="다음 이미지">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
   </button>

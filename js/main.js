@@ -45,6 +45,41 @@
   });
 })();
 
+// ===== Demo CTA click tracking (GA4) =====
+// Same pattern as wishlist_click above, for the "Play Free Demo" buttons
+// (hero / footer / drawer). Kept as a separate event rather than folded
+// into wishlist_click so the two calls-to-action can be compared in GA4
+// Explore instead of blending into one number.
+(function demoTracking() {
+  document.querySelectorAll("[data-demo-loc]").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "demo_click", {
+          location: link.dataset.demoLoc,
+          page_language: document.documentElement.lang || "en",
+        });
+      }
+    });
+  });
+})();
+
+// ===== Press card click tracking (GA4) =====
+// Fires which outlet a visitor followed through to, so GA4 Explore can
+// show which press mentions actually drive traffic off-site rather than
+// just sitting on the page for trust.
+(function pressTracking() {
+  document.querySelectorAll(".press-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      if (typeof gtag === "function") {
+        gtag("event", "press_click", {
+          outlet: card.querySelector(".press-outlet")?.textContent || "",
+          page_language: document.documentElement.lang || "en",
+        });
+      }
+    });
+  });
+})();
+
 // ===== Nav scroll state + wishlist button reveal =====
 (function nav() {
   const nav = document.getElementById("site-nav");
@@ -120,6 +155,52 @@
       a.addEventListener("click", () => { details.open = false; });
     });
   }
+})();
+
+// ===== Lazy-loaded feature videos =====
+// The 5 feature videos (~1.8-3.8MB each) used to carry `autoplay`, which
+// makes browsers start fetching all of them the moment the page loads —
+// paid for by every visitor's first-load time whether they scroll down to
+// see them or not. `preload="none"` plus a `poster` frame stops that
+// upfront fetch; this only assigns `src` (triggering the download) and
+// calls `.play()` once a video is actually about to enter the viewport,
+// and pauses+releases it once scrolled away so looping videos further
+// down the page don't all keep decoding in the background at once.
+(function lazyVideos() {
+  const videos = [...document.querySelectorAll("video[data-lazy-video]")];
+  if (!videos.length) return;
+
+  // `src` is deliberately not set in the HTML (it lives in data-src
+  // instead) so no browser starts fetching until this assigns it —
+  // toggling the `preload` attribute post-hoc doesn't reliably force a
+  // fetch across browsers, but assigning `src` always does.
+  const load = (video) => {
+    if (video.dataset.loaded) return;
+    video.dataset.loaded = "true";
+    video.src = video.dataset.src;
+    video.load();
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    videos.forEach((v) => { load(v); v.play().catch(() => {}); });
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          load(video);
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    },
+    { rootMargin: "200px 0px" }
+  );
+  videos.forEach((v) => observer.observe(v));
 })();
 
 // ===== Scroll-triggered reveal animations =====
@@ -295,28 +376,11 @@
   };
 
   items.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      if (e.target.closest(".gi-download")) return; // handled separately below
-      open(item);
-    });
+    item.addEventListener("click", () => open(item));
     item.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         open(item);
-      }
-    });
-  });
-
-  document.querySelectorAll(".gi-download").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      openImage(btn.dataset.src);
-    });
-    btn.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        e.stopPropagation();
-        openImage(btn.dataset.src);
       }
     });
   });
