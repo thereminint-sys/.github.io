@@ -330,12 +330,22 @@
 
   const visibleItems = () => items.filter((item) => item.style.display !== "none");
 
-  // The `download` attribute is silently ignored on file:// pages (common
-  // when testing locally), which just navigates the tab instead of saving.
-  // Opening the full image in a new tab works everywhere — the user can
-  // save it from there themselves.
-  const openImage = (src) => {
-    window.open(src, "_blank", "noopener");
+  // A real download via a temporary anchor's `download` attribute —
+  // works because these images are same-origin, no CORS needed. Just
+  // opening the image in a new tab (the old approach, needed back when
+  // this was only ever tested over file://, where `download` is
+  // silently ignored) left mobile visitors with no obvious way to save
+  // it beyond a long-press; this triggers the OS's actual save/share
+  // flow instead, on both mobile and desktop.
+  const downloadImage = (src) => {
+    const filename = src.split("/").pop().split("?")[0] || "download";
+    const a = document.createElement("a");
+    a.href = src;
+    a.download = filename;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
   };
 
   // dir: 0 = no animation (initial open), 1 = advancing to next, -1 = back to prev.
@@ -397,7 +407,7 @@
   nextBtn?.addEventListener("click", () => showAt(currentIndex + 1, 1));
   closeBtn?.addEventListener("click", close);
   backdrop?.addEventListener("click", close);
-  downloadBtn?.addEventListener("click", () => openImage(lightboxImage.src));
+  downloadBtn?.addEventListener("click", () => downloadImage(lightboxImage.src));
 
   document.addEventListener("keydown", (e) => {
     if (lightbox.hidden) return;
