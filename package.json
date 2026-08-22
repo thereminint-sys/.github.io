@@ -1,0 +1,27 @@
+{
+  "name": "homepage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build-i18n.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/tailwind-src.css -o ./css/tailwind.css --minify",
+    "build:i18n": "node build-i18n.js",
+    "build": "npm run build:css && npm run build:i18n",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thereminint-sys/.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/thereminint-sys/.github.io/issues"
+  },
+  "homepage": "https://github.com/thereminint-sys/.github.io#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

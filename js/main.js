@@ -18,12 +18,35 @@
   });
 })();
 
-// ===== Ambient parallax background =====
-// `#parallax-bg` is `position:fixed; inset:0`, so it already stays glued to
-// the viewport (always full-bleed, zero gaps) while page content scrolls
-// over it — that's the parallax illusion. No JS needed; translating this
-// box on scroll used to push it off its own exactly-viewport-sized bounds,
-// which is what caused the edge cropping.
+// ===== Ambient parallax background scroll drift =====
+// `#parallax-bg` is `position:fixed; inset:0`, so it always fully covers
+// the viewport with zero gaps — translating that box itself on scroll (the
+// usual parallax technique) used to push its edge past the viewport,
+// cropping it. Instead this animates *which part* of the tall source image
+// shows within that same always-full box: background-position-y slides
+// from 0% (image top, at the top of the page) to 100% (image bottom, at
+// the bottom of the page) as the visitor scrolls the full document height —
+// same "background drifts at a different rate than the content" feel,
+// with no risk of ever exposing an edge.
+(function parallaxDrift() {
+  const bg = document.getElementById("parallax-bg");
+  if (!bg) return;
+
+  let ticking = false;
+  const update = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = max > 0 ? window.scrollY / max : 0;
+    bg.style.backgroundPositionY = `${progress * 100}%`;
+    ticking = false;
+  };
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  }, { passive: true });
+  update();
+})();
 
 // ===== Wishlist click tracking (GA4) =====
 // Fires a `wishlist_click` event with a `location` label (nav / hero /

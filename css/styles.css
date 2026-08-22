@@ -77,13 +77,14 @@ img, video {
    without full-bleed art of its own (press/prologue/characters/gallery,
    or just a section's heading/padding whitespace) let a recognizable
    fragment of it (a building facade, a crest) show through instead of
-   reading as ambient texture. Painting main's own background here sits
-   between #parallax-bg and every section inside it, so gaps show plain
-   ink instead — covers every current and future section in one place
-   rather than patching each one that happens to get reported. */
+   reading as ambient texture. main's background is semi-transparent
+   (not solid) so #parallax-bg's blurred, desaturated glow still bleeds
+   through as mood lighting, while staying too soft to ever resolve into
+   a recognizable fragment — that softness is what makes revisiting the
+   old bleed-through fix safe here. */
 main {
   position: relative;
-  background: var(--ink);
+  background: rgba(8, 7, 10, 0.1);
 }
 
 /* ===== Ambient parallax background (behind every section) ===== */
@@ -91,12 +92,13 @@ main {
   position: fixed;
   inset: 0;
   z-index: -20;
-  /* Fixed + inset:0 keeps this exactly viewport-sized and stationary, so it
-     always fully covers the screen while content scrolls over it — that's
-     the parallax effect, with no JS/transform needed (and no risk of the
-     box edge being pushed past the viewport, which used to crop it). */
+  /* Fixed + inset:0 keeps this exactly viewport-sized and stationary (no
+     risk of the box edge being pushed past the viewport, which used to
+     crop it) while js/main.js's parallaxDrift() animates
+     background-position-y on scroll for the actual parallax motion. */
   background-size: cover;
   background-position: center;
+  background-position-y: 0%;
 }
 
 h1, h2, h3, .display {
@@ -712,13 +714,46 @@ select:focus-visible {
 .gallery-nav-btn:hover { box-shadow: 0 0 14px var(--blood-glow); }
 
 /* ===== Footer ===== */
+/* footer sits after </main>, so it doesn't get main's `background: var(--ink)`
+   fallback that normally hides the fixed #parallax-bg layer behind gaps —
+   same root cause as the press-section bleed-through fixed earlier.
+   footer-bg.webp fades from fully transparent at its own top edge, and on
+   mobile (where cover crops left/right, not top/bottom — see the
+   max-width:767px block below) that transparent band is never cropped
+   away, so #parallax-bg showed through it as a hazy, out-of-place patch. */
 #site-footer {
   position: relative;
+  background: rgba(8, 7, 10, 0.1);
 }
+/* Uncapped width:100%/height:auto meant this image's rendered height grew
+   with viewport width (its own aspect ratio makes it taller than most
+   monitors past ~1600px wide) — e.g. 1148px tall at a common 1920px-wide
+   viewport. Scrolling to the page's actual bottom (to reach the CTA
+   buttons/copyright, which are anchored to the bottom of this section)
+   then pushed the character's head off the top of the screen. Capping the
+   height and cropping toward the top keeps the figure in frame at any
+   viewport size while the image still spans the full width.
+   The cap is 100vh minus #site-nav's own height (82px, padding-driven —
+   see #site-nav below), not a flat 100vh: footer is the last element on
+   the page, so scrolling to the document's bottom lands this section's
+   top edge exactly at the viewport's top edge — precisely where the
+   fixed, always-on-top nav sits. At a flat 100vh cap that put the nav's
+   translucent/blurred bar directly over the character's head; this
+   leaves the nav its own room below the image's visible top. */
 #site-footer .footer-bg {
   display: block;
   width: 100%;
   height: auto;
+  max-height: calc(100vh - 82px);
+  object-fit: cover;
+  /* Not a flat "top": the source file itself fades from fully transparent
+     at y=0 to opaque by ~y=30px (of its native 1250px height), followed by
+     dim, mostly-empty headroom before the character actually appears.
+     object-position:top showed all of that verbatim, reading as a dead
+     black band under the nav. Anchoring lower skips most of that dead
+     space while the character's head — well within the top 15% of the
+     source — still stays safely in frame. */
+  object-position: 50% 20%;
 }
 /* Same mobile fix as hero/story: logo + Wishlist + social icons + copyright
    all need guaranteed room a width-scaled image can't reliably give. */
@@ -769,17 +804,13 @@ select:focus-visible {
 }
 .prologue-card {
   position: relative;
-  /* Fixed at 440px regardless of container width, which — with only 2
-     cards centered in a full-width section — left a wide unused margin
-     on both sides instead of the pair reading as a real row. Flexible
-     sizing (grow to fill, same 680px ceiling the feature videos use)
-     lets exactly 2 cards claim the row properly; min-width keeps them
-     from squeezing too far on tablet before wrapping to one per line on
-     mobile. Revisit this — probably back to a fixed/carousel size — once
-     a 3rd prologue entry exists and centering 2-up no longer applies. */
-  flex: 1 1 380px;
-  max-width: 680px;
-  min-width: 280px;
+  /* Flexible sizing lets however many cards exist (now 3) claim a
+     centered row rather than leaving unused margin on either side.
+     min-width is tuned so 3 cards' worth of min-widths + gaps still
+     fits a typical md+ (768px) content width before wrapping. */
+  flex: 1 1 340px;
+  max-width: 600px;
+  min-width: 260px;
   scroll-snap-align: start;
   aspect-ratio: 16/9;
   border: 1px solid var(--line);

@@ -12,6 +12,9 @@
 <link rel="canonical" href="__CANONICAL_URL__" />
 <link rel="icon" type="image/png" href="__ASSET_PREFIX__assets/favicon.png" />
 <link rel="shortcut icon" href="__ASSET_PREFIX__favicon.ico" />
+<link rel="apple-touch-icon" href="__ASSET_PREFIX__assets/apple-touch-icon.png" />
+<link rel="manifest" href="__ASSET_PREFIX__manifest.json" />
+<meta name="theme-color" content="#08070a" />
 __HREFLANG_LINKS__
 
 <meta property="og:type" content="website" />
@@ -60,27 +63,7 @@ __HREFLANG_LINKS__
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+KR:wght@400;500;600;700;900&family=Noto+Serif+JP:wght@400;500;600;700;900&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Serif:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          ink: "#08070a",
-          ink2: "#0f0a0b",
-          ink3: "#171012",
-          bone: "#f3ede1",
-          muted: "#b7ab9c",
-          blood: "#c31c22",
-        },
-        fontFamily: {
-          display: ["Cinzel", "serif"],
-          body: ["EB Garamond", "serif"],
-        },
-      },
-    },
-  };
-</script>
+<link rel="stylesheet" href="__ASSET_PREFIX__css/tailwind.css" />
 <link rel="stylesheet" href="__ASSET_PREFIX__css/styles.css" />
 
 <!-- Google Analytics 4 — Measurement ID G-HHFSL380GN. Tracks page_view plus
@@ -338,6 +321,13 @@ __PRESS_CARDS__
         <span class="prologue-title">{{prologue.item2.title}}</span>
       </div>
     </a>
+
+    <a class="prologue-card" href="https://store.steampowered.com/news/app/2264780/view/685262822701008014?l=__STEAM_LANG__" target="_blank" rel="noopener" aria-label="{{prologue.item3.title}} — {{prologue.openAria}}">
+      <img src="__ASSET_PREFIX__assets/prologue-3.webp" alt="" />
+      <div class="prologue-info">
+        <span class="prologue-title">{{prologue.item3.title}}</span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -537,7 +527,7 @@ __PRESS_CARDS__
 
 <!-- ================= FOOTER ================= -->
 <footer id="site-footer" class="relative">
-  <img src="__ASSET_PREFIX__assets/footer-bg.webp" alt="" class="footer-bg" />
+  <img src="__ASSET_PREFIX__assets/footer-bg.png" alt="" class="footer-bg" />
 
   <div class="footer-overlay absolute inset-0 flex flex-col pt-24 pb-10 px-6">
     <div class="footer-content footer-main max-w-4xl mx-auto text-center">
