@@ -6,9 +6,53 @@
 
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 
 const ROOT = __dirname;
 const BASE_URL = "https://theremin-int.com";
+
+// Cloudflare's Cache Rule (set up separately, in the dashboard — see the
+// project notes) pins /assets/*, /css/*, /js/* to a 1-year edge + browser
+// TTL regardless of what origin sends, so a plain re-upload of a changed
+// file wouldn't reach anyone with it already cached. Appending a content
+// hash as a query string changes the URL whenever the file's bytes change,
+// which busts that cache without needing a cache purge — unchanged files
+// keep the same URL and stay cached for the full year. Applied as a
+// post-processing pass over each rendered page's HTML, not the template,
+// so it only ever touches real, resolvable local file references.
+const CACHE_BUST_EXTENSIONS = /\.(css|js|png|webp|webm|jpg|jpeg|ico|json)$/i;
+
+function isLocalAssetUrl(url) {
+  return (
+    CACHE_BUST_EXTENSIONS.test(url) &&
+    !/^([a-z]+:)?\/\//i.test(url) &&
+    !url.startsWith("data:")
+  );
+}
+
+function hashOf(filePath) {
+  return crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex").slice(0, 10);
+}
+
+function applyCacheBusting(html, outDir) {
+  const attrPattern = /(src|href|poster|data-src|data-original|data-full)="([^"]+)"/g;
+  html = html.replace(attrPattern, (match, attr, url) => {
+    if (!isLocalAssetUrl(url)) return match;
+    const filePath = path.join(outDir, url);
+    if (!fs.existsSync(filePath)) return match; // don't break the build over a stray/missing reference
+    return `${attr}="${url}?v=${hashOf(filePath)}"`;
+  });
+  // The one inline background-image:url('...') on #parallax-bg isn't
+  // covered by the attribute pattern above.
+  const inlineUrlPattern = /url\('([^']+)'\)/g;
+  html = html.replace(inlineUrlPattern, (match, url) => {
+    if (!isLocalAssetUrl(url)) return match;
+    const filePath = path.join(outDir, url);
+    if (!fs.existsSync(filePath)) return match;
+    return `url('${url}?v=${hashOf(filePath)}')`;
+  });
+  return html;
+}
 
 // `steamLang` is the Steam Community language code appended to news-post
 // links (?l=<code>) so the "Prologue" cards open the matching Steam-side
@@ -218,9 +262,10 @@ function main() {
   const pressItems = loadPress();
 
   for (const lang of LANGUAGES) {
-    const html = renderPage(template, translations, lang, pressItems);
+    let html = renderPage(template, translations, lang, pressItems);
     const outDir = lang.prefix ? path.join(ROOT, lang.prefix) : ROOT;
     fs.mkdirSync(outDir, { recursive: true });
+    html = applyCacheBusting(html, outDir);
     const outPath = path.join(outDir, "index.html");
     fs.writeFileSync(outPath, html, "utf8");
     console.log(`Wrote ${path.relative(ROOT, outPath)}`);

@@ -347,6 +347,7 @@
   if (!items.length || !lightbox || !lightboxImage) return;
 
   let currentIndex = -1;
+  let currentOriginalSrc = "";
   let animating = false;
   const ANIM_MS = 260;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -382,6 +383,10 @@
       const item = visible[currentIndex];
       lightboxImage.src = item.dataset.full;
       lightboxImage.alt = item.dataset.alt || "";
+      // `dataset.full` is a compressed webp used for on-screen viewing;
+      // `dataset.original` (falls back to `full` for items without one)
+      // is the uncompressed source the download button should save instead.
+      currentOriginalSrc = item.dataset.original || item.dataset.full;
     };
 
     if (dir === 0 || reduceMotion) {
@@ -430,7 +435,7 @@
   nextBtn?.addEventListener("click", () => showAt(currentIndex + 1, 1));
   closeBtn?.addEventListener("click", close);
   backdrop?.addEventListener("click", close);
-  downloadBtn?.addEventListener("click", () => downloadImage(lightboxImage.src));
+  downloadBtn?.addEventListener("click", () => downloadImage(currentOriginalSrc));
 
   document.addEventListener("keydown", (e) => {
     if (lightbox.hidden) return;

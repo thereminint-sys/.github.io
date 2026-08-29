@@ -55,6 +55,19 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  /* Every size in this file is rem or a Tailwind rem utility (spacing,
+     type, component widths), tuned by eye against ~1440-2560px viewports.
+     Below that range the root stays fixed at 16px — this isn't fluid
+     typography meant to shrink on small screens, mobile already has its
+     own layout via the max-width:767px rules throughout. Above 2560px
+     (QHD) the root scales up 1:1 with extra viewport width, so a 3840px
+     (4K) window — exactly 1.5x QHD's pixels at the same 16:9 ratio — ends
+     up with a 24px root and everything sized off it renders at the same
+     proportion of the screen as QHD, instead of the same fixed size
+     shrinking as a fraction of a bigger canvas. Capped at 32px (5120px
+     width) so it doesn't keep growing without bound on exotic ultrawide
+     or multi-monitor spans. */
+  font-size: clamp(16px, calc(16px * (100vw / 2560px)), 32px);
 }
 
 body {
@@ -501,7 +514,7 @@ select:focus-visible {
      monitors. (560px, tried first, also clipped the common 1440px case by
      ~19%, which read as "suddenly small" — that's why this is 680, not
      560.) Still shrinks freely below the cap on tablet/mobile. */
-  max-width: 680px;
+  max-width: 42.5rem;
   /* The glow has to live here, not on .frame-border below: a `filter` and
      a `clip-path` on the SAME element get clipped to that element's own
      shape, so drop-shadow's blur was being cut off right at the angled
@@ -610,7 +623,7 @@ select:focus-visible {
 .gallery-track::-webkit-scrollbar { display: none; }
 .gallery-item {
   position: relative;
-  flex: 0 0 min(560px, 82vw);
+  flex: 0 0 min(35rem, 82vw);
   scroll-snap-align: start;
   aspect-ratio: 16/10;
   border: 1px solid var(--line);
@@ -733,27 +746,33 @@ select:focus-visible {
    then pushed the character's head off the top of the screen. Capping the
    height and cropping toward the top keeps the figure in frame at any
    viewport size while the image still spans the full width.
-   The cap is 100vh minus #site-nav's own height (82px, padding-driven —
-   see #site-nav below), not a flat 100vh: footer is the last element on
-   the page, so scrolling to the document's bottom lands this section's
-   top edge exactly at the viewport's top edge — precisely where the
-   fixed, always-on-top nav sits. At a flat 100vh cap that put the nav's
-   translucent/blurred bar directly over the character's head; this
-   leaves the nav its own room below the image's visible top. */
+   The cap is 100vh minus #site-nav's own height (5.125rem/82px at the
+   default 16px root, padding-driven — see #site-nav below), not a flat
+   100vh: footer is the last element on the page, so scrolling to the
+   document's bottom lands this section's top edge exactly at the
+   viewport's top edge — precisely where the fixed, always-on-top nav
+   sits. At a flat 100vh cap that put the nav's translucent/blurred bar
+   directly over the character's head; this leaves the nav its own room
+   below the image's visible top. In rem (not px) so this stays correct
+   at the larger root size html sets above 2560px viewports — nav grows
+   with it, so its reserved space here has to grow the same amount. */
 #site-footer .footer-bg {
   display: block;
   width: 100%;
   height: auto;
-  max-height: calc(100vh - 82px);
+  max-height: calc(100vh - 5.125rem);
   object-fit: cover;
-  /* Not a flat "top": the source file itself fades from fully transparent
-     at y=0 to opaque by ~y=30px (of its native 1250px height), followed by
-     dim, mostly-empty headroom before the character actually appears.
-     object-position:top showed all of that verbatim, reading as a dead
-     black band under the nav. Anchoring lower skips most of that dead
-     space while the character's head — well within the top 15% of the
-     source — still stays safely in frame. */
-  object-position: 50% 20%;
+  /* Top-anchored so cropping only ever eats into the bottom of the frame,
+     never the top — anything else (e.g. 20%, tried before) crops some
+     fraction of the overflow off the top too, and how much overflow there
+     is depends on how far the viewport's aspect ratio strays from the
+     image's own; on a wide-but-short window (a maximized browser on a
+     common 16:9 laptop) that was enough to crop into the character's head,
+     which sits well within the source's top 15%. The source's own alpha
+     fade at y=0 does the blending into #site-footer's translucent
+     background (and the fixed #parallax-bg behind it) — an opaque overlay
+     here would just paint over that blend with a flat color instead. */
+  object-position: 50% top;
 }
 /* Same mobile fix as hero/story: logo + Wishlist + social icons + copyright
    all need guaranteed room a width-scaled image can't reliably give. */
@@ -808,9 +827,9 @@ select:focus-visible {
      centered row rather than leaving unused margin on either side.
      min-width is tuned so 3 cards' worth of min-widths + gaps still
      fits a typical md+ (768px) content width before wrapping. */
-  flex: 1 1 340px;
-  max-width: 600px;
-  min-width: 260px;
+  flex: 1 1 21.25rem;
+  max-width: 37.5rem;
+  min-width: 16.25rem;
   scroll-snap-align: start;
   aspect-ratio: 16/9;
   border: 1px solid var(--line);
@@ -847,7 +866,7 @@ select:focus-visible {
 /* ===== Character roster carousel ===== */
 .character-card {
   position: relative;
-  flex: 0 0 200px;
+  flex: 0 0 12.5rem;
   scroll-snap-align: start;
   aspect-ratio: 3/4;
   border: 1px solid var(--line);
@@ -906,7 +925,7 @@ select:focus-visible {
    scannable and light to paint at any count. */
 .press-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
   gap: 1rem;
 }
 .press-card {
