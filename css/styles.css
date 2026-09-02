@@ -1010,9 +1010,32 @@ select:focus-visible {
     scrollbar-width: none;
   }
   .press-grid::-webkit-scrollbar { display: none; }
+  /* Sized to what's actually left of the viewport once the prev/next
+     arrows (added alongside the track) are accounted for — 82vw (the
+     Gallery/Character card formula) assumed the track ran edge-to-edge,
+     which was fine for peeking at the next image but left a press card's
+     text clipped mid-sentence at the snap point. The subtracted 10.5rem is
+     the section's own left+right padding (2x1.5rem) plus both nav buttons
+     (2x2.75rem) plus the two gaps around the track (2x1rem) — so a card
+     lands exactly as wide as the space between the arrows, no clipping. */
   .press-card {
-    flex: 0 0 min(320px, 82vw);
+    flex: 0 0 calc(100vw - 10.5rem);
     scroll-snap-align: start;
+  }
+}
+/* Prev/next buttons for the press track, matching Gallery/Characters —
+   desktop's press-grid is a wrapping grid, not a scroll track, so there's
+   nothing for them to scroll there and they stay hidden. Plain
+   display:none/flex (not a Tailwind md:hidden class on the element) since
+   this file loads after tailwind.css: a same-specificity Tailwind utility
+   here would lose the cascade to any later unconditional rule matching the
+   same element, defeating the hide. */
+.press-nav-btn {
+  display: none;
+}
+@media (max-width: 767px) {
+  .press-nav-btn {
+    display: flex;
   }
 }
 /* #press-load-more also carries Tailwind's `inline-flex` utility class for

@@ -334,6 +334,18 @@
   loadMoreBtn.addEventListener("click", revealNext);
 })();
 
+// ===== Press horizontal nav (mobile only — see .press-nav-btn in CSS) =====
+(function pressCarousel() {
+  const track = document.getElementById("press-grid");
+  const prevBtn = document.getElementById("press-prev");
+  const nextBtn = document.getElementById("press-next");
+  if (!track) return;
+
+  const scrollAmount = () => track.clientWidth * 0.9;
+  prevBtn?.addEventListener("click", () => track.scrollBy({ left: -scrollAmount(), behavior: "smooth" }));
+  nextBtn?.addEventListener("click", () => track.scrollBy({ left: scrollAmount(), behavior: "smooth" }));
+})();
+
 // ===== Gallery lightbox (full-screen view + prev/next/close/download) =====
 (function galleryLightbox() {
   const items = [...document.querySelectorAll(".gallery-item")];

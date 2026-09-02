@@ -74,8 +74,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+KR:wght@400;500;600;700;900&family=Noto+Serif+JP:wght@400;500;600;700;900&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Serif:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="../css/tailwind.css?v=83b18469f2" />
-<link rel="stylesheet" href="../css/styles.css?v=09fee607e8" />
+<link rel="stylesheet" href="../css/tailwind.css?v=3dee1e78ad" />
+<link rel="stylesheet" href="../css/styles.css?v=ee0942fad2" />
 
 <!-- Google Analytics 4 — Measurement ID G-HHFSL380GN. Tracks page_view plus
      the wishlist_click / demo_click / press_click custom events fired from
@@ -199,7 +199,7 @@
 <section id="story" class="reveal relative">
   <img src="../assets/story-bg.webp?v=648140ff2b" alt="" class="story-bg" loading="lazy" width="1535" height="1024" />
 
-  <div class="story-text absolute top-[45%] right-6 md:right-16 z-[1] max-w-2xl text-right">
+  <div class="story-text absolute bottom-10 md:bottom-auto md:top-[45%] right-6 md:right-16 z-[1] max-w-2xl text-right">
     <h2 class="display text-2xl sm:text-3xl mb-6 leading-tight">
       El niño que perdió a su padre ha regresado como cazador, para clavar una estaca de hierro en el corazón de los lobos.
     </h2>
@@ -229,7 +229,12 @@
 <section id="press" class="reveal py-24 px-6 md:px-16">
   <h2 class="display text-3xl sm:text-4xl text-center mb-14">En la prensa</h2>
 
-  <div id="press-grid" class="press-grid">
+  <div class="flex items-center gap-4">
+    <button id="press-prev" class="gallery-nav-btn press-nav-btn" aria-label="Anterior">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+
+    <div id="press-grid" class="press-grid flex-1">
       <a class="press-card" href="https://es.kotaku.com/legion-of-judgment-fallen-angel-estrena-una-demo-gratuita-que-anticipa-su-brutal-combate-y-un-oscuro-mundo-noir-2000046372" target="_blank" rel="noopener" aria-label="Legion of Judgment: Fallen Angel estrena una demo gratuita que anticipa su brutal combate y un oscuro mundo noir — kotaku.es">
         <span class="press-outlet">kotaku.es</span>
         <span class="press-title">Legion of Judgment: Fallen Angel estrena una demo gratuita que anticipa su brutal combate y un oscuro mundo noir</span>
@@ -285,6 +290,11 @@
         <span class="press-title">Theremin Interactive: «'Legion of Judgment' lleva la diversión familiar del Metroidvania a la era moderna»</span>
         <span class="press-link-icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
       </a>
+    </div>
+
+    <button id="press-next" class="gallery-nav-btn press-nav-btn" aria-label="Siguiente">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
   </div>
 
   <div class="flex justify-center mt-10">
@@ -550,44 +560,52 @@
         <img src="../assets/key-art-4.webp?v=b1e9b7c7ad" loading="lazy" width="2115" height="1077" alt="Key art 4" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-1.webp?v=fdd6671330" data-original="../assets/screenshot-1.png?v=25c4484d56" data-alt="Screenshot 1" tabindex="0" role="button" aria-label="View Screenshot 1 full screen">
-        <img src="../assets/screenshot-1.webp?v=fdd6671330" loading="lazy" width="2560" height="1368" alt="Screenshot 1" />
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-1.webp?v=d2afffd391" data-original="../assets/screenshot-1.jpg?v=183f7c26c0" data-alt="Screenshot 1" tabindex="0" role="button" aria-label="View Screenshot 1 full screen">
+        <img src="../assets/screenshot-1.webp?v=d2afffd391" loading="lazy" width="1920" height="1017" alt="Screenshot 1" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-2.webp?v=cf8be5ba90" data-original="../assets/screenshot-2.png?v=2fc864e8e2" data-alt="Screenshot 2" tabindex="0" role="button" aria-label="View Screenshot 2 full screen">
-        <img src="../assets/screenshot-2.webp?v=cf8be5ba90" loading="lazy" width="2560" height="1368" alt="Screenshot 2" />
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-2.webp?v=2554abed69" data-original="../assets/screenshot-2.jpg?v=70b3e32ca2" data-alt="Screenshot 2" tabindex="0" role="button" aria-label="View Screenshot 2 full screen">
+        <img src="../assets/screenshot-2.webp?v=2554abed69" loading="lazy" width="1920" height="1014" alt="Screenshot 2" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-3.webp?v=0de789c6cf" data-original="../assets/screenshot-3.png?v=3f04ce8b8f" data-alt="Screenshot 3" tabindex="0" role="button" aria-label="View Screenshot 3 full screen">
-        <img src="../assets/screenshot-3.webp?v=0de789c6cf" loading="lazy" width="2576" height="1416" alt="Screenshot 3" />
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-3.webp?v=5562009575" data-original="../assets/screenshot-3.jpg?v=15a71aae53" data-alt="Screenshot 3" tabindex="0" role="button" aria-label="View Screenshot 3 full screen">
+        <img src="../assets/screenshot-3.webp?v=5562009575" loading="lazy" width="1920" height="1019" alt="Screenshot 3" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-4.webp?v=345c99d67a" data-original="../assets/screenshot-4.png?v=d1da675ae2" data-alt="Screenshot 4" tabindex="0" role="button" aria-label="View Screenshot 4 full screen">
-        <img src="../assets/screenshot-4.webp?v=345c99d67a" loading="lazy" width="2560" height="1440" alt="Screenshot 4" />
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-4.webp?v=5d5cbc8d9c" data-original="../assets/screenshot-4.jpg?v=d82121f55e" data-alt="Screenshot 4" tabindex="0" role="button" aria-label="View Screenshot 4 full screen">
+        <img src="../assets/screenshot-4.webp?v=5d5cbc8d9c" loading="lazy" width="1920" height="1019" alt="Screenshot 4" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-5.webp?v=71c5231e84" data-original="../assets/screenshot-5.png?v=b0f409d09f" data-alt="Screenshot 5" tabindex="0" role="button" aria-label="View Screenshot 5 full screen">
-        <img src="../assets/screenshot-5.webp?v=71c5231e84" loading="lazy" width="2560" height="1440" alt="Screenshot 5" />
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-5.webp?v=54ab288da4" data-original="../assets/screenshot-5.jpg?v=fd02d0bf9a" data-alt="Screenshot 5" tabindex="0" role="button" aria-label="View Screenshot 5 full screen">
+        <img src="../assets/screenshot-5.webp?v=54ab288da4" loading="lazy" width="1920" height="1019" alt="Screenshot 5" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-6.webp?v=878d500a61" data-original="../assets/screenshot-6.png?v=7f8b7aa5f4" data-alt="Screenshot 6" tabindex="0" role="button" aria-label="View Screenshot 6 full screen">
-        <img src="../assets/screenshot-6.webp?v=878d500a61" loading="lazy" width="2560" height="1440" alt="Screenshot 6" />
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-6.webp?v=bb0923ff6b" data-original="../assets/screenshot-6.jpg?v=fb9e9a5854" data-alt="Screenshot 6" tabindex="0" role="button" aria-label="View Screenshot 6 full screen">
+        <img src="../assets/screenshot-6.webp?v=bb0923ff6b" loading="lazy" width="1920" height="1019" alt="Screenshot 6" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-7.webp?v=504e6d7833" data-original="../assets/screenshot-7.png?v=ac307a5994" data-alt="Screenshot 7" tabindex="0" role="button" aria-label="View Screenshot 7 full screen">
-        <img src="../assets/screenshot-7.webp?v=504e6d7833" loading="lazy" width="2560" height="1440" alt="Screenshot 7" />
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-7.webp?v=01099b24a9" data-original="../assets/screenshot-7.jpg?v=016ae58209" data-alt="Screenshot 7" tabindex="0" role="button" aria-label="View Screenshot 7 full screen">
+        <img src="../assets/screenshot-7.webp?v=01099b24a9" loading="lazy" width="1920" height="1019" alt="Screenshot 7" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-8.webp?v=128d1c27ee" data-original="../assets/screenshot-8.png?v=fa0573af63" data-alt="Screenshot 8" tabindex="0" role="button" aria-label="View Screenshot 8 full screen">
-        <img src="../assets/screenshot-8.webp?v=128d1c27ee" loading="lazy" width="2560" height="1440" alt="Screenshot 8" />
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-8.webp?v=2064058abc" data-original="../assets/screenshot-8.jpg?v=04026676e4" data-alt="Screenshot 8" tabindex="0" role="button" aria-label="View Screenshot 8 full screen">
+        <img src="../assets/screenshot-8.webp?v=2064058abc" loading="lazy" width="1920" height="1020" alt="Screenshot 8" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-9.webp?v=c78915b503" data-original="../assets/screenshot-9.png?v=b5ce7fa25b" data-alt="Screenshot 9" tabindex="0" role="button" aria-label="View Screenshot 9 full screen">
-        <img src="../assets/screenshot-9.webp?v=c78915b503" loading="lazy" width="2560" height="1440" alt="Screenshot 9" />
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-9.webp?v=a49d3cbce3" data-original="../assets/screenshot-9.jpg?v=7a4e7eb8c9" data-alt="Screenshot 9" tabindex="0" role="button" aria-label="View Screenshot 9 full screen">
+        <img src="../assets/screenshot-9.webp?v=a49d3cbce3" loading="lazy" width="1920" height="1019" alt="Screenshot 9" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-10.webp?v=5952c46de3" data-original="../assets/screenshot-10.png?v=8ff296278e" data-alt="Screenshot 10" tabindex="0" role="button" aria-label="View Screenshot 10 full screen">
-        <img src="../assets/screenshot-10.webp?v=5952c46de3" loading="lazy" width="2576" height="1416" alt="Screenshot 10" />
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-10.webp?v=71e240468b" data-original="../assets/screenshot-10.jpg?v=1c23f961d1" data-alt="Screenshot 10" tabindex="0" role="button" aria-label="View Screenshot 10 full screen">
+        <img src="../assets/screenshot-10.webp?v=71e240468b" loading="lazy" width="1920" height="1024" alt="Screenshot 10" />
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-11.webp?v=4e22d08baf" data-original="../assets/screenshot-11.jpg?v=2ffc980e47" data-alt="Screenshot 11" tabindex="0" role="button" aria-label="View Screenshot 11 full screen">
+        <img src="../assets/screenshot-11.webp?v=4e22d08baf" loading="lazy" width="1920" height="1021" alt="Screenshot 11" />
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="../assets/screenshot-12.webp?v=f625f2df16" data-original="../assets/screenshot-12.jpg?v=114ec6442c" data-alt="Screenshot 12" tabindex="0" role="button" aria-label="View Screenshot 12 full screen">
+        <img src="../assets/screenshot-12.webp?v=f625f2df16" loading="lazy" width="1920" height="1022" alt="Screenshot 12" />
       </div>
 
     </div>
@@ -667,6 +685,6 @@
   </button>
 </div>
 
-<script src="../js/main.js?v=fb03f05caf" defer></script>
+<script src="../js/main.js?v=91c8c9f73a" defer></script>
 </body>
 </html>

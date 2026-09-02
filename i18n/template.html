@@ -178,7 +178,7 @@ __HREFLANG_LINKS__
 <section id="story" class="reveal relative">
   <img src="__ASSET_PREFIX__assets/story-bg.webp" alt="" class="story-bg" loading="lazy" width="1535" height="1024" />
 
-  <div class="story-text absolute top-[45%] right-6 md:right-16 z-[1] max-w-2xl text-right">
+  <div class="story-text absolute bottom-10 md:bottom-auto md:top-[45%] right-6 md:right-16 z-[1] max-w-2xl text-right">
     <h2 class="display text-2xl sm:text-3xl mb-6 leading-tight">
       {{story.heading}}
     </h2>
@@ -208,8 +208,18 @@ __HREFLANG_LINKS__
 <section id="press" class="reveal py-24 px-6 md:px-16">
   <h2 class="display text-3xl sm:text-4xl text-center mb-14">{{press.heading}}</h2>
 
-  <div id="press-grid" class="press-grid">
+  <div class="flex items-center gap-4">
+    <button id="press-prev" class="gallery-nav-btn press-nav-btn" aria-label="{{gallery.prevAria}}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+
+    <div id="press-grid" class="press-grid flex-1">
 __PRESS_CARDS__
+    </div>
+
+    <button id="press-next" class="gallery-nav-btn press-nav-btn" aria-label="{{gallery.nextAria}}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
   </div>
 
   <div class="flex justify-center mt-10">
@@ -475,44 +485,52 @@ __PRESS_CARDS__
         <img src="__ASSET_PREFIX__assets/key-art-4.webp" loading="lazy" width="2115" height="1077" alt="Key art 4" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-1.webp" data-original="__ASSET_PREFIX__assets/screenshot-1.png" data-alt="Screenshot 1" tabindex="0" role="button" aria-label="View Screenshot 1 full screen">
-        <img src="__ASSET_PREFIX__assets/screenshot-1.webp" loading="lazy" width="2560" height="1368" alt="Screenshot 1" />
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-1.webp" data-original="__ASSET_PREFIX__assets/screenshot-1.jpg" data-alt="Screenshot 1" tabindex="0" role="button" aria-label="View Screenshot 1 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-1.webp" loading="lazy" width="1920" height="1017" alt="Screenshot 1" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-2.webp" data-original="__ASSET_PREFIX__assets/screenshot-2.png" data-alt="Screenshot 2" tabindex="0" role="button" aria-label="View Screenshot 2 full screen">
-        <img src="__ASSET_PREFIX__assets/screenshot-2.webp" loading="lazy" width="2560" height="1368" alt="Screenshot 2" />
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-2.webp" data-original="__ASSET_PREFIX__assets/screenshot-2.jpg" data-alt="Screenshot 2" tabindex="0" role="button" aria-label="View Screenshot 2 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-2.webp" loading="lazy" width="1920" height="1014" alt="Screenshot 2" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-3.webp" data-original="__ASSET_PREFIX__assets/screenshot-3.png" data-alt="Screenshot 3" tabindex="0" role="button" aria-label="View Screenshot 3 full screen">
-        <img src="__ASSET_PREFIX__assets/screenshot-3.webp" loading="lazy" width="2576" height="1416" alt="Screenshot 3" />
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-3.webp" data-original="__ASSET_PREFIX__assets/screenshot-3.jpg" data-alt="Screenshot 3" tabindex="0" role="button" aria-label="View Screenshot 3 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-3.webp" loading="lazy" width="1920" height="1019" alt="Screenshot 3" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-4.webp" data-original="__ASSET_PREFIX__assets/screenshot-4.png" data-alt="Screenshot 4" tabindex="0" role="button" aria-label="View Screenshot 4 full screen">
-        <img src="__ASSET_PREFIX__assets/screenshot-4.webp" loading="lazy" width="2560" height="1440" alt="Screenshot 4" />
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-4.webp" data-original="__ASSET_PREFIX__assets/screenshot-4.jpg" data-alt="Screenshot 4" tabindex="0" role="button" aria-label="View Screenshot 4 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-4.webp" loading="lazy" width="1920" height="1019" alt="Screenshot 4" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-5.webp" data-original="__ASSET_PREFIX__assets/screenshot-5.png" data-alt="Screenshot 5" tabindex="0" role="button" aria-label="View Screenshot 5 full screen">
-        <img src="__ASSET_PREFIX__assets/screenshot-5.webp" loading="lazy" width="2560" height="1440" alt="Screenshot 5" />
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-5.webp" data-original="__ASSET_PREFIX__assets/screenshot-5.jpg" data-alt="Screenshot 5" tabindex="0" role="button" aria-label="View Screenshot 5 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-5.webp" loading="lazy" width="1920" height="1019" alt="Screenshot 5" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-6.webp" data-original="__ASSET_PREFIX__assets/screenshot-6.png" data-alt="Screenshot 6" tabindex="0" role="button" aria-label="View Screenshot 6 full screen">
-        <img src="__ASSET_PREFIX__assets/screenshot-6.webp" loading="lazy" width="2560" height="1440" alt="Screenshot 6" />
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-6.webp" data-original="__ASSET_PREFIX__assets/screenshot-6.jpg" data-alt="Screenshot 6" tabindex="0" role="button" aria-label="View Screenshot 6 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-6.webp" loading="lazy" width="1920" height="1019" alt="Screenshot 6" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-7.webp" data-original="__ASSET_PREFIX__assets/screenshot-7.png" data-alt="Screenshot 7" tabindex="0" role="button" aria-label="View Screenshot 7 full screen">
-        <img src="__ASSET_PREFIX__assets/screenshot-7.webp" loading="lazy" width="2560" height="1440" alt="Screenshot 7" />
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-7.webp" data-original="__ASSET_PREFIX__assets/screenshot-7.jpg" data-alt="Screenshot 7" tabindex="0" role="button" aria-label="View Screenshot 7 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-7.webp" loading="lazy" width="1920" height="1019" alt="Screenshot 7" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-8.webp" data-original="__ASSET_PREFIX__assets/screenshot-8.png" data-alt="Screenshot 8" tabindex="0" role="button" aria-label="View Screenshot 8 full screen">
-        <img src="__ASSET_PREFIX__assets/screenshot-8.webp" loading="lazy" width="2560" height="1440" alt="Screenshot 8" />
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-8.webp" data-original="__ASSET_PREFIX__assets/screenshot-8.jpg" data-alt="Screenshot 8" tabindex="0" role="button" aria-label="View Screenshot 8 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-8.webp" loading="lazy" width="1920" height="1020" alt="Screenshot 8" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-9.webp" data-original="__ASSET_PREFIX__assets/screenshot-9.png" data-alt="Screenshot 9" tabindex="0" role="button" aria-label="View Screenshot 9 full screen">
-        <img src="__ASSET_PREFIX__assets/screenshot-9.webp" loading="lazy" width="2560" height="1440" alt="Screenshot 9" />
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-9.webp" data-original="__ASSET_PREFIX__assets/screenshot-9.jpg" data-alt="Screenshot 9" tabindex="0" role="button" aria-label="View Screenshot 9 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-9.webp" loading="lazy" width="1920" height="1019" alt="Screenshot 9" />
       </div>
 
-      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-10.webp" data-original="__ASSET_PREFIX__assets/screenshot-10.png" data-alt="Screenshot 10" tabindex="0" role="button" aria-label="View Screenshot 10 full screen">
-        <img src="__ASSET_PREFIX__assets/screenshot-10.webp" loading="lazy" width="2576" height="1416" alt="Screenshot 10" />
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-10.webp" data-original="__ASSET_PREFIX__assets/screenshot-10.jpg" data-alt="Screenshot 10" tabindex="0" role="button" aria-label="View Screenshot 10 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-10.webp" loading="lazy" width="1920" height="1024" alt="Screenshot 10" />
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-11.webp" data-original="__ASSET_PREFIX__assets/screenshot-11.jpg" data-alt="Screenshot 11" tabindex="0" role="button" aria-label="View Screenshot 11 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-11.webp" loading="lazy" width="1920" height="1021" alt="Screenshot 11" />
+      </div>
+
+      <div class="gallery-item" data-category="screenshots" data-full="__ASSET_PREFIX__assets/screenshot-12.webp" data-original="__ASSET_PREFIX__assets/screenshot-12.jpg" data-alt="Screenshot 12" tabindex="0" role="button" aria-label="View Screenshot 12 full screen">
+        <img src="__ASSET_PREFIX__assets/screenshot-12.webp" loading="lazy" width="1920" height="1022" alt="Screenshot 12" />
       </div>
 
     </div>
