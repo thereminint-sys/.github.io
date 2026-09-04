@@ -519,17 +519,32 @@ select:focus-visible {
      dead gap between them. 35vw crosses 42.5rem right around 1920px
      (FHD), so nothing changes at or below that width; past it, the frame
      scales with the viewport at the same ratio it holds at FHD instead of
-     staying pinned to a phone-era pixel count. min() puts a ceiling on
-     the vw term alone so a stray ultrawide window can't blow the frame
-     past a sane size while the text next to it stays put. */
+     staying pinned to a phone-era pixel count. (Tried capping this at
+     960px — the source .webm's native resolution — after measuring bad
+     scroll jank at the full 4K size; turned out the upscale wasn't the
+     cause at all, see .frame-glow below. No cap needed.) */
   max-width: max(42.5rem, min(35vw, 75rem));
-  /* The glow has to live here, not on .frame-border below: a `filter` and
-     a `clip-path` on the SAME element get clipped to that element's own
-     shape, so drop-shadow's blur was being cut off right at the angled
-     edge and never bloomed outward (why past attempts at this glow never
-     showed up). .frame has no clip-path of its own, so putting the filter
-     on the parent lets the shadow trace the clipped children's silhouette
-     and still bleed past it, matching the click-to-enlarge glow weight. */
+}
+/* The glow used to live on .frame itself, but that also contains the
+   looping video (.frame-inner) — a `filter` re-rasterizes its element's
+   whole subtree on every paint, so with the video repainting ~30-60x/sec
+   the 4-layer drop-shadow (each a separate blur pass) was recomputed just
+   as often. Measured at 4K/QHD: 15-20% dropped video frames and a third
+   of scroll frames past 30fps, even though the frame was well within its
+   source resolution — removing only the filter (size unchanged) fixed it
+   completely, confirming the filter was the actual cost, not the size.
+   .frame-glow is a dedicated layer for the glow alone: same box, but its
+   only content is .frame-glow-shape, a static solid-color clip (never
+   repaints), so the filter has nothing to invalidate it and stays cheap
+   regardless of what the video is doing in the sibling layer below.
+   (Still can't put `filter` and `clip-path` on the same element — that
+   clips the blur to the shape instead of letting it bloom outward, which
+   is why the shape is a separate child of the filtered layer here, same
+   as .frame-border is a separate, unfiltered child of .frame itself.) */
+.frame-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   filter:
     drop-shadow(0 0 1px rgba(224, 40, 31, 0.95))
     drop-shadow(0 0 14px rgba(224, 40, 31, 0.5))
@@ -537,12 +552,17 @@ select:focus-visible {
     drop-shadow(0 0 80px rgba(180, 20, 20, 0.22));
   transition: filter 0.35s ease;
 }
-.frame:hover {
+.frame:hover .frame-glow {
   filter:
     drop-shadow(0 0 1px rgba(224, 40, 31, 1))
     drop-shadow(0 0 16px rgba(224, 40, 31, 0.6))
     drop-shadow(0 0 44px rgba(200, 20, 20, 0.42))
     drop-shadow(0 0 96px rgba(180, 20, 20, 0.28));
+}
+.frame-glow-shape {
+  position: absolute;
+  inset: 0;
+  background: #e0281f;
 }
 .frame .frame-border {
   position: absolute;
@@ -570,11 +590,13 @@ select:focus-visible {
    every side, so the clip-path percentages land at identical pixel
    positions for both — no more misaligned border line. */
 .frame-point-left .frame-border,
-.frame-point-left .frame-inner {
+.frame-point-left .frame-inner,
+.frame-point-left .frame-glow-shape {
   clip-path: polygon(0% 0%, 82% 0%, 100% 50%, 82% 100%, 0% 100%);
 }
 .frame-point-right .frame-border,
-.frame-point-right .frame-inner {
+.frame-point-right .frame-inner,
+.frame-point-right .frame-glow-shape {
   clip-path: polygon(18% 0%, 100% 0%, 100% 100%, 18% 100%, 0% 50%);
 }
 /* Below the max-width cap above, a block element left-aligns by default —
